@@ -1,0 +1,90 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+    provider = "prisma-client"
+    output   = "../src/generated/prisma"
+}
+
+datasource db {
+    provider = "postgresql"
+}
+
+model Skill {
+    skillId         Int     @id @default(autoincrement())
+    title           String
+    content         String?
+    visible         Boolean @default(false)
+}
+
+model Project {
+    projectId       Int     @id @default(autoincrement())
+    name            String
+    description     String?
+    imageUrls       String[]
+    visible         Boolean @default(false)
+}
+
+model Art {
+    artId           Int     @id @default(autoincrement())
+    title           String
+    imageUrl        String[]
+    description     String?
+    visible         Boolean @default(false)
+}
+
+model WorkExperience {
+    workId          Int     @id @default(autoincrement())
+    name            String
+    position        String
+    description     String
+    startDate       DateTime
+    endDate         DateTime
+    visible         Boolean @default(false)
+}
+
+model Education {
+    educationId     Int     @id @default(autoincrement())
+    diploma         String
+    school          String
+    startYear       Int
+    endYear         Int
+    visible         Boolean @default(false)
+}
+
+model Resume {
+    resumeId        Int     @id @default(autoincrement())
+    name            String
+    fileURL         String
+    visible         Boolean @default(false)
+}
+
+model ContactInfo {
+    contactId       Int     @id @default(autoincrement())
+    name            String
+    visible         Boolean @default(false)
+}
+
+model Hobby {
+    hobbyId         Int     @id @default(autoincrement())
+    name            String
+    description     String
+    visible         Boolean @default(false)
+}
+
+model ContactMessage{
+    contactId       Int     @id @default(autoincrement())
+    name            String
+    email           String
+    message         String?
+}
+
+model Testimonial {
+    testimonialId   Int     @id @default(autoincrement())
+    name            String
+    message         String?
+    accepted        Boolean @default(false)
+}
