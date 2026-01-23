@@ -40,3 +40,10 @@ a {
     color-scheme: dark;
   }
 }
+
+.polka-dot-background {
+  background: white;
+  background-image: radial-gradient(black 1px, transparent 2);
+  background-size: 40px 40px;
+  background-position: -5px -19px;
+}

@@ -86,5 +86,6 @@ model Testimonial {
     testimonialId   Int     @id @default(autoincrement())
     name            String
     message         String?
+    date            DateTime @default(now())
     accepted        Boolean @default(false)
 }
