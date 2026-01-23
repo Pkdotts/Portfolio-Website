@@ -1,0 +1,89 @@
+.wrapper{
+    position: relative;
+    overflow: hidden;
+    background-color: var(--mantine-color-primary-6);
+    isolation: isolate;
+}
+
+.polkadotbg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    z-index: 1;
+    --mask: linear-gradient(rgb(0 0 0), rgb(0 0 0 / 0.5));
+    --stop1: 0.06rem;
+    --stop2: 0.65rem;
+    --invert: 0;
+    --dotColor: black;
+    --bgColor: white;
+    --bgSize: 3rem;
+
+    --dotOut: var(--mantine-color-primary-6);
+    --bgOut: var(--mantine-color-primary-4):;
+
+    --bgPosition: 0 0, calc(var(--bgSize) / 2);
+    --dottedBackground: radial-gradient(circle at center, var(--dotColor) var(--stop1), transparent var(--stop2)), radial-gradient(circle at center, var(--dotColor) var(--stop1), transparent var(--stop2));
+    
+    background: var(--bgColor);
+    background-color: var(--bgOut);
+    filter: contrast(50) invert(var(--invert, 0));
+    mix-blend-mode: screen;
+    --invert: 0;
+}
+
+.polkadotbg::after{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: var(--bgSize) var(--bgSize);
+    background-repeat: round;
+    background-image: var(--dottedBackground);
+    background-position: var(--bgPosition);
+    mask-image: var(--mask);
+    
+}
+
+.polkadotdots {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+
+    --mask: linear-gradient(rgb(0 0 0), rgb(0 0 0 / 0.5));
+    --stop1: 0.06rem;
+    --stop2: 0.65rem;
+    --invert: 0;
+    --dotColor: black;
+    --bgColor: white;
+    --bgSize: 3rem;
+
+    --dotOut: var(--mantine-color-primary-6);
+    --bgOut: var(--mantine-color-primary-7):;
+
+    --bgPosition: 0 0, calc(var(--bgSize) / 2);
+    --dottedBackground: radial-gradient(circle at center, var(--dotColor) var(--stop1), transparent var(--stop2)), radial-gradient(circle at center, var(--dotColor) var(--stop1), transparent var(--stop2));
+    
+    background-color: var(--bgOut);
+    background: var(--bgColor);
+    filter: contrast(50) invert(var(--invert, 0));
+    mix-blend-mode: multiply;
+    --invert: 0;
+}
+.polkadotdots::after{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: var(--bgSize) var(--bgSize);
+    background-repeat: round;
+    background-image: var(--dottedBackground);
+    background-position: var(--bgPosition);
+    mask-image: var(--mask);
+    
+}
+
+.content{
+    position: relative;
+    z-index: 10;
+    color: var(--mantine-color-dark-0);
+}

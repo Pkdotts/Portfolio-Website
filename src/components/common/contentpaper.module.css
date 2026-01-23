@@ -1,0 +1,38 @@
+.wrapper{
+    position: relative;
+    overflow: hidden;
+    background-color: var(--mantine-color-primary-6);
+    isolation: isolate;
+}
+
+.polkadot {
+  --mask: linear-gradient(rgb(0 0 0), rgb(0 0 0 /0) 50%);
+  --stop1: 30%;
+  --stop2: 5px;
+  --bgSize: 1rem;
+  
+}
+
+.polkadot::after {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    content: '';
+    z-index: 1;
+    
+    background-image: radial-gradient(
+        circle at center,    
+        var(--mantine-color-primary-4) var(--stop1), 
+        transparent var(--stop2));
+    background-size: var(--bgSize) var(--bgSize);
+    background-position: 0 0 0.65px 0.65px;
+
+    mask-image: var(--mask);
+}
+
+.content{
+    position: relative;
+    z-index: 10;
+    color: var(--mantine-color-light-0);
+    border: white 2px ;
+}
