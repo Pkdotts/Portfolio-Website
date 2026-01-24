@@ -22,22 +22,8 @@ export const defaultTheme = createTheme({
     }),
     AppShell: {
         styles: {
-            header: {
-                height: 90,
-                padding: 10,
-                backgroundColor: 'var(--mantine-color-dark-0)',
-                color: 'var(--mantine-color-light-0)',
-                border: 'none',
-            },
             main:{
                 backgroundColor: 'var(--mantine-color-primary-4)'
-            },
-            footer: {
-              height: 90,
-                padding: 10,
-                backgroundColor: 'var(--mantine-color-dark-0)',
-                color: 'var(--mantine-color-light-0)',
-                border: 'none',
             }
         }
     }

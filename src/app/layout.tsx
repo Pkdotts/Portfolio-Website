@@ -21,11 +21,12 @@ export default function RootLayout({
       <body >
         <MantineProvider theme={defaultTheme}>
           <AppShell
-            header={{ height: 80 }}
           >
-            <Header/>
-            <AppShellMain style={{backgroundColor: defaultTheme.primaryColor}}>{children}</AppShellMain>
-            <Footer/>
+            <AppShellMain style={{backgroundColor: defaultTheme.primaryColor}}>
+              <Header/>
+              {children}
+               <Footer/>
+            </AppShellMain>
           </AppShell>
         </MantineProvider>
       </body>

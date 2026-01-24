@@ -5,7 +5,7 @@ import {  Container, Title, Text } from "@mantine/core";
 export default function Home() {
   return (
     <>
-      <PageTitle>HOME HOME HOME HOME</PageTitle>
+      <PageTitle>ABOUT ME ABOUT ME ABOUT ME ABOUT ME</PageTitle>
 
       <Container p="sm" size={"xl"}>
         <ContentPaper>
