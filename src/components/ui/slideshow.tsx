@@ -1,7 +1,7 @@
 
 'use client'
 
-import { ActionIcon, Image, Group, Transition, MantineTransition } from "@mantine/core";
+import { ActionIcon, Image, Group, Transition, MantineTransition, Container, Stack } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 
@@ -14,7 +14,8 @@ export default function Slideshow({images, children}: SlideshowProps) {
     const [index, setIndex] = useState<number>(0);
     const fadeInterval = 6000;
     const fadeTime = 1000;
-    const height = "640px";
+    const height = "500px";
+    const buttonSize = 80;
     const prevFade: MantineTransition = "fade-left"
     const nextFade: MantineTransition = "fade-right"
     const [skewAnim, setSkewAnim] = useState<MantineTransition>(nextFade);
@@ -45,21 +46,28 @@ export default function Slideshow({images, children}: SlideshowProps) {
     return(
         <div style={{height: height}}>         
             
-            <div style={{height: "100%", position: "relative", backgroundColor: "var(--mantine-color-dark-0)"}}>
-                <Group p="lg" w="100%" h="100%" justify="space-between" style={{position:"absolute", zIndex: 1}}>
-                    <ActionIcon variant="filled" radius="lg" size="lg">
-                        <IconChevronLeft 
-                            onClick={() => addIndex(-1)}
-                            style={{ width: '80%', height: '80%' }} 
-                            stroke={2} />
-                    </ActionIcon>
-                    <ActionIcon variant="filled" radius="lg" size="lg">
-                        <IconChevronRight 
-                            onClick={() => addIndex(1)}
-                            style={{ width: '80%', height: '80%' }} 
-                            stroke={2} />
-                    </ActionIcon>
-                </Group>
+            <div  style={{height: "100%", position: "relative", backgroundColor: "var(--mantine-color-dark-0)"}}>
+                <Stack w="100%" h="100%" align="center" justify="center" style={{position:"absolute", zIndex: 2}}>
+                    <Container w="100%" h="100%" size="1600px" >
+                        <Group h="100%" p="lg" justify="space-between" >
+                            <ActionIcon variant="outline" radius={buttonSize} size={buttonSize} style={{'--ai-bd': '2px solid'}}>
+                                <IconChevronLeft 
+                                    color="var(--mantine-color-light-0)"
+                                    onClick={() => addIndex(-1)}
+                                    style={{ width: '80%', height: '80%' }} 
+                                    stroke={2} />
+                            </ActionIcon>
+                            <ActionIcon  variant="outline" radius={buttonSize} size={buttonSize} style={{'--ai-bd': '2px solid'}}>
+                                <IconChevronRight 
+                                    color="var(--mantine-color-light-0)"
+                                    onClick={() => addIndex(1)}
+                                    style={{ width: '80%', height: '80%' }} 
+                                    stroke={2} />
+                            </ActionIcon>
+                        </Group>
+                    </Container>
+                </Stack>
+
                 {images.map((src, i) => (
                     <Transition
                         key={i}
@@ -70,14 +78,13 @@ export default function Slideshow({images, children}: SlideshowProps) {
                         
                     >
                         {(transitionStyle) => (
-                            <Image src={src} style={{...transitionStyle, height: height, position: "absolute"}}>
-                                
-                                
-                            </Image>
+                            <Image src={src} style={{...transitionStyle, height: height, position: "absolute"}}/>
+                            
                         )}
                     </Transition>
-                ))
-                }
+                ))}
+                
+                <div style={{height: "100%", width: "100%", backgroundImage: "linear-gradient(to right, var(--mantine-color-dark-0) -15% , transparent, transparent, var(--mantine-color-dark-0) 106% )", position: "absolute", zIndex: 1}}/>
             </div>
 
             
