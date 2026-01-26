@@ -1,0 +1,27 @@
+.container {
+    
+    &:hover {
+        .imagecontainer {
+            transform: translateY(-5px);
+            transition: transform 0.2s ease-in-out; 
+        }
+        .image {
+            transform: scale(1.07);
+            transition: transform 0.2s ease-in-out
+        }
+    }
+}
+
+.imagecontainer {
+    box-shadow: 2px 2px 0px 5px var(--mantine-color-light-0);
+    overflow: hidden;
+    transform: translateY(0px);
+    transition: transform 0.3s ease-in-out
+    
+}
+
+.image {
+    transform: scale(1.0);
+    transition: transform 0.4s ease-in-out
+}
+

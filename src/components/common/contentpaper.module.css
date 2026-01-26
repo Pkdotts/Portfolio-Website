@@ -6,26 +6,23 @@
 }
 
 .polkadot {
-  --mask: linear-gradient(rgb(0 0 0), rgb(0 0 0 /0) 50%);
-  --stop1: 30%;
-  --stop2: 5px;
-  --bgSize: 1rem;
-  
-}
+    --mask: linear-gradient(rgb(0 0 0), rgb(0 0 0 /0) 50%);
+    --stop1: 30%;
+    --bgSize: 2rem;
+    --offsetSize: 1rem; 
+    --polka-bg-img: 
+        radial-gradient(var(--mantine-color-primary-5) var(--stop1), transparent var(--stop1)),
+        radial-gradient(var(--mantine-color-primary-5) var(--stop1), transparent var(--stop1));
+    --bg-position: 0px 0px, var(--bgOffset) var(--bgOffset);
 
-.polkadot::after {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    content: '';
     z-index: 1;
     
-    background-image: radial-gradient(
-        circle at center,    
-        var(--mantine-color-primary-4) var(--stop1), 
-        transparent var(--stop2));
+    background-image: var(--polka-bg-img);
+    background-position: 0px 0px, var(--offsetSize) var(--offsetSize);
     background-size: var(--bgSize) var(--bgSize);
-    background-position: 0 0 0.65px 0.65px;
 
     mask-image: var(--mask);
 }

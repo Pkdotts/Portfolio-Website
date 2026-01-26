@@ -10,8 +10,8 @@ export const defaultTheme = createTheme({
   colors: {
     dark: colorsTuple('#211826'),
     primary: [
-        "#fff2e0","#ffe4cb","#ffdf99","#ffc863","#ffa136",
-        "#ff8421","#ff7605","#e46400","#d35106","#bb4e05"
+        "#fff2e0","#ffe4cb","#ffdf99","#ffc863","#ffab43",
+        "#ff9023","#ff7605","#dc7a4b","#de5c49","#c94358"
         ],
     light: colorsTuple('#fffcf0')
   },
@@ -23,7 +23,8 @@ export const defaultTheme = createTheme({
     AppShell: {
         styles: {
             main:{
-                backgroundColor: 'var(--mantine-color-primary-4)'
+                
+                
             }
         }
     }

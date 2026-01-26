@@ -2,7 +2,7 @@ import ContentPaper from "@/components/common/contentpaper";
 import PageTitle from "@/components/common/pagetitle";
 import {  Container, Title, Text } from "@mantine/core";
 
-export default function Home() {
+export default function Art() {
   return (
     <>
       <PageTitle>ART ART ART ART ART ART ART ART ART ART ART ART</PageTitle>

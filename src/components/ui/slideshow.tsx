@@ -50,24 +50,22 @@ export default function Slideshow({images, children}: SlideshowProps) {
                 <Stack w="100%" h="100%" align="center" justify="center" style={{position:"absolute", zIndex: 2}}>
                     <Container w="100%" h="100%" size="1600px" >
                         <Group h="100%" p="lg" justify="space-between" >
-                            <ActionIcon variant="outline" radius={buttonSize} size={buttonSize} style={{'--ai-bd': '2px solid'}}>
+                            <ActionIcon variant="light" radius={buttonSize} size={buttonSize} style={{'--ai-bd': '3px solid'}} onClick={() => addIndex(-1)}>
                                 <IconChevronLeft 
                                     color="var(--mantine-color-light-0)"
-                                    onClick={() => addIndex(-1)}
                                     style={{ width: '80%', height: '80%' }} 
                                     stroke={2} />
                             </ActionIcon>
-                            <ActionIcon  variant="outline" radius={buttonSize} size={buttonSize} style={{'--ai-bd': '2px solid'}}>
+                            <ActionIcon  variant="light" radius={buttonSize} size={buttonSize} style={{'--ai-bd': '3px solid'}} onClick={() => addIndex(1)}>
                                 <IconChevronRight 
                                     color="var(--mantine-color-light-0)"
-                                    onClick={() => addIndex(1)}
                                     style={{ width: '80%', height: '80%' }} 
                                     stroke={2} />
                             </ActionIcon>
                         </Group>
                     </Container>
                 </Stack>
-
+                
                 {images.map((src, i) => (
                     <Transition
                         key={i}
@@ -79,12 +77,11 @@ export default function Slideshow({images, children}: SlideshowProps) {
                     >
                         {(transitionStyle) => (
                             <Image src={src} style={{...transitionStyle, height: height, position: "absolute"}}/>
-                            
                         )}
                     </Transition>
                 ))}
                 
-                <div style={{height: "100%", width: "100%", backgroundImage: "linear-gradient(to right, var(--mantine-color-dark-0) -15% , transparent, transparent, var(--mantine-color-dark-0) 106% )", position: "absolute", zIndex: 1}}/>
+                <div style={{height: "100%", width: "100%", backgroundImage: "linear-gradient(to right, var(--mantine-color-dark-0) -15% , transparent, transparent, var(--mantine-color-dark-0) 100% )", position: "absolute", zIndex: 1}}/>
             </div>
 
             

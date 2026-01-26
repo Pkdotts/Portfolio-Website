@@ -9,8 +9,8 @@ export default function ContentPaper ({children}: Readonly<{children: React.Reac
                 bd="2px solid var(--mantine-color-light-0)" 
                 bdrs={"md"}
                 m="8px" 
-                p="md"
-                size={"xl"} 
+                p="xl"
+                size="auto"
                 className={classes.content}>{children}</Container>
             
         </Paper>

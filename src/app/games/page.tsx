@@ -1,9 +1,16 @@
 import ContentPaper from "@/components/common/contentpaper";
 import PageTitle from "@/components/common/pagetitle";
+import GameCard from "@/components/ui/cards/gamecard";
 import Slideshow from "@/components/ui/slideshow";
-import {  Container, Title, Text, BackgroundImage } from "@mantine/core";
+import prisma from "../../lib/prisma";
+import {  Container, Title, Text, BackgroundImage, Grid, GridCol, Stack } from "@mantine/core";
+import { title } from "process";
 
-export default function Home() {
+
+
+export default async function Games() {
+
+  const projects = await prisma.project.findMany();
 
   const bgImages = [
     "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-1.png",
@@ -16,39 +23,24 @@ export default function Home() {
 
   return (
     <div>
-      <PageTitle>GAMES GAMES GAMES GAMES GAMES GAMES</PageTitle>
       <Slideshow images={bgImages}>penis</Slideshow>
-      <Container p="sm" size={"xl"}>
+      <PageTitle>GAMES GAMES GAMES GAMES GAMES GAMES</PageTitle>
+      
+      <Container p="sm" size="xl">
         <ContentPaper>
-          <Title>Skills</Title>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
+          <Stack gap="md">
+            <Title>Released</Title>
+            { projects ? 
+            <Grid>
+              {projects.map((p,) => (
+                <GridCol key={p.projectId} span={{base: 12, xs: 5, sm: 4, md: 3, lg: 3}}>
+                  <GameCard title={p.name} image={p.bannerUrl}/>
+                </GridCol>
+              ))}
+            </Grid> : <Text>No games</Text>
+            
+            }
+          </Stack>
         </ContentPaper>
       </Container>
     </div>

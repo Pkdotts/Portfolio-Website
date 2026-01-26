@@ -24,6 +24,8 @@ model Project {
     projectId       Int     @id @default(autoincrement())
     name            String
     description     String?
+    logoUrl         String?
+    bannerUrl       String?
     imageUrls       String[]
     visible         Boolean @default(false)
 }

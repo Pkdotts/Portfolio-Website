@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import '@mantine/core/styles.css';
-import { AppShell, AppShellMain, ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/core';
+import { AppShell, AppShellMain, Box, ColorSchemeScript, Container, Flex, MantineProvider, mantineHtmlProps } from '@mantine/core';
 import { Header } from "@/components/common/header";
 import Footer from "@/components/common/footer";
 import { defaultTheme } from "./theme";
@@ -20,14 +20,13 @@ export default function RootLayout({
     <html lang="en" {...mantineHtmlProps}>
       <body >
         <MantineProvider theme={defaultTheme}>
-          <AppShell
-          >
-            <AppShellMain style={{backgroundColor: defaultTheme.primaryColor}}>
-              <Header/>
+          <Flex direction="column" mih="100vh" style={{backgroundColor: defaultTheme.primaryColor}}>
+            <Header/>
+            <Box style={{flexGrow: 1, backgroundColor: 'var(--mantine-color-primary-4)',} }>
               {children}
-               <Footer/>
-            </AppShellMain>
-          </AppShell>
+            </Box>
+            <Footer/>
+          </Flex>
         </MantineProvider>
       </body>
     </html>

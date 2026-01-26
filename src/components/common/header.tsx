@@ -19,7 +19,7 @@ export function Header() {
         >
             <Stack align="stretch" justify="center" h="100%">
                 <Group justify="space-between" >
-                    <Anchor href="/home">
+                    <Anchor href="/">
                         <Title order={1}>Andy Bao Le</Title>
                     </Anchor>
                     <Group justify="flex-end">

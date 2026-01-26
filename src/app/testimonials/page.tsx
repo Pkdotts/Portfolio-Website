@@ -2,10 +2,10 @@ import ContentPaper from "@/components/common/contentpaper";
 import PageTitle from "@/components/common/pagetitle";
 import {  Container, Title, Text } from "@mantine/core";
 
-export default function Home() {
+export default function Art() {
   return (
     <>
-      <PageTitle>HOME HOME HOME HOME</PageTitle>
+      <PageTitle>TESTIMONIALS TESTIMONIALS TESTIMONIALS TESTIMONIALS TESTIMONIALS TESTIMONIALS</PageTitle>
 
       <Container p="sm" size={"xl"}>
         <ContentPaper>
