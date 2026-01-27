@@ -1,0 +1,48 @@
+
+a {
+  --duration: .2s;
+  --distance: 8px;
+  --nDistance: -8px;
+  --halfDistance: 4px;
+  --easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+  font-size: 20px;
+  color: var(--mantine-color-primary-4);
+  position: relative;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding-top: 4px;
+  padding-bottom: 4px;
+
+   &:before, &:after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0; right: 0;
+    height: 2px;
+    background-color: var(--mantine-color-primary-9);
+  }
+  &:before {
+    opacity: 0;
+    transform: translateY(var(--nDistance));
+    transition: transform 0s var(--easeOutBack), opacity 0s;
+  }
+  &:after {
+    opacity: 0;
+    transform: translateY(var(--halfDistance));
+    transition: transform var(--duration) var(--easeOutBack), opacity var(--duration);
+  }
+  &:hover,
+  &:focus {
+    &:before,
+    &:after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    &:before {
+      transition: transform var(--duration) var(--easeOutBack), opacity var(--duration);
+    }
+    &:after {
+      transition: transform 0s var(--duration) var(--easeOutBack), opacity 0s var(--duration);
+    }
+  }
+}

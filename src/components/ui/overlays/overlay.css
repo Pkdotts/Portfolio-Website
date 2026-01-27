@@ -1,0 +1,24 @@
+#overlaygrain, #overlaycomic {
+  background-repeat: repeat;
+  mask-image: radial-gradient(rgba(255, 255, 255, 0.25) 30%, white 100%);
+  position: fixed;
+  width: 100%;
+  height: 100%; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  pointer-events: none;
+}
+#overlaygrain {
+  background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelclipmaterialprod.s3-ap-northeast-1.amazonaws.com%2F38%2F22%2F2002238%2Fexample&f=1&nofb=1&ipt=f747510422d4e7acf0c4af16604acc59b9621e4ee5e99b4b53521e3bd958df26");
+  opacity: 0.06;
+  mix-blend-mode: color-dodge;
+}
+
+#overlaycomic {
+  background-image: url("../../../../public/grain.png");
+  opacity: 0.1;
+  mix-blend-mode: color-dodge;
+}

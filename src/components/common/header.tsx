@@ -2,11 +2,12 @@
 
 import {
     Anchor,
-    Button,
     Group,
     Stack,
     Title,
 } from "@mantine/core";
+
+import "../ui/styles/underlinebutton.css";
 
 export function Header() {
     return (
@@ -17,22 +18,25 @@ export function Header() {
         color: 'var(--mantine-color-light-0)',
         border: 'none'}}
         >
-            <Stack align="stretch" justify="center" h="100%">
+            <Stack align="stretch" justify="center" h="100%" >
                 <Group justify="space-between" >
-                    <Anchor href="/">
+                    <a href="/">
                         <Title order={1}>Andy Bao Le</Title>
-                    </Anchor>
-                    <Group justify="flex-end">
-                        <Button variant="light" component="a" href="/games">
+                    </a>
+                    <Group gap="30px">
+                        <a href="/games">
                             Games
-                        </Button>
-                        <Button variant="light" component="a" href="/art">
+                        </a>
+                        <a href="/art">
                             Art
-                        </Button>
+                        </a>
+                        <a href="/testimonials"> 
+                            Testimonials 
+                        </a>
                         {/* Includes Skills, Work experience, Education, Resume, Contact Info and Hobbies */}
-                        <Button variant="light" component="a" href="/about"> 
+                        <a href="/about"> 
                             About Me 
-                        </Button>
+                        </a>
                     </Group>
                 </Group>
             </Stack>

@@ -4,6 +4,7 @@ import { AppShell, AppShellMain, Box, ColorSchemeScript, Container, Flex, Mantin
 import { Header } from "@/components/common/header";
 import Footer from "@/components/common/footer";
 import { defaultTheme } from "./theme";
+import GrainFilterOverlay from "@/components/ui/overlays/grainfilter";
 
 
 export const metadata: Metadata = {
@@ -25,9 +26,12 @@ export default function RootLayout({
             <Box style={{flexGrow: 1, backgroundColor: 'var(--mantine-color-primary-4)',} }>
               {children}
             </Box>
+            <GrainFilterOverlay/>
             <Footer/>
           </Flex>
         </MantineProvider>
+        
+        
       </body>
     </html>
   );
