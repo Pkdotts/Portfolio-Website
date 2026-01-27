@@ -1,9 +1,27 @@
 import ContentPaper from "@/components/common/contentpaper";
+import InnerPaper from "@/components/common/innerpaper";
 import PageTitle from "@/components/common/pagetitle";
 import {  Container, Title, Text, Button, Stack, Group, Grid, GridCol } from "@mantine/core";
 
 {/* Includes Skills, Work experience, Education, Resume, Contact Info and Hobbies */}
 export default function About() {
+  const skills = ["Pixel Art", "Animation", "Programming", "C#", "GDscript", "Godot", "Unity"];
+  const experience = [
+    {jobName: "Sous-Chef", companyName: "Sushi Shop", startYear: "2021", endYear: "2025"},
+    {jobName: "Busser", companyName: "La Nuit Shanghai", startYear: "2025", endYear: "2025"},
+  ];
+
+  const education = [
+    {school: "Antoine Brossard", diploma: "DES", startYear: "2018", endYear: "2023"},
+    {school: "Champlain College Saint Lambert", diploma: "DEC - Computer Science and Technology", startYear: "2023", endYear: "2026"},
+  ];
+
+  const hobbies = [
+    {name: "Drawing", description: "I looooove drawing it's soooo fun"},
+    {name: "Video Games", description: "I love making video games and playing them!"},
+  ]
+
+
   return (
     <>
       <PageTitle>ABOUT ME ABOUT ME ABOUT ME ABOUT ME</PageTitle>
@@ -11,57 +29,47 @@ export default function About() {
         <Stack gap="sm">
           <ContentPaper>
             <Title>Skills</Title>
-            <Title order={3}>Pixel Art</Title>
-            <Title order={3}>Programming</Title>
-            <Title order={3}>Awesome Stuff</Title>
+            <Grid className="group">
+              {skills.map((s) => (<GridCol span={{base: 12, xs: 5, sm: 5, md: 4, lg: 4}}>
+                <InnerPaper>
+                  <Title order={4}>{s}</Title>
+                </InnerPaper>
+              </GridCol>))}
+            </Grid>
           </ContentPaper>
           <ContentPaper>
             <Title>Experience</Title>
             <Grid>
-              <GridCol  span={{base: 12, xs: 5, sm: 4, md: 4, lg: 4}}>
-                <ContentPaper>
-                  <Title order={3}>Sushi Shop</Title>
-                  <Text>2023-2026</Text>
-                </ContentPaper>
-              </GridCol>
-              <GridCol  span={{base: 12, xs: 5, sm: 4, md: 4, lg: 4}}>
-                <ContentPaper>
-                  <Title order={3}>La Nuit Shanghai</Title>
-                  <Text>2018-2023</Text>
-                </ContentPaper>
-              </GridCol>
+              {experience.map((e) => (<GridCol span={{base: 12, xs: 5, sm: 5, md: 4, lg: 4}}>
+                <InnerPaper>
+                  <Title order={4}>{e.jobName}</Title>
+                  <Title order={6}>{e.companyName}</Title>
+                  <Text>{e.startYear}-{e.endYear}</Text>
+                </InnerPaper>
+              </GridCol>))}
             </Grid>
           </ContentPaper>
           <ContentPaper>
             <Title>Education</Title>
             <Grid>
-              <GridCol  span={{base: 12, xs: 5, sm: 4, md: 4, lg: 4}}>
-                <ContentPaper>
-                  <Title order={3}>Champlain College</Title>
-                  <Text>2023-2026</Text>
-                </ContentPaper>
-              </GridCol>
-              <GridCol  span={{base: 12, xs: 5, sm: 4, md: 4, lg: 4}}>
-                <ContentPaper>
-                  <Title order={3}>Antoine Brossard</Title>
-                  <Text>2018-2023</Text>
-                </ContentPaper>
-              </GridCol>
+               {education.map((e) => (<GridCol span={{base: 12, xs: 5, sm: 5, md: 4, lg: 4}}>
+                <InnerPaper>
+                  <Title order={4}>{e.school}</Title>
+                  <Title order={6}>{e.diploma}</Title>
+                  <Text>{e.startYear}-{e.endYear}</Text>
+                </InnerPaper>
+              </GridCol>))}
             </Grid>
           </ContentPaper>
           <ContentPaper>
             <Title>Hobbies</Title>
             <Grid>
-              <GridCol  span={{base: 12, xs: 5, sm: 4, md: 4, lg: 4}}>
-                <ContentPaper>
-                  <Title order={3}>Something I do</Title>
-                </ContentPaper>
-              </GridCol>
-              <GridCol  span={{base: 12, xs: 5, sm: 4, md: 4, lg: 4}}>
-                <ContentPaper>
-                  <Title order={3}>Something I do</Title>
-                </ContentPaper>
-              </GridCol>
+              {hobbies.map((h) => (<GridCol span={{base: 12, xs: 5, sm: 5, md: 4, lg: 4}}>
+                <InnerPaper>
+                  <Title order={4}>{h.name}</Title>
+                  <Text>{h.description}</Text>
+                </InnerPaper>
+              </GridCol>))}
             </Grid>
           </ContentPaper>
           <Group justify="end">

@@ -1,9 +1,23 @@
+@property --stop1 {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 30%;
+}
+
 .wrapper{
     position: relative;
     overflow: hidden;
     background-color: var(--mantine-color-primary-6);
     isolation: isolate;
+    &:hover {
+        .polkadot {
+            --stop1: 45%;
+            transform: scale(1.04);
+            transition: --stop1 0.5s ease, transform 0.3s ease;
+        }
+    }
 }
+
 
 .polkadot {
     --mask: linear-gradient(rgb(0 0 0), rgb(0 0 0 /0) 50%);
@@ -25,6 +39,9 @@
     background-size: var(--bgSize) var(--bgSize);
 
     mask-image: var(--mask);
+
+    transform: scale(1.0);
+    transition: --stop1 0.5s ease, transform 0.4s ease;
 }
 
 .content{

@@ -1,4 +1,4 @@
-import { Paper, Title, Image, BackgroundImage, Container, AspectRatio, Anchor, Stack } from "@mantine/core";
+import { Paper, Title, Image, AspectRatio, Anchor, Stack } from "@mantine/core";
 import styles from "./gamecard.module.css";
 
 interface GameCardProps{
@@ -11,7 +11,7 @@ export default function GameCard({title, image}: GameCardProps){
     
     return(
         <Anchor  color="black" underline="never">
-            <Stack maw={300}  className={styles.container}>
+            <Stack maw={300}  className={styles.container + " element hidden"}>
                 <AspectRatio ratio={ratio}>
                     <Paper className={styles.imagecontainer} radius="md" shadow="sm" >
                         {/* <StatusBadge status={MediaAdStatuses.DISPLAYING}/> */}

@@ -3,7 +3,7 @@ import classes from "./contentpaper.module.css"
 
 export default function ContentPaper ({children}: Readonly<{children: React.ReactNode;}>){
     return(
-        <Paper bd="1px solid var(--mantine-color-primary-8)"  bdrs={"md"} shadow="sm" className={classes.wrapper}>
+        <Paper bd="1px solid var(--mantine-color-primary-8)"  bdrs={"md"} shadow="sm" className={classes.wrapper + " element hidden"}>
             <div className={classes.polkadot}></div>
             <Container 
                 bd="2px solid var(--mantine-color-light-0)" 

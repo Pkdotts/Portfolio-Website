@@ -6,11 +6,28 @@ import prisma from "../../lib/prisma";
 import {  Container, Title, Text, BackgroundImage, Grid, GridCol, Stack } from "@mantine/core";
 import { title } from "process";
 
-
-
-export default async function Games() {
-
+async function GameGrid() {
   const projects = await prisma.project.findMany();
+
+  return(
+    <>
+    { 
+      projects ? 
+        <Grid>
+          {projects.map((p,) => (
+            <GridCol key={p.projectId} span={{base: 12, xs: 5, sm: 4, md: 3, lg: 3}}>
+              <GameCard title={p.name} image={p.bannerUrl}/>
+            </GridCol>
+          ))}
+        </Grid> : <Text>No games</Text>
+      }
+      </>
+  )
+}
+
+export default function Games() {
+
+  
 
   const bgImages = [
     "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-1.png",
@@ -30,16 +47,7 @@ export default async function Games() {
         <ContentPaper>
           <Stack gap="md">
             <Title>Released</Title>
-            { projects ? 
-            <Grid>
-              {projects.map((p,) => (
-                <GridCol key={p.projectId} span={{base: 12, xs: 5, sm: 4, md: 3, lg: 3}}>
-                  <GameCard title={p.name} image={p.bannerUrl}/>
-                </GridCol>
-              ))}
-            </Grid> : <Text>No games</Text>
-            
-            }
+            <GameGrid/>
           </Stack>
         </ContentPaper>
       </Container>
