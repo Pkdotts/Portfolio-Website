@@ -3,14 +3,7 @@ import { AppShellFooter } from "@mantine/core";
 
 export default function Footer() {
   return (
-    <footer style={{
-        height: 90,
-        padding: 10,
-        width: "100%",
-        backgroundColor: 'var(--mantine-color-dark-0)',
-        color: 'var(--mantine-color-light-0)',
-        border: 'none'}}
-    >
+    <footer >
       dis is a foooterrr
     </footer>
   );

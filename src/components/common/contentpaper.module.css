@@ -8,10 +8,14 @@
     position: relative;
     overflow: hidden;
     background-color: var(--mantine-color-primary-6);
+    background-image: linear-gradient(var(--mantine-color-primary-6), var(--mantine-color-primary-5));
+    /* background-image: linear-gradient(var(--mantine-color-primary-5), var(--mantine-color-primary-6)); */
+    /* background-image: linear-gradient(var(--mantine-color-primary-6), var(--mantine-color-primary-8) 85%, var(--mantine-color-primary-7) 100%); */
+    box-shadow: 5px 3px 0px var(--mantine-color-primary-8);
     isolation: isolate;
     &:hover {
         .polkadot {
-            --stop1: 45%;
+            --stop1: 51%;
             transform: scale(1.04);
             transition: --stop1 0.5s ease, transform 0.3s ease;
         }

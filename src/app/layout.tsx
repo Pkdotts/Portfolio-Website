@@ -23,9 +23,9 @@ export default function RootLayout({
       <body >
         <MantineProvider theme={defaultTheme}>
           <ScrollReveal />
-          <Flex direction="column" mih="100vh" style={{backgroundColor: defaultTheme.primaryColor}}>
+          <Flex direction="column" mih="100vh" className="mainBody">
             <Header/>
-            <Box style={{flexGrow: 1, backgroundColor: 'var(--mantine-color-primary-4)',} }>
+            <Box style={{flexGrow: 1} }>
               {children}
             </Box>
             <GrainFilterOverlay/>
@@ -33,6 +33,9 @@ export default function RootLayout({
           </Flex>
         </MantineProvider>
       </body>
+      <style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&family=Quicksand:wght@300..700&display=swap');
+</style>
     </html>
   );
 }

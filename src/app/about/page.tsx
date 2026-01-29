@@ -1,5 +1,5 @@
 import ContentPaper from "@/components/common/contentpaper";
-import InnerPaper from "@/components/common/innerpaper";
+import InnerPaper from "@/components/ui/cards/innerpaper";
 import PageTitle from "@/components/common/pagetitle";
 import {  Container, Title, Text, Button, Stack, Group, Grid, GridCol } from "@mantine/core";
 
@@ -28,17 +28,17 @@ export default function About() {
       <Container p="sm" size={"xl"}>
         <Stack gap="sm">
           <ContentPaper>
-            <Title>Skills</Title>
-            <Grid className="group">
+            <Title className="titleShadow">Skills</Title>
+            <Grid>
               {skills.map((s) => (<GridCol span={{base: 12, xs: 5, sm: 5, md: 4, lg: 4}}>
                 <InnerPaper>
-                  <Title order={4}>{s}</Title>
+                  <Title order={4} >{s}</Title>
                 </InnerPaper>
               </GridCol>))}
             </Grid>
           </ContentPaper>
           <ContentPaper>
-            <Title>Experience</Title>
+            <Title className="titleShadow">Experience</Title>
             <Grid>
               {experience.map((e) => (<GridCol span={{base: 12, xs: 5, sm: 5, md: 4, lg: 4}}>
                 <InnerPaper>
@@ -50,7 +50,7 @@ export default function About() {
             </Grid>
           </ContentPaper>
           <ContentPaper>
-            <Title>Education</Title>
+            <Title className="titleShadow">Education</Title>
             <Grid>
                {education.map((e) => (<GridCol span={{base: 12, xs: 5, sm: 5, md: 4, lg: 4}}>
                 <InnerPaper>
@@ -62,7 +62,7 @@ export default function About() {
             </Grid>
           </ContentPaper>
           <ContentPaper>
-            <Title>Hobbies</Title>
+            <Title className="titleShadow">Hobbies</Title>
             <Grid>
               {hobbies.map((h) => (<GridCol span={{base: 12, xs: 5, sm: 5, md: 4, lg: 4}}>
                 <InnerPaper>

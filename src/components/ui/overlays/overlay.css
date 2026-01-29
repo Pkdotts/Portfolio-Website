@@ -13,7 +13,7 @@
 }
 #overlaygrain {
   background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelclipmaterialprod.s3-ap-northeast-1.amazonaws.com%2F38%2F22%2F2002238%2Fexample&f=1&nofb=1&ipt=f747510422d4e7acf0c4af16604acc59b9621e4ee5e99b4b53521e3bd958df26");
-  opacity: 0.06;
+  opacity: 0.05;
   mix-blend-mode: color-dodge;
 }
 

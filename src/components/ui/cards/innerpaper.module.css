@@ -1,0 +1,44 @@
+.paperparent {
+    position: relative;
+    isolation: isolate;
+    &:hover{
+        .backpaper1 {
+            transform: scale(1.07);
+            rotate: 2deg;
+            transition: all 0.1s ease-out;
+        }
+        .backpaper2 {
+            transform: scale(1.04);
+            rotate: -3deg;
+            transition: all 0.1s ease-out;
+        }
+    }
+}
+
+.backpaper1, .backpaper2 {
+    position: absolute;
+    z-index: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    border-radius: 10px;
+    rotate: 0deg;
+    transform: scale(1.00);
+    transition: all 0.1s ease;
+}
+
+.backpaper1{
+    background-color: var(--mantine-color-primary-9);
+    right: 0;
+}
+
+.backpaper2{
+    background-color: var(--mantine-color-primary-8);
+    left: 0;
+}
+
+.inner {
+    position: relative;
+    z-index: 10;
+}
