@@ -1,93 +1,104 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-    provider = "prisma-client"
-    output   = "../src/generated/prisma"
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
-    provider = "postgresql"
+  provider = "postgresql"
 }
 
 model Skill {
-    skillId         Int     @id @default(autoincrement())
-    title           String
-    content         String?
-    visible         Boolean @default(false)
+  skillId       Int             @id @unique @default(autoincrement())
+  name_en       String          @map("name-en")
+  name_fr       String?         @map("name-fr")
+  skillType     String          @default("Other")
+  Project_Skill Project_Skill[]
+  SkillType     SkillType       @relation(fields: [skillType], references: [name_en], onDelete: SetDefault)
 }
 
 model Project {
-    projectId       Int     @id @default(autoincrement())
-    name            String
-    description     String?
-    logoUrl         String?
-    bannerUrl       String?
-    imageUrls       String[]
-    visible         Boolean @default(false)
+  projectId     String          @id
+  title         String
+  description   String?
+  imageUrls     String[]
+  visible       Boolean         @default(false)
+  bannerUrl     String?
+  logoUrl       String?
+  startYear     DateTime?       @db.Date
+  endYear       DateTime?       @db.Date
+  Project_Skill Project_Skill[]
 }
 
 model Art {
-    artId           Int     @id @default(autoincrement())
-    title           String
-    imageUrl        String[]
-    description     String?
-    visible         Boolean @default(false)
+  artId       Int     @id @unique @default(autoincrement())
+  title       String
+  imageUrl    String
+  description String?
+  visible     Boolean @default(false)
 }
 
 model WorkExperience {
-    workId          Int     @id @default(autoincrement())
-    name            String
-    position        String
-    description     String
-    startDate       DateTime
-    endDate         DateTime
-    visible         Boolean @default(false)
+  workId      Int    @id @unique @default(autoincrement())
+  company     String
+  position    String
+  description String
+  startDate   Int
+  endDate     Int?
 }
 
 model Education {
-    educationId     Int     @id @default(autoincrement())
-    diploma         String
-    school          String
-    startYear       Int
-    endYear         Int
-    visible         Boolean @default(false)
+  educationId Int    @id @default(autoincrement())
+  diploma     String
+  school      String
+  startYear   Int
+  endYear     Int?
 }
 
 model Resume {
-    resumeId        Int     @id @default(autoincrement())
-    name            String
-    fileURL         String
-    visible         Boolean @default(false)
+  resumeId Int     @id @unique @default(autoincrement())
+  name     String
+  fileURL  String
+  visible  Boolean @default(false)
 }
 
 model ContactInfo {
-    contactId       Int     @id @default(autoincrement())
-    name            String
-    visible         Boolean @default(false)
+  contactId Int    @id @unique @default(autoincrement())
+  name      String
 }
 
 model Hobby {
-    hobbyId         Int     @id @default(autoincrement())
-    name            String
-    description     String
-    visible         Boolean @default(false)
+  hobbyId Int     @id @unique @default(autoincrement())
+  name_en String  @map("name-en")
+  name_fr String? @map("name-fr")
 }
 
-model ContactMessage{
-    contactId       Int     @id @default(autoincrement())
-    name            String
-    email           String
-    message         String?
+model ContactMessage {
+  contactId Int     @id @unique @default(autoincrement())
+  name      String
+  email     String
+  message   String?
 }
 
 model Testimonial {
-    testimonialId   Int     @id @default(autoincrement())
-    name            String
-    message         String?
-    date            DateTime @default(now())
-    accepted        Boolean @default(false)
+  testimonialId Int      @id @unique @default(autoincrement())
+  name          String
+  message       String?
+  date          DateTime @default(now())
+  accepted      Boolean  @default(false)
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model Project_Skill {
+  id        BigInt  @id @default(autoincrement())
+  projectId String
+  skillId   Int
+  Project   Project @relation(fields: [projectId], references: [projectId], onDelete: Cascade)
+  Skill     Skill   @relation(fields: [skillId], references: [skillId], onDelete: Cascade)
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model SkillType {
+  name_en String  @id @unique @map("name-en")
+  name_fr String? @map("name-fr")
+  Skill   Skill[]
 }

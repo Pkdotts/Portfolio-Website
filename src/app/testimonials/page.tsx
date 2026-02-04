@@ -5,7 +5,7 @@ import {  Container, Title, Text, Stack } from "@mantine/core";
 export default function Art() {
   return (
     <>
-      <PageTitle>TESTIMONIALS TESTIMONIALS TESTIMONIALS TESTIMONIALS TESTIMONIALS TESTIMONIALS</PageTitle>
+      <PageTitle>TESTIMONIALS</PageTitle>
 
       <Container p="sm" size={"xl"}>
         <Stack>

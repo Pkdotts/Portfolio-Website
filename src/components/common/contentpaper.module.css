@@ -7,11 +7,13 @@
 .wrapper{
     position: relative;
     overflow: hidden;
-    background-color: var(--mantine-color-primary-6);
-    background-image: linear-gradient(var(--mantine-color-primary-6), var(--mantine-color-primary-5));
+    --bg-color-1: var(--mantine-color-dark-6);
+    --bg-color-2: var(--mantine-color-dark-5);
+    background-color: var(--bg-color-1);
+    background-image: linear-gradient(var(--bg-color-1), var(--bg-color-2));
     /* background-image: linear-gradient(var(--mantine-color-primary-5), var(--mantine-color-primary-6)); */
     /* background-image: linear-gradient(var(--mantine-color-primary-6), var(--mantine-color-primary-8) 85%, var(--mantine-color-primary-7) 100%); */
-    box-shadow: 5px 3px 0px var(--mantine-color-primary-8);
+    box-shadow: 2px 3px 8px var(--mantine-color-primary-6);
     isolation: isolate;
     &:hover {
         .polkadot {
@@ -24,13 +26,14 @@
 
 
 .polkadot {
-    --mask: linear-gradient(rgb(0 0 0), rgb(0 0 0 /0) 50%);
+    --mask: linear-gradient(245deg, rgb(0 0 0), rgb(0 0 0 /0) 50%);
+    --dot-color: var(--mantine-color-dark-8);
     --stop1: 30%;
     --bgSize: 2rem;
     --offsetSize: 1rem; 
     --polka-bg-img: 
-        radial-gradient(var(--mantine-color-primary-5) var(--stop1), transparent var(--stop1)),
-        radial-gradient(var(--mantine-color-primary-5) var(--stop1), transparent var(--stop1));
+        radial-gradient(var(--dot-color) var(--stop1), transparent var(--stop1)),
+        radial-gradient(var(--dot-color) var(--stop1), transparent var(--stop1));
     --bg-position: 0px 0px, var(--bgOffset) var(--bgOffset);
 
     position: absolute;
@@ -52,5 +55,4 @@
     position: relative;
     z-index: 10;
     color: var(--mantine-color-light-0);
-    border: white 2px ;
 }

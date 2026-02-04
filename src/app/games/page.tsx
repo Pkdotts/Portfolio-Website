@@ -16,7 +16,7 @@ async function GameGrid() {
         <Grid>
           {projects.map((p,) => (
             <GridCol key={p.projectId} span={{base: 12, xs: 5, sm: 4, md: 3, lg: 3}}>
-              <GameCard title={p.name} image={p.bannerUrl}/>
+              <GameCard title={p.title} image={p.bannerUrl}/>
             </GridCol>
           ))}
         </Grid> : <Text>No games</Text>
@@ -40,8 +40,8 @@ export default function Games() {
 
   return (
     <div>
-      <Slideshow images={bgImages}>penis</Slideshow>
-      <PageTitle>GAMES GAMES GAMES GAMES GAMES GAMES</PageTitle>
+      <PageTitle>GAMES</PageTitle>
+      <Slideshow images={bgImages}/>
       
       <Container p="sm" size="xl">
         <ContentPaper>

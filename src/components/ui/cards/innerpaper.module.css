@@ -1,16 +1,15 @@
 .paperparent {
     position: relative;
-    isolation: isolate;
     &:hover{
         .backpaper1 {
-            transform: scale(1.07);
-            rotate: 2deg;
-            transition: all 0.1s ease-out;
+            transform: scaleX(1.05) scaleY(1);
+            rotate: 1deg;
+            transition: all 0.06s ease-out;
         }
         .backpaper2 {
-            transform: scale(1.04);
-            rotate: -3deg;
-            transition: all 0.1s ease-out;
+            transform: scaleX(1.08), scaleY(1);
+            rotate: -1deg;
+            transition: all 0.06s ease-out;
         }
     }
 }
@@ -25,7 +24,7 @@
     border-radius: 10px;
     rotate: 0deg;
     transform: scale(1.00);
-    transition: all 0.1s ease;
+    transition: all 0.06s ease;
 }
 
 .backpaper1{

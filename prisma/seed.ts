@@ -12,12 +12,14 @@ const prisma = new PrismaClient({
 
 const projectData: Prisma.ProjectCreateInput[] = [
   {
-    name: "A Wetter World",
+    projectId: "a-wetter-world",
+    title: "A Wetter World",
     bannerUrl: "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-5.png",
     description: "Rainy cloud yadadadyadyadyayday",
   },
   {
-    name: "MOTHER Encore",
+    projectId: "mother-encore",
+    title: "MOTHER Encore",
     bannerUrl: "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-1.png",
     description: "That sure was a mother encore",
   },

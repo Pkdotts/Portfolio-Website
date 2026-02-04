@@ -7,10 +7,9 @@ import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 
 export interface SlideshowProps{
     images: string[]
-    children: React.ReactNode
 }
 
-export default function Slideshow({images, children}: SlideshowProps) {
+export default function Slideshow({images}: SlideshowProps) {
     const [index, setIndex] = useState<number>(0);
     const fadeInterval = 6000;
     const fadeTime = 1000;
