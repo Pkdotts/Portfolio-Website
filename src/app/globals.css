@@ -12,17 +12,18 @@
 .titleShadow{
   /* -webkit-text-stroke: 1px var(--mantine-color-primary-9); */
   position: relative;
-  text-shadow: 4px 3px 0px var(--mantine-color-darkAccent-0);
+  color: var(--mantine-color-primary-6);
+  text-shadow: 2px 2px 0px var(--mantine-color-main-0);
   z-index: 1;
 }
 
 .mainBody {
   flex-grow: 1;
-  background-color: var(--mantine-color-dark-9);
+  background-color: var(--mantine-color-main-9);
   background-size: 40px 40px;
   background-image:
-    linear-gradient(to right, var(--mantine-color-dark-7) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--mantine-color-dark-7) 1px, transparent 1px);
+    linear-gradient(to right, var(--mantine-color-main-7) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--mantine-color-main-7) 1px, transparent 1px);
   /* background-position: center; */
 
   /* background-size: 100px 100px;
@@ -36,9 +37,8 @@
 header {
   height: 60;
   padding: 10;
-  color: var(--mantine-color-light-0);
-  background-color: rgba(0, 0, 0, 0.432);
-  border: none
+  background-color: var(--mantine-color-main-10);
+  border-bottom: 2px solid var(--mantine-color-accent-6);
 }
 
 footer {
@@ -46,8 +46,7 @@ footer {
   padding: 10;
   width: 100%;
   background-image: 
-    radial-gradient(circle at 50%, var(--mantine-color-dark-6) 80%, var(--mantine-color-dark-8));
+    radial-gradient(circle at 50%, var(--mantine-color-main-6) 80%, var(--mantine-color-main-8));
   background-repeat: no-repeat;
-  color: var(--mantine-color-light-0);
   border: none;
 }

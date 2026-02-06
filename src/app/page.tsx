@@ -1,31 +1,16 @@
 import ContentPaper from "@/components/common/contentpaper";
 import PageTitle from "@/components/common/pagetitle";
-import {  Container, Title, Text } from "@mantine/core";
+import NameTitle from "@/components/ui/nametitle/nametitle";
+import {  Container, Title, Text, Button } from "@mantine/core";
 
 export default function Home() {
   return (
     <>
-      <PageTitle>HOME HOME HOME HOME</PageTitle>
-
       <Container p="sm" size={"xl"}>
+        <NameTitle/>
         <ContentPaper>
           <Title>Skills</Title>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
-          <Text>Content</Text>
+          <Button variant="filled" bg="var(--mantine-color-accent-6)" size="lg" radius="md">Resume</Button>
         </ContentPaper>
       </Container>
     </>

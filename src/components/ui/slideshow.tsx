@@ -45,7 +45,7 @@ export default function Slideshow({images}: SlideshowProps) {
     return(
         <div style={{height: height}}>         
             
-            <div  style={{height: "100%", position: "relative", backgroundColor: "var(--mantine-color-dark-0)"}}>
+            <div  style={{height: "100%", position: "relative", backgroundColor: "var(--mantine-color-dark-9)"}}>
                 <Stack w="100%" h="100%" align="center" justify="center" style={{position:"absolute", zIndex: 2}}>
                     <Container w="100%" h="100%" size="1600px" >
                         <Group h="100%" p="lg" justify="space-between" >
@@ -80,7 +80,7 @@ export default function Slideshow({images}: SlideshowProps) {
                     </Transition>
                 ))}
                 
-                <div style={{height: "100%", width: "100%", backgroundImage: "linear-gradient(to right, var(--mantine-color-dark-0) -15% , transparent, transparent, var(--mantine-color-dark-0) 100% )", position: "absolute", zIndex: 1}}/>
+                <div style={{height: "100%", width: "100%", backgroundImage: "linear-gradient(to right, var(--mantine-color-main-10) -15% , transparent, transparent, var(--mantine-color-main-10) 100% )", position: "absolute", zIndex: 1}}/>
             </div>
 
             

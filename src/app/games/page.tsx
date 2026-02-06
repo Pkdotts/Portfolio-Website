@@ -46,7 +46,7 @@ export default function Games() {
       <Container p="sm" size="xl">
         <ContentPaper>
           <Stack gap="md">
-            <Title>Released</Title>
+            <Title className="titleShadow">Released</Title>
             <GameGrid/>
           </Stack>
         </ContentPaper>

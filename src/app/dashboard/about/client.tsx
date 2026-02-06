@@ -3,7 +3,7 @@
 import { useState} from "react";
 import Sidebar from "@/components/ui/dashboard/sidebar";
 
-import { Text, Stack, Title, Group, Paper, Table, TableThead, TableTr, TableTd, TableTh, Container, SegmentedControl } from "@mantine/core";
+import { Text, Stack, Title, Group, Paper, Table, TableThead, TableTr, TableTd, TableTh, Container, SegmentedControl, Grid, GridCol } from "@mantine/core";
 import { Skill, WorkExperience } from "@/generated/prisma/client";
 
 function Skills({skills}: {skills: Skill[]}){
@@ -81,36 +81,38 @@ export default function AboutDashboard({
     const [tab, setTab] = useState<string>('Skills');
 
     return (
-        <Group >
+        <Grid>
+          <GridCol span={2}>
             <Sidebar/>
-            <Stack>
-                <SegmentedControl 
-                    w="100%" 
-                    data={[
-                        { value: 'Skills', label: 'Skills' },
-                        { value: 'Experience', label: 'Experience' },
-                        { value: 'Education', label: 'Education' },
-                        { value: 'Hobbies', label: 'Hobbies' },
-                    ]} 
-                    value={tab}
-                    onChange={setTab} 
-                />
-                <Paper bg="var(--mantine-color-primary-1)" radius="lg" 
-                    p="md" 
-                    bd="1px solid var(--mantine-color-primary-4)" 
-                    bdrs={"md"} 
-                >
-                    <Container w={"70vw"}>
-                    <Table highlightOnHover >
-                    {
-                        tab === 'Skills' ? <Skills skills={skills}/> : 
-                        tab === 'Experience' ? <Experience experience={experience}/> :
-                        <></>
-                    }
-                    </Table>
-                    </Container>
-                </Paper>
+          </GridCol>
+          <GridCol span={10}>
+            <Stack w="100%" p="lg">
+              <SegmentedControl 
+                  w="100%" 
+                  data={[
+                      { value: 'Skills', label: 'Skills' },
+                      { value: 'Experience', label: 'Experience' },
+                      { value: 'Education', label: 'Education' },
+                      { value: 'Hobbies', label: 'Hobbies' },
+                  ]} 
+                  value={tab}
+                  onChange={setTab} 
+              />
+              <Paper bg="var(--mantine-color-main-1)" radius="lg" 
+                  p="md" 
+                  bd="1px solid var(--mantine-color-main-4)" 
+                  bdrs={"md"} 
+              >
+                  <Table highlightOnHover >
+                  {
+                      tab === 'Skills' ? <Skills skills={skills}/> : 
+                      tab === 'Experience' ? <Experience experience={experience}/> :
+                      <></>
+                  }
+                  </Table>
+              </Paper>
             </Stack>
-        </Group>
+          </GridCol>
+        </Grid>
     );
 }

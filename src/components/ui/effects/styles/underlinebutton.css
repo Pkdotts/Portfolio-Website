@@ -6,7 +6,7 @@ a {
   --halfDistance: 4px;
   --easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
   font-size: 20px;
-  color: var(--mantine-color-light-0);
+  color: var(--mantine-color-accent-4);
   position: relative;
   text-transform: uppercase;
   text-decoration: none;
@@ -19,7 +19,7 @@ a {
     bottom: 2px;
     left: 0; right: 0;
     height: 2px;
-    background-color: var(--mantine-color-primary-9);
+    background-color: var(--mantine-color-accent-6);
   }
   &:before {
     opacity: 0;

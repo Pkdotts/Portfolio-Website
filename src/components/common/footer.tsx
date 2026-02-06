@@ -1,5 +1,4 @@
-import React from "react";
-import { AppShellFooter } from "@mantine/core";
+'use client';
 
 export default function Footer() {
   return (

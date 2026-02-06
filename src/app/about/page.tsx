@@ -14,12 +14,12 @@ async function Skills(){
           <Title className="titleShadow">Skills</Title>
           <InnerPaper >
             {skillTypes.map((t) => (
-              <div style={{color:"var(--mantine-color-light-0)"}}>
+              <div>
                 {(t.Skill.length > 0) && (
                   <Accordion key={t.name_en} defaultValue={t.name_en}  >
                 
                     <AccordionItem value={t.name_en}>
-                    <AccordionControl h={"xl"}><Title size="sm" c="var(--mantine-color-light-0)">{t.name_en}</Title></AccordionControl>
+                    <AccordionControl h={"xl"}><Title size="sm" c="var(--mantine-color-text-0)">{t.name_en}</Title></AccordionControl>
                     <AccordionPanel style={{padding: 0}}>
                       <ul style={{margin: 0}}>
                       {t.Skill.map((s) => (

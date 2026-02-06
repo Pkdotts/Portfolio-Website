@@ -3,20 +3,25 @@
     &:hover {
         .imagecontainer {
             transform: translateY(-5px);
-            transition: transform 0.2s ease; 
+            box-shadow: 2px 2px 0px 5px var(--mantine-color-accent-6);
+            transition: all 0.2s ease; 
+            
         }
         .image {
             transform: scale(1.07);
             transition: transform 0.2s ease
         }
+        .cardTitle{
+            text-decoration: underline;
+        }
     }
 }
 
 .imagecontainer {
-    box-shadow: 2px 2px 0px 5px var(--mantine-color-light-0);
+    box-shadow: 2px 2px 0px 5px var(--mantine-color-main-0);
     overflow: hidden;
     transform: translateY(0px);
-    transition: transform 0.2s ease
+    transition: all 0.2s ease
     
 }
 

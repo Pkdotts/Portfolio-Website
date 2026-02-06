@@ -2,13 +2,13 @@
     position: relative;
     &:hover{
         .backpaper1 {
-            transform: scaleX(1.05) scaleY(1);
-            rotate: 1deg;
+            
+            transform: matrix(1.03, -0.03, 0, 1.05, 0, 0);
+            
             transition: all 0.06s ease-out;
         }
         .backpaper2 {
-            transform: scaleX(1.08), scaleY(1);
-            rotate: -1deg;
+            transform: matrix(1.03, 0.03, 0, 0.98, 0, 0);
             transition: all 0.06s ease-out;
         }
     }
@@ -25,16 +25,8 @@
     rotate: 0deg;
     transform: scale(1.00);
     transition: all 0.06s ease;
-}
+    background-color: var(--mantine-color-accent-5);
 
-.backpaper1{
-    background-color: var(--mantine-color-primary-9);
-    right: 0;
-}
-
-.backpaper2{
-    background-color: var(--mantine-color-primary-8);
-    left: 0;
 }
 
 .inner {

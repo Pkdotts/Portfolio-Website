@@ -10,17 +10,16 @@ export default function GameCard({title, image}: GameCardProps){
     const ratio = 650/500
     
     return(
-        <Anchor  color="black" underline="never">
+        <Anchor underline="never">
             <Stack maw={300}  className={styles.container + " element hidden"}>
                 <AspectRatio ratio={ratio}>
                     <Paper className={styles.imagecontainer} radius="md" shadow="sm" >
-                        {/* <StatusBadge status={MediaAdStatuses.DISPLAYING}/> */}
                         <AspectRatio ratio={ratio}>
-                            <Image src={image} alt="Project"  className={styles.image}  fit="cover" />
+                            <Image src={image} alt="Project" className={styles.image} fit="cover" />
                         </AspectRatio>
                     </Paper>
                 </AspectRatio>
-                <Title order={3} c="var(--mantine-color-dark-0)">{title} </Title>
+                <Title className={styles.cardTitle} order={3} c="var(--mantine-color-text-0)">{title} </Title>
             </Stack>
         </Anchor>
     )

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
     Container,
@@ -11,12 +11,12 @@ export default function PageTitle({children}: Readonly<{children: React.ReactNod
             size="100%" 
             p="0" 
             style={{ 
-                backgroundColor: 'var(--mantine-color-dark-7)', 
+                backgroundColor: 'var(--mantine-color-main-4)', 
                 backgroundSize: '300px 300px', 
                 // backgroundImage:'linear-gradient(45deg, \
-                //     var(--mantine-color-primary-1) 25%, transparent 25%, \
-                //     transparent 50%, var(--mantine-color-primary-2) 50%, \
-                //     var(--mantine-color-primary-1) 75%, transparent 75%)' 
+                //     var(--mantine-color-accent-1) 25%, transparent 25%, \
+                //     transparent 50%, var(--mantine-color-accent-2) 50%, \
+                //     var(--mantine-color-accent-1) 75%, transparent 75%)' 
             }}
             >
                 <Container size="xl">
@@ -24,12 +24,12 @@ export default function PageTitle({children}: Readonly<{children: React.ReactNod
                         size={100} 
                         textWrap="nowrap" 
                         lineClamp={1} 
-                        c="var(--mantine-color-dark-7)" 
+                        c="var(--mantine-color-main-4)" 
                         style={{ 
                             fontStyle: 'italic', 
-                            letterSpacing: -8, 
-                            WebkitTextStroke: '2px var(--mantine-color-primary-6)', 
-                            textShadow: '3px 3px 1px var(--mantine-color-primary-6)'
+                            letterSpacing: 8, 
+                            WebkitTextStroke: '2px var(--mantine-color-accent-6)', 
+                            textShadow: '3px 3px 1px var(--mantine-color-accent-6)'
                     }}>
                         {children}
                     </Title>

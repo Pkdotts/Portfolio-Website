@@ -9,8 +9,7 @@ export default function InnerPaper ({children}: Readonly<{children: React.ReactN
             <Paper 
                 bdrs={"md"} 
                 shadow="sm" 
-                bg="var(--mantine-color-dark-0)" 
-                c="var(--mantine-color-light-0)"
+                bg="var(--mantine-color-main-0)" 
                 p="xs"
                 className={classes.inner}
             >
