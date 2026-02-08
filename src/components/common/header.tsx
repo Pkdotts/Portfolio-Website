@@ -14,10 +14,10 @@ export function Header() {
             <Stack align="stretch" justify="center" h="100%" >
                 <Group justify="space-between" >
                     <a href="/">
-                        <Title className="titleShadow" order={1}>Andy Bao Le</Title>
+                        <Title className="titleShadow" order={1}>Andy Le</Title>
                     </a>
                     <Group gap="30px">
-                        <a href="/about"> 
+                        <a href="/about" > 
                             About Me 
                         </a>
                         <a href="/games">

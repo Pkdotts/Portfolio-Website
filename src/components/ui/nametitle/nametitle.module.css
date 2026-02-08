@@ -1,3 +1,47 @@
+
+
+.nametitleparent{
+    position: relative;
+    height: fit-content;
+    margin-left: 50px;
+    margin-right: 50px;
+    &:hover{
+        .backshape{
+            transform: matrix(1, 0.04, -1.6, 1, 0, 0);
+            /* background-color: var(--mantine-color-accent-3); */
+        } 
+    }
+    cursor: default;
+}
+
 .backshape{
     background-color: var(--mantine-color-main-0);
+    position: absolute;
+    width: 110%;
+    height: 80%;
+    left: 0;
+    bottom: 0;
+    transform: matrix(1, 0, -0.45, 1, 0, 0);
+    transition: all 0.2s ease;
+}
+
+.content{
+    position: relative;
+    padding-left: 1rem;
+    z-index: 10;
+}
+
+
+
+@media (max-width: 768px) {
+
+    .nametitleparent{
+        margin: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        
+    }
+
+    
+
 }

@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
 import { colorsTuple, createTheme, CSSVariablesResolver } from '@mantine/core';
 
 export const darkTheme = createTheme({
   fontFamily: 'Quicksand, sans-serif',
   headings: { fontFamily: 'Barlow, sans-serif'},
-  primaryColor: 'main',
+  primaryColor: 'accent',
   
   
   colors: {
@@ -13,7 +13,6 @@ export const darkTheme = createTheme({
         "#4d4d52","#45454c","#3e3e46","#373740","#32333b",
         "#2e2f36","#2a2b31","#25272c","#1d1f22","#191b1d"
         ],
-    text: colorsTuple('#fafafa'),
     accent: [
         "#fff2e0","#ffe4cb","#ffdf99","#ffc863","#ffab43",
         "#ff9023","#fc7302","#df7848","#f05b21","#db3417"
@@ -29,12 +28,12 @@ export const darkTheme = createTheme({
 export const lightTheme = createTheme({
   fontFamily: 'Quicksand, sans-serif',
   headings: { fontFamily: 'Barlow, sans-serif'},
-  primaryColor: 'main',
+  primaryColor: 'accent',
 
   colors: {
     main: [
         "#fafafa","#f7f7f8","#f4f4f6","#f0f0f3","#ededf1",
-        "#e9e9ef","#e6e6ec","#e2e2ea","#d4d4df","#d0d0db", "rgba(44, 45, 59, 0.45)"
+        "#e9e9ef","#e6e6ec","#e2e2ea","#d4d4df","#d0d0db", "rgba(44, 45, 59, 0.55)"
         ],
     // main: [
     //     "#fafafa","#f8f7f7","#f6f5f4","#f3f1f0","#f1eded",

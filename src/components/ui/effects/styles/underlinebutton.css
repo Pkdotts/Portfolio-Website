@@ -6,7 +6,7 @@ a {
   --halfDistance: 4px;
   --easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
   font-size: 20px;
-  color: var(--mantine-color-accent-4);
+  color: var(--mantine-color-accent-5);
   position: relative;
   text-transform: uppercase;
   text-decoration: none;

@@ -1,0 +1,5 @@
+.textoutline-accent {
+  --color: var(--mantine-color-accent-6);
+  color: var(--mantine-color-main-0);
+  text-shadow: -1px -1px 0 var(--color), 1px -1px 0 var(--color), -1px 1px 0 var(--color), 1px 1px 0 var(--color);
+}
