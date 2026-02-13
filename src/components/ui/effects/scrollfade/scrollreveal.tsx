@@ -1,35 +1,35 @@
 'use client';
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
-export default function ScrollReveal(){
-  useEffect(() => {
-    const elements = document.querySelectorAll('.element');
-
-
-    function onScroll() {
-      setTimeout(() => {
-        elements.forEach((element, idx) => {
-          setTimeout(() => {
-              const rect = element.getBoundingClientRect();
-              if (rect.top < window.innerHeight) {
-                element.classList.add('visible');
-              }
-            }, (20 * idx))}); 
-      }, 100);
-    }
-
+export default function Reveal({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement | null>(null);
   
+  
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
     
-    window.addEventListener('scroll', onScroll);
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-    onScroll();
+    observer.observe(el);
 
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-    };
+    return () => observer.disconnect();
   }, []);
 
-  return null;
-     
+  return (
+    <div ref={ref} className="element">
+      {children}
+    </div>
+  );
 }

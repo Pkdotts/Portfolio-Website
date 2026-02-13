@@ -17,7 +17,7 @@ export function Header() {
                         <Title className="titleShadow" order={1}>Andy Le</Title>
                     </a>
                     <Group gap="30px">
-                        <a href="/about" > 
+                        <a href="/" > 
                             About Me 
                         </a>
                         <a href="/games">

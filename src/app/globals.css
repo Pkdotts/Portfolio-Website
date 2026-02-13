@@ -1,10 +1,10 @@
-.hidden {
+.element {
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.5s ease;
 }
 
-.visible {
+.element.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -49,4 +49,10 @@ footer {
     radial-gradient(circle at 50%, var(--mantine-color-main-6) 80%, var(--mantine-color-main-8));
   background-repeat: no-repeat;
   border: none;
+}
+
+.pixel-img {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }

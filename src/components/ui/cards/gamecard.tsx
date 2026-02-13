@@ -11,7 +11,7 @@ export default function GameCard({title, image}: GameCardProps){
     
     return(
         <Anchor underline="never">
-            <Stack maw={300}  className={styles.container + " element hidden"}>
+            <Stack maw={300}  className={styles.container}>
                 <AspectRatio ratio={ratio}>
                     <Paper className={styles.imagecontainer} radius="md" shadow="sm" >
                         <AspectRatio ratio={ratio}>
