@@ -20,7 +20,8 @@ export async function createEducation(formData: FormData) {
   revalidatePath("/dashboard/about");
 }
 
-export async function updateEducation({educationId, formData}: {educationId: number, formData: FormData}) {
+export async function updateEducation(formData: FormData) {
+  const educationId = Number(formData.get("educationId") as string);
   const diploma = formData.get("diploma") as string;
   const school = formData.get("school") as string;
   const startYear = Number(formData.get("startYear") as string);
@@ -48,12 +49,12 @@ export async function updateEducation({educationId, formData}: {educationId: num
 }
 
 export async function deleteEducation(educationId: number) {
-    await prisma.education.delete({
-        where: {
-            educationId
-        }
-    })
+  await prisma.education.delete({
+      where: {
+          educationId
+      }
+  })
 
-    revalidatePath("/dashboard/about");
+  revalidatePath("/dashboard/about");
 } 
 

@@ -10,7 +10,7 @@ import "../ui/effects/styles/underlinebutton.css";
 
 export function Header() {
     return (
-        <header>
+        <header className="header-main">
             <Stack align="stretch" justify="center" h="100%" >
                 <Group justify="space-between" >
                     <a href="/">

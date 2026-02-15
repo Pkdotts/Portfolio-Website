@@ -1,26 +1,29 @@
-import { ActionIcon, Group, TableTd } from "@mantine/core";
+import { ActionIcon, Group, TableTd, Tooltip } from "@mantine/core";
 import { IconPencil, IconTrash } from "@tabler/icons-react";
 
 interface TableRowProps{
     id: number | string, 
-    edit?(): void, 
-    del(id: number | string): Promise<void>,
+    openEditModal: (e: any) => void,
+    openDeleteModal: (e: any) => void,
 }
 
-export default function TableRowButtons({id, edit, del}:TableRowProps){
+export default function TableRowButtons({id, openEditModal, openDeleteModal}:TableRowProps){
 
     return(
-        <TableTd pos="absolute" right="1rem" align="right">
-
-            <Group >
-                {edit && 
-                    <ActionIcon size="sm" variant="subtle" onClick={edit}>
-                        <IconPencil/>
-                    </ActionIcon>
+        <TableTd pos="relative" align="right">
+            <Group justify="flex-end">
+                {openEditModal && 
+                    <Tooltip label="Edit">
+                        <ActionIcon size="sm" variant="subtle" onClick={openEditModal}>
+                            <IconPencil/>
+                        </ActionIcon>
+                    </Tooltip>
                 }
-                    <ActionIcon size="sm" variant="subtle" onClick={() => {del(id) }}>
-                        <IconTrash />
-                    </ActionIcon>
+                    <Tooltip label="Delete">
+                        <ActionIcon size="sm" variant="subtle" onClick={openDeleteModal}>
+                            <IconTrash />
+                        </ActionIcon>
+                    </Tooltip>
             </Group>
         </TableTd>
     )

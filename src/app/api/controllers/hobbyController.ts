@@ -16,7 +16,8 @@ export async function createHobby(formData: FormData) {
   revalidatePath("/dashboard/about");
 }
 
-export async function updateHobby({hobbyId, formData}: {hobbyId: number, formData: FormData}) {
+export async function updateHobby(formData: FormData) {
+  const hobbyId = Number(formData.get("hobbyId") as string);
   const name_en = formData.get("name_en") as string;
   const name_fr = formData.get("name_fr") as string;
 
@@ -34,11 +35,11 @@ export async function updateHobby({hobbyId, formData}: {hobbyId: number, formDat
 }
 
 export async function deleteHobby(hobbyId: number) {
-    await prisma.hobby.delete({
-        where: {
-            hobbyId
-        }
-    })
+  await prisma.hobby.delete({
+      where: {
+          hobbyId
+      }
+  })
 
-    revalidatePath("/dashboard/about");
+  revalidatePath("/dashboard/about");
 } 

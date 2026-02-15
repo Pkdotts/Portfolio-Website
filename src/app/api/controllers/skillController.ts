@@ -17,19 +17,15 @@ export async function createSkill(formData: FormData, skillType: string) {
   revalidatePath("/dashboard/about");
 }
 
-export async function updateSkill(formData: FormData, skillType: string, skillId: number) {
+export async function updateSkill(formData: FormData) {
+  const skillId = Number(formData.get("skillId"));
+
   const name_en = formData.get("name_en") as string;
   const name_fr = formData.get("name_fr") as string;
 
   await prisma.skill.update({
-    where: {
-      skillId
-    },
-    data: {
-      name_en,
-      name_fr,
-      skillType
-    },
+    where: { skillId },
+    data: { name_en, name_fr }
   });
 
   revalidatePath("/dashboard/about");

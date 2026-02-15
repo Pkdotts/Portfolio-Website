@@ -16,7 +16,7 @@ async function GameGrid() {
         <Grid>
           {projects.map((p,) => (
             <GridCol key={p.projectId} span={{base: 12, xs: 5, sm: 4, md: 3, lg: 3}}>
-              <GameCard title={p.title} image={p.bannerUrl}/>
+              <GameCard title={p.title} image={p.coverUrl}/>
             </GridCol>
           ))}
         </Grid> : <Text>No games</Text>

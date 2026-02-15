@@ -4,6 +4,7 @@ import { Header } from "@/components/common/header";
 import Footer from "@/components/common/footer";
 import { cssVarResolver, darkTheme, lightTheme } from "./theme";
 import '@mantine/core/styles.css';
+import '@mantine/dates/styles.css';
 import { Box, Flex, MantineProvider, mantineHtmlProps } from '@mantine/core';
 import { barlow, encodeSans, quicksand } from "./fonts";
 

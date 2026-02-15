@@ -19,13 +19,14 @@ model Skill {
 model Project {
   projectId     String          @id
   title         String
-  description   String?
+  description   String          @default("")
   imageUrls     String[]
   visible       Boolean         @default(false)
-  bannerUrl     String?
+  coverUrl      String?
   logoUrl       String?
-  startYear     DateTime?       @db.Date
-  endYear       DateTime?       @db.Date
+  startDate     DateTime?       @db.Date
+  endDate       DateTime?       @db.Date
+  slideshowUrl  String?
   Project_Skill Project_Skill[]
 }
 

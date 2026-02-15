@@ -22,17 +22,16 @@ export async function createExperience(formData: FormData) {
   revalidatePath("/dashboard/about");
 }
 
-export async function updateExperience({workId, formData}: {workId: number, formData: FormData}) {
+export async function updateExperience(formData: FormData) {
+  const workId = Number(formData.get("workId"));
   const position = formData.get("position") as string;
   const company = formData.get("company") as string;
   const description = formData.get("description") as string;
-  const startDate = Number(formData.get("startDate") as string);
-  const endDate = Number(formData.get("endDate") as string);
+  const startDate = Number(formData.get("startDate"));
+  const endDate = Number(formData.get("endDate"));
 
   await prisma.workExperience.update({
-    where:{
-      workId
-    },
+    where: { workId },
     data: {
       position,
       company,
@@ -46,11 +45,11 @@ export async function updateExperience({workId, formData}: {workId: number, form
 }
 
 export async function deleteExperience(workId: number) {
-    await prisma.workExperience.delete({
-        where: {
-            workId
-        }
-    })
+  await prisma.workExperience.delete({
+      where: {
+          workId
+      }
+  })
 
-    revalidatePath("/dashboard/about");
+  revalidatePath("/dashboard/about");
 } 

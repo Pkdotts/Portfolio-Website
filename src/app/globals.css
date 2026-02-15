@@ -34,7 +34,7 @@
       var(--mantine-color-primary-3) 75%, transparent 76%); */
 }
 
-header {
+.header-main {
   height: 60;
   padding: 10;
   background-color: var(--mantine-color-main-10);

@@ -1,7 +1,7 @@
 import ContentPaper from "@/components/common/contentpaper";
 import PageTitle from "@/components/common/pagetitle";
 import InnerPaper from "@/components/ui/cards/innerpaper";
-import Sidebar from "@/components/ui/dashboard/sidebar";
+import Sidebar from "@/components/ui/dashboard/dashbar";
 import prisma from "@/lib/prisma";
 import { Text, Stack, Title, Group, Paper, Table, TableThead, TableTr, TableTd, TableTh, Container } from "@mantine/core";
 
