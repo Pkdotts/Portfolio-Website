@@ -17,7 +17,7 @@ export async function createEducation(formData: FormData) {
     },
   });
 
-  revalidatePath("/dashboard/about");
+  revalidatePath("/supersecretdashboard/about");
 }
 
 export async function updateEducation(formData: FormData) {
@@ -45,7 +45,7 @@ export async function updateEducation(formData: FormData) {
     }
   });
 
-  revalidatePath("/dashboard/about");
+  revalidatePath("/supersecretdashboard/about");
 }
 
 export async function deleteEducation(educationId: number) {
@@ -55,6 +55,6 @@ export async function deleteEducation(educationId: number) {
       }
   })
 
-  revalidatePath("/dashboard/about");
+  revalidatePath("/supersecretdashboard/about");
 } 
 

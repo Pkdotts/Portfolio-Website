@@ -19,7 +19,7 @@ export async function createExperience(formData: FormData) {
     },
   });
 
-  revalidatePath("/dashboard/about");
+  revalidatePath("/supersecretdashboard/about");
 }
 
 export async function updateExperience(formData: FormData) {
@@ -41,7 +41,7 @@ export async function updateExperience(formData: FormData) {
     },
   });
 
-  revalidatePath("/dashboard/about");
+  revalidatePath("/supersecretdashboard/about");
 }
 
 export async function deleteExperience(workId: number) {
@@ -51,5 +51,5 @@ export async function deleteExperience(workId: number) {
       }
   })
 
-  revalidatePath("/dashboard/about");
+  revalidatePath("/supersecretdashboard/about");
 } 

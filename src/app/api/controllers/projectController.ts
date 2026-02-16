@@ -24,8 +24,6 @@ async function deleteSupabaseFile(publicUrl: string) {
 }
 
 export async function createProject(formData: FormData) {
-  const sessionId = formData.get("sessionId") as string;
-
   const projectId = Number(formData.get("projectId") as string);
   const projectUrl = formData.get("projectUrl") as string;
   const title = formData.get("title") as string;
