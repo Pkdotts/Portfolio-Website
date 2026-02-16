@@ -2,7 +2,7 @@
 import prisma from "@/lib/prisma";
 import AboutDashboard from "./client";
 
-export default async function About() {
+export default async function AboutDashboardPage() {
 
   const skillTypes = await prisma.skillType.findMany({include: {Skill: true}});
   
