@@ -1,10 +1,11 @@
-import { Button, Modal, Stack, Title } from "@mantine/core";
+import { Button, MantineSize, Modal, Stack, Title } from "@mantine/core";
 
 export interface ModalProps<T> {
   opened: boolean;
   close: () => void;
   action: ModalActions;
   title: string;
+  size?: number | MantineSize | (string & {}) | undefined;
   item?: T | null;
   itemName: string | undefined;
   itemId: any;
@@ -20,6 +21,7 @@ export function DashboardModal<T>({
   close,
   action,
   title,
+  size = "lg",
   itemName,
   itemId,
   itemIdName,
@@ -34,7 +36,7 @@ export function DashboardModal<T>({
   action === ModalActions.edit ? updateAction : deleteAction;
 
   return (
-    <Modal title={title} opened={opened} onClose={close} size="lg" >
+    <Modal title={title} opened={opened} onClose={close} size={size} >
       {(action === ModalActions.delete) ? 
       <Stack>
         Do you reaaaaally wanna delete this?

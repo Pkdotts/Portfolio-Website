@@ -1,0 +1,20 @@
+.wrapper {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.dropzone {
+  border-width: 1px;
+}
+
+.icon {
+  color: var(--mantine-color-main-9);
+}
+
+
+.description {
+  text-align: center;
+  font-size: var(--mantine-font-size-sm);
+  color: var(--mantine-color-dimmed);
+  margin-top: var(--mantine-spacing-xs);
+}

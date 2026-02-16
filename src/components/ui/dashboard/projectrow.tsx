@@ -19,7 +19,7 @@ export default function ProjectRow(project: ProjectRowProps){
         <Paper withBorder radius="md" style={{overflow: "hidden"}}>
             <Group  w="100%" h="100%" gap="0" grow preventGrowOverflow={false} wrap="nowrap">
                 <AspectRatio ratio={4/3} maw="192px" mih="144px" >
-                    <Image src={project.coverUrl}/>
+                    <Image src={project.coverUrl !== "" ? project.coverUrl : undefined}/>
                 </AspectRatio>
                 <Stack justify="space-between" h="144px" p="xs">
                     <div>

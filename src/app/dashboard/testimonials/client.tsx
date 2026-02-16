@@ -8,7 +8,7 @@ import { Education, Hobby, Project, Skill, WorkExperience } from "@/generated/pr
 import { useDisclosure } from "@mantine/hooks";
 import { ModalActions } from "@/components/ui/dashboard/dashboardmodal";
 import DashBar from "@/components/ui/dashboard/dashbar";
-import ProjectRow from "@/components/ui/dashboard/gamerow";
+import ProjectRow from "@/components/ui/dashboard/projectrow";
 
 function ProjectTable({projects}: {projects: Project[]}){
   return(
