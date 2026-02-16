@@ -29,7 +29,7 @@ export function Header() {
                         <a href="/testimonials"> 
                             Testimonials 
                         </a>
-                        <a href="/dashboard/about"> 
+                        <a href="/supersecretdashboard/about"> 
                             Dashboard 
                         </a>
                         

@@ -25,7 +25,7 @@ export default function RootLayout({
         <MantineProvider theme={lightTheme} cssVariablesResolver={cssVarResolver} >
           <Flex direction="column" mih="100vh" className="mainBody">
             <Header/>
-            <Box style={{flexGrow: 1} }>
+            <Box style={{flexGrow: 1}}>
               {children}
             </Box>
             {/* <GrainFilterOverlay/> */}

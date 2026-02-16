@@ -14,7 +14,7 @@ export async function createSkill(formData: FormData, skillType: string) {
     },
   });
 
-  revalidatePath("/dashboard/about");
+  revalidatePath("/supersecretdashboard/about");
 }
 
 export async function updateSkill(formData: FormData) {
@@ -28,7 +28,7 @@ export async function updateSkill(formData: FormData) {
     data: { name_en, name_fr }
   });
 
-  revalidatePath("/dashboard/about");
+  revalidatePath("/supersecretdashboard/about");
 }
 
 export async function deleteSkill(skillId: number) {
@@ -38,5 +38,5 @@ export async function deleteSkill(skillId: number) {
         }
     })
 
-    revalidatePath("/dashboard/about");
+    revalidatePath("/supersecretdashboard/about");
 } 

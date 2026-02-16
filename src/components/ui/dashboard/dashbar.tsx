@@ -10,16 +10,16 @@ export default function DashBar(){
             >
                 <Title>The Secret Dashboard</Title>
                 <Group>
-                    <Button variant="white" component="a" href="/dashboard/about" >
+                    <Button variant="white" component="a" href="/supersecretdashboard/about" >
                         About
                     </Button>
-                    <Button variant="white" component="a" href="/dashboard/projects" >
+                    <Button variant="white" component="a" href="/supersecretdashboard/projects" >
                         Games
                     </Button>
-                    <Button variant="white" component="a" href="/dashboard/art" >
+                    <Button variant="white" component="a" href="/supersecretdashboard/art" >
                         Art
                     </Button>
-                    <Button variant="white" component="a" href="/dashboard/testimonials" >
+                    <Button variant="white" component="a" href="/supersecretdashboard/testimonials" >
                         Testimonials
                     </Button>
                 </Group>

@@ -13,7 +13,7 @@ export async function createHobby(formData: FormData) {
     },
   });
 
-  revalidatePath("/dashboard/about");
+  revalidatePath("/supersecretdashboard/about");
 }
 
 export async function updateHobby(formData: FormData) {
@@ -31,7 +31,7 @@ export async function updateHobby(formData: FormData) {
     },
   });
 
-  revalidatePath("/dashboard/about");
+  revalidatePath("/supersecretdashboard/about");
 }
 
 export async function deleteHobby(hobbyId: number) {
@@ -41,5 +41,5 @@ export async function deleteHobby(hobbyId: number) {
       }
   })
 
-  revalidatePath("/dashboard/about");
+  revalidatePath("/supersecretdashboard/about");
 } 

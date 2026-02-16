@@ -74,7 +74,7 @@ export async function createProject(formData: FormData) {
     }
   });
 
-  revalidatePath("/dashboard/projects");
+  revalidatePath("/supersecretdashboard/projects");
 }
 
 export async function updateProject(formData: FormData) {
@@ -142,7 +142,7 @@ export async function updateProject(formData: FormData) {
     },
   });
 
-  revalidatePath("/dashboard/projects");
+  revalidatePath("/supersecretdashboard/projects");
 }
 
 export async function deleteProject(projectId: number) {
@@ -158,7 +158,7 @@ export async function deleteProject(projectId: number) {
   }
 
   await prisma.project.delete({ where: { projectId } });
-  revalidatePath("/dashboard/projects");
+  revalidatePath("/supersecretdashboard/projects");
 }
 
 async function moveTempFileToProject(
