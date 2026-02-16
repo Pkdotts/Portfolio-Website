@@ -3,34 +3,43 @@
 import { useState} from "react";
 import Sidebar from "@/components/ui/dashboard/dashbar";
 
-import { Text, Stack, Title, Group, Paper, Table, TableThead, TableTr, TableTd, TableTh, Container, SegmentedControl, Grid, GridCol, Button, Tabs, TabsList, TabsTab, TabsPanel, Divider, Drawer } from "@mantine/core";
-import { Education, Hobby, Project, Skill, WorkExperience } from "@/generated/prisma/client";
 import { useDisclosure } from "@mantine/hooks";
 import { ModalActions } from "@/components/ui/dashboard/dashboardmodal";
 import DashBar from "@/components/ui/dashboard/dashbar";
-import ProjectRow from "@/components/ui/dashboard/projectrow";
+import { Testimonial } from "@/generated/prisma/client";
+import { Group, Stack, Title, Text, Drawer, Container, Paper, Divider, Button } from "@mantine/core";
+import InnerPaper from "@/components/ui/cards/innerpaper";
+import { acceptTestimonial, deleteTestimonial } from "@/app/api/controllers/testimonialsController";
 
-function ProjectTable({projects}: {projects: Project[]}){
+function TestimonialTable({testimonials}: {testimonials: Testimonial[]}){
   return(
     <Stack p="sm">
-        {/* {projects.map((p) => (
-          <ProjectRow key={p.projectId} title={p.title} description={p.description} imageUrls={p.imageUrls} visible={p.visible} bannerUrl={p.bannerUrl} logoUrl={p.logoUrl} startYear={p.startYear} endYear={p.endYear}/>
-      ))} */}
+        {testimonials.map((t) => (
+            <InnerPaper key={t.testimonialId}>
+                <Group justify="space-between">
+                    <Title order={4}>{t.name}</Title> <Text c="var(--mantine-color-main-9)">{t.date.toDateString()}</Text>
+                </Group>
+                <Text>{t.message}</Text>
+                <Group justify="flex-end">
+                  <Button onClick={() => {acceptTestimonial(t.testimonialId)}}>
+                    Accept
+                  </Button>
+                  <Button onClick={() => {deleteTestimonial(t.testimonialId)}}>
+                    Deny
+                  </Button>
+                </Group>
+            </InnerPaper>
+        ))}
     </Stack>
   )
 }
 
 
 export default function TestimonialDashboard({
-    projects,
+    testimonials,
     }: {
-    projects: Project[],
+    testimonials: Testimonial[],
     }) {
-
-    const [opened, { open, close }] = useDisclosure(false);
-
-    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-    const [modalAction, setModalAction] = useState<ModalActions>(ModalActions.create);
 
 
     return (
@@ -39,19 +48,11 @@ export default function TestimonialDashboard({
         <Container w="100%" p="xs" size="xl">
           <Paper bdrs="md">
                 <DashBar/>
-            <Group p="xs">
-              <Button size="xs" onClick={open}>
-                Insert 
-              </Button>
-            </Group>
             <Divider/>
-            <ProjectTable projects={projects}/>
+            <TestimonialTable testimonials={testimonials}/>
           </Paper>
         </Container>
           
-        <Drawer opened={opened} onClose={close} title="Drawer" position="right" zIndex={10000}>
-        {/* Drawer content */}
-        </Drawer>
         </>
     );
 }

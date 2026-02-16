@@ -2,11 +2,11 @@ import prisma from "@/lib/prisma";
 import TestimonialDashboard from "./client";
 
 export default async function About() {
-  const projects = await prisma.project.findMany();
+  const testimonials = await prisma.testimonial.findMany();
 
   return (
     <TestimonialDashboard 
-      projects={projects}
+      testimonials={testimonials}
     />
   );
 }
