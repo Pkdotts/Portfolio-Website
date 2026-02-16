@@ -1,24 +1,12 @@
-import ContentPaper from "@/components/common/contentpaper";
-import PageTitle from "@/components/common/pagetitle";
-import {  Container, Title, Text, Stack } from "@mantine/core";
+import prisma from "@/lib/prisma";
+import Testimonials from "./client";
 
-export default function Art() {
+export default async function TestimonialsPage() {
+  const testimonials = await prisma.testimonial.findMany({where:{accepted: true}, orderBy: [{date: 'desc'}]});
+  
   return (
     <>
-      <PageTitle>TESTIMONIALS</PageTitle>
-
-      <Container p="sm" size={"xl"}>
-        <Stack>
-          <ContentPaper>
-            <Title>Testimonial 1</Title>
-            <Text>This guy is awesome</Text>
-          </ContentPaper>
-          <ContentPaper>
-            <Title>Testimonial 2</Title>
-            <Text>I agree with the above person</Text>
-          </ContentPaper>
-        </Stack>
-      </Container>
+      <Testimonials testimonials={testimonials}/>
     </>
   );
 }

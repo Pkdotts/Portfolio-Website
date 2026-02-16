@@ -28,9 +28,9 @@ export function Header({ user }: HeaderProps) {
                         <a href="/games">
                             Games
                         </a>
-                        <a href="/art">
+                        {/* <a href="/art">
                             Art
-                        </a>
+                        </a> */}
                         
                         <a href="/testimonials"> 
                             Testimonials 
