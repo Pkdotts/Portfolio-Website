@@ -7,6 +7,7 @@ import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
 import { Box, Flex, MantineProvider, mantineHtmlProps } from '@mantine/core';
 import { barlow, encodeSans, quicksand } from "./fonts";
+import { createClient } from "@/lib/supabase/server";
 
 
 export const metadata: Metadata = {
@@ -14,17 +15,22 @@ export const metadata: Metadata = {
   description: "Andy Bao Le's Portfolio",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {    
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   return (
     <html lang="en" {...mantineHtmlProps} className={`${barlow.variable} ${encodeSans.variable} ${quicksand.variable}`}>
       <body >
         <MantineProvider theme={lightTheme} cssVariablesResolver={cssVarResolver} >
           <Flex direction="column" mih="100vh" className="mainBody">
-            <Header/>
+            <Header user={user}/>
             <Box style={{flexGrow: 1}}>
               {children}
             </Box>

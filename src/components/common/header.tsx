@@ -7,8 +7,13 @@ import {
 } from "@mantine/core";
 
 import "../ui/effects/styles/underlinebutton.css";
+import LogoutButton from "../ui/buttons/logout";
 
-export function Header() {
+type HeaderProps = {
+  user: any | null;
+};
+
+export function Header({ user }: HeaderProps) {
     return (
         <header className="header-main">
             <Stack align="stretch" justify="center" h="100%" >
@@ -26,14 +31,18 @@ export function Header() {
                         <a href="/art">
                             Art
                         </a>
+                        
                         <a href="/testimonials"> 
                             Testimonials 
                         </a>
-                        <a href="/supersecretdashboard/about"> 
-                            Dashboard 
-                        </a>
-                        
-                        {/* Includes Skills, Work experience, Education, Resume, Contact Info and Hobbies */}
+                        {
+                            user && <>
+                            <a href="/supersecretdashboard/projects"> 
+                                Dashboard 
+                            </a>
+                            <LogoutButton/>
+                        </>
+                        }
                     </Group>
                 </Group>
             </Stack>

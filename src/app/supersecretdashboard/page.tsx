@@ -9,6 +9,6 @@ export default async function DashboardPage(){
     if (!user) {
         redirect("/login")
     } else {
-        redirect("/supersecretdashboard")
+        redirect("/supersecretdashboard/projects")
     }
 }

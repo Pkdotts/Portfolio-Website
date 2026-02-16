@@ -1,8 +1,8 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 
-export async function middleware(req: any) {
-  let res = NextResponse.next();
+export async function POST(req: NextRequest) {
+  let res = NextResponse.json({ success: true });
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -21,17 +21,7 @@ export async function middleware(req: any) {
     }
   );
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user && req.nextUrl.pathname.startsWith("/supersecretdashboard")) {
-    return NextResponse.redirect(new URL("/supersecretlogin", req.url));
-  }
+  await supabase.auth.signOut();
 
   return res;
 }
-
-export const config = {
-  matcher: ["/supersecretdashboard/:path*"],
-};

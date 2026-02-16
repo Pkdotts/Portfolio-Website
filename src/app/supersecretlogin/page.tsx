@@ -20,7 +20,9 @@ export default function LoginPage() {
     })
 
     if (response.ok) {
-      router.push('/supersecretdashboard')
+      router.push('/supersecretdashboard/projects')
+      router.refresh()
+
     }
   }
 
