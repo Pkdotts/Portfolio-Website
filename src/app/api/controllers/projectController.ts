@@ -1,5 +1,6 @@
 "use server";
 import { getFilePathFromUrl } from "@/app/hooks/getFilePathFromUrl";
+import { parseLocalDate } from "@/app/hooks/parseLocalDate";
 import prisma from "@/lib/prisma";
 import { createClient } from "@/lib/supabase/server";
 import { SupabaseClient } from "@supabase/supabase-js";
@@ -45,15 +46,16 @@ export async function createProject(formData: FormData) {
 
   const projectId = Number(formData.get("projectId") as string);
   const projectUrl = formData.get("projectUrl") as string;
+  const externalLink = formData.get("externalLink") as string;
   const title = formData.get("title") as string;
   const description = formData.get("description") as string;
   const visible = !!formData.get("visible");
 
   const startDateStr = formData.get("startDate") as string;
-  const startDate = startDateStr ? new Date(startDateStr) : null;
+  const startDate = startDateStr ? parseLocalDate(startDateStr): null;
 
   const endDateStr = formData.get("endDate") as string;
-  const endDate = endDateStr ? new Date(endDateStr) : null;
+  const endDate = endDateStr ? parseLocalDate(endDateStr) : null;
 
   const imageUrlsStr = formData.get("imageUrls") as string;
   const imageUrls = imageUrlsStr ? imageUrlsStr.split(",") : [];
@@ -79,6 +81,7 @@ export async function createProject(formData: FormData) {
     data: {
       projectId,
       projectUrl,
+      externalLink,
       title,
       description,
       logoUrl: finalLogoUrl,
@@ -105,6 +108,8 @@ export async function updateProject(formData: FormData) {
   
   const projectId = Number(formData.get("projectId") as string);
   const projectUrl = formData.get("projectUrl") as string;
+  const externalLinkStr = (formData.get("externalLink") as string);
+  const externalLink = (externalLinkStr === "" ? null : externalLinkStr);
   const title = formData.get("title") as string;
   const description = formData.get("description") as string;
   const logoUrl = formData.get("logoUrl") as string;
@@ -114,9 +119,9 @@ export async function updateProject(formData: FormData) {
   const slideshowUrl = formData.get("slideshowUrl") as string;
   const visible = !!formData.get("visible");
   const startDateStr = formData.get("startDate") as string;
-  const startDate = startDateStr ? new Date(startDateStr) : null;
+  const startDate = startDateStr ? parseLocalDate(startDateStr) : null;
   const endDateStr = formData.get("endDate") as string;
-  const endDate = endDateStr ? new Date(endDateStr) : null;
+  const endDate = endDateStr ? parseLocalDate(endDateStr) : null;
 
   const oldProject = await prisma.project.findUnique({ where: { projectId } });
 
@@ -155,6 +160,7 @@ export async function updateProject(formData: FormData) {
     data: {
       projectId,
       projectUrl,
+      externalLink,
       title,
       description,
       logoUrl: finalLogoUrl ?? logoUrl,

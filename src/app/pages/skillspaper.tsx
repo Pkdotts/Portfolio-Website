@@ -1,7 +1,7 @@
 import ContentPaper from "@/components/common/contentpaper";
 import InnerPaper from "@/components/ui/cards/innerpaper";
 import PageTitle from "@/components/common/pagetitle";
-import {  Container, Title, Text, Stack, Group, Grid, GridCol, Accordion, AccordionItem, AccordionPanel, AccordionControl } from "@mantine/core";
+import {  Container, Title, Text, Stack, Group, Grid, GridCol, Accordion, AccordionItem, AccordionPanel, AccordionControl, SimpleGrid, Badge } from "@mantine/core";
 import prisma from "@/lib/prisma";
 import { SkillTypeWithSkills } from "@/entities/types";
 import { Education, Hobby, WorkExperience } from "@/generated/prisma/client";
@@ -18,28 +18,28 @@ async function SkillsPaper({skillTypes}: {skillTypes: SkillTypeWithSkills[]}){
         <ContentPaper >
           <Title className="titleShadow">{t('skills')}</Title>
           <InnerPaper >
+            <Stack>
+
+            
             {skillTypes.map((t) => (
               <div key={pickLocalizedName(t.name_en, t.name_fr)}>
+
                 {(t.Skill.length > 0) && (
-                  <Accordion defaultValue={pickLocalizedName(t.name_en, t.name_fr)}  >
-                
-                    <AccordionItem value={pickLocalizedName(t.name_en, t.name_fr)}>
-                    <AccordionControl h={"xl"}><Title size="sm" c="var(--mantine-color-text-0)">{pickLocalizedName(t.name_en, t.name_fr)}</Title></AccordionControl>
-                    <AccordionPanel style={{padding: 0}}>
-                      <ul style={{margin: 0}}>
+                  <Stack gap="0">
+                      <Text>{pickLocalizedName(t.name_en, t.name_fr)}</Text>
+                      <Group m="xs">
                       {t.Skill.map((s) => (
-                        <li key={s.skillId}>
+                        <Badge variant="outline" size="lg">
                           {s.name_en}
-                        </li>
+                        </Badge>
                       ))}
-                    </ul>
-                    </AccordionPanel>
-                    </AccordionItem>
-                  </Accordion>
+                    </Group>
+                  </Stack>
                 )}
               
               </div>
             ))}
+            </Stack>
             
           </InnerPaper>
         </ContentPaper> 
@@ -125,7 +125,6 @@ async function HobbiesPaper({hobbies}: {hobbies: Hobby[]}){
 }
 
 
-{/* Includes Skills, Work experience, Education, Resume, Contact Info and Hobbies */}
 export default async function About() {
   
   const [skillTypes, experience, education, hobbies] = await Promise.all([
@@ -140,13 +139,13 @@ export default async function About() {
       
       <Container my="xl" size={"md"}>
         <Grid gutter={"xl"}>
-          <GridCol span={{md: 8, sm: 6, xs: 12}}>
+          <GridCol span={{md: 8, sm: 7, xs: 12}}>
             <Stack gap={"xl"}>
               <SkillsPaper skillTypes={skillTypes}/>
               <EducationPaper education={education}/>
             </Stack>
           </GridCol>
-          <GridCol span={{md: 4, sm: 6, xs: 12}}>
+          <GridCol span={{md: 4, sm: 5, xs: 12}}>
             <Stack gap={"xl"}>
               <HobbiesPaper hobbies={hobbies}/>
               <ExperiencePaper experience={experience}/>

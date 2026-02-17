@@ -17,9 +17,9 @@ async function GameGrid({
     { 
       projects ? 
         <Grid>
-          {projects.map((p,) => (
+          {projects.map((p) => (
             <GridCol key={p.projectId} span={{base: 12, xs: 5, sm: 4, md: 3, lg: 3}}>
-              <GameCard title={p.title} image={p.coverUrl}/>
+              <GameCard project={p}/>
             </GridCol>
           ))}
         </Grid> : <Text>{t('noGames')}</Text>
@@ -37,8 +37,6 @@ export default function GamesPage({
   const t = useTranslations('games');
   const slideshowImages: Slide[] = projects.map(p => [p.slideshowUrl, p.logoUrl]).filter((p): p is [string, string] => (p[0] != "" && p[1] != "")).filter((p) => (p[0] != null )).map((p) => ({slideshowUrl: p[0], logoUrl: p[1]}));
   
-  console.log(slideshowImages);
-
   return (
     <div>
       <PageTitle>{t('title')}</PageTitle>

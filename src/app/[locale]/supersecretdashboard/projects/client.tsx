@@ -30,6 +30,7 @@ function ProjectTable({
             title={p.title} 
             visible={p.visible} 
             coverUrl={p.coverUrl} 
+            externalLink={p.externalLink}
             startDate={p.startDate} 
             endDate={p.endDate} 
             openEditModal={() => openEditModal(p)} 
@@ -109,11 +110,15 @@ export default function ProjectDashboard({
                 <Stack>
                   <div>
                     <Text>Title</Text>
-                    <Input name="title" placeholder="Your project title, please" defaultValue={selectedProject?.title}/>
+                    <Input name="title" placeholder="Your project title, please" defaultValue={selectedProject?.title} required/>
                   </div>
                   <div>
                     <Text>Page URL</Text>
-                    <Input name="projectUrl" placeholder="The URL for your project" defaultValue={selectedProject?.projectUrl}/>
+                    <Input name="projectUrl" placeholder="The URL for your project" defaultValue={selectedProject?.projectUrl} required/>
+                  </div>
+                  <div>
+                    <Text>External Link</Text>
+                    <Input name="externalLink" placeholder="A link to more info about the project" defaultValue={selectedProject?.externalLink ?? undefined}/>
                   </div>
                   <div>
                     <Text>Description</Text>
@@ -122,11 +127,11 @@ export default function ProjectDashboard({
                   <Group grow>
                     <div>
                       <Text>Start Date</Text>
-                      <DateInput name="startDate" placeholder="Start Date" defaultValue={selectedProject?.startDate}/>
+                      <DateInput valueFormat="YYYY-MM-DD" name="startDate" placeholder="Start Date" defaultValue={selectedProject?.startDate}/>
                     </div>
                     <div>
                       <Text>End Date</Text>
-                      <DateInput name="endDate" placeholder="End Date" defaultValue={selectedProject?.endDate ?? undefined}/>
+                      <DateInput valueFormat="YYYY-MM-DD" name="endDate" placeholder="End Date" defaultValue={selectedProject?.endDate ?? undefined}/>
                     </div>
                     
                   </Group>
@@ -145,15 +150,6 @@ export default function ProjectDashboard({
                       />
                   </div>
                   <div>
-                    <Text>Cover Image</Text>
-                    <DropzoneButton
-                      name="coverUrl"
-                      bucket={tempBucket}
-                      defaultValue={selectedProject?.coverUrl}
-                      sessionId={sessionId}
-                    />
-                  </div>
-                  <div>
                     <Text>Slideshow Image</Text>
                     <DropzoneButton
                       name="slideshowUrl"
@@ -165,7 +161,15 @@ export default function ProjectDashboard({
                 </Stack>
               </GridCol>
               <GridCol span={4}>
-                
+                <div>
+                    <Text>Cover Image</Text>
+                    <DropzoneButton
+                      name="coverUrl"
+                      bucket={tempBucket}
+                      defaultValue={selectedProject?.coverUrl}
+                      sessionId={sessionId}
+                    />
+                  </div>
                 <div>
                   <Text>Screenshots</Text>
                   <DropzoneButton

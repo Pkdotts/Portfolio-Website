@@ -1,25 +1,23 @@
-import { Paper, Title, Image, AspectRatio, Anchor, Stack } from "@mantine/core";
+import { Paper, Title, Image, AspectRatio, Anchor, Stack, Text } from "@mantine/core";
 import styles from "./gamecard.module.css";
+import { Project } from "@/generated/prisma/client";
 
-interface GameCardProps{
-    title: String;
-    image: string | null;
-}
 
-export default function GameCard({title, image}: GameCardProps){
+export default function GameCard({project}: {project: Project}){
     const ratio = 650/500
     
     return(
-        <Anchor underline="never">
+        <Anchor href={project.externalLink ?? undefined} target={project.externalLink ? "_blank" : undefined} underline="never">
             <Stack maw={300}  className={styles.container}>
                 <AspectRatio ratio={ratio}>
                     <Paper className={styles.imagecontainer} radius="md" shadow="sm" >
                         <AspectRatio ratio={ratio}>
-                            <Image src={image} alt="Project" className={styles.image} fit="cover" />
+                            <Image src={project.coverUrl} alt="Project" className={styles.image} fit="cover" />
                         </AspectRatio>
                     </Paper>
                 </AspectRatio>
-                <Title className={styles.cardTitle} order={3} c="var(--mantine-color-text-0)">{title} </Title>
+                <Title className={styles.cardTitle} order={3} c="var(--mantine-color-text-0)">{project.title} </Title>
+                <Text>{project.description}</Text>
             </Stack>
         </Anchor>
     )

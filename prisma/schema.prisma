@@ -28,6 +28,7 @@ model Project {
   endDate       DateTime?       @db.Date
   slideshowUrl  String?
   projectId     BigInt          @id @default(autoincrement())
+  externalLink  String?
   Project_Skill Project_Skill[]
 }
 

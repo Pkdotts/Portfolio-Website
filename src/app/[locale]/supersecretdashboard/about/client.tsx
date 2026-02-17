@@ -399,25 +399,25 @@ export default function AboutDashboard({
             <div>
               <Text>Position</Text>
               <Group>
-                <Input name="positionEn" placeholder="Your position in english" defaultValue={experienceItem?.position_en}/>
+                <Input name="positionEn" placeholder="Your position in english" defaultValue={experienceItem?.position_en} required/>
                 <Input name="positionFr" placeholder="Your position in French" defaultValue={experienceItem?.position_fr ?? undefined}/>
               </Group>
             </div>
             <div>
               <Text>Company</Text>
-              <Input name="company" placeholder="The place you worked at" defaultValue={experienceItem?.company}/>
+              <Input name="company" placeholder="The place you worked at" defaultValue={experienceItem?.company} required/>
             </div>
             <div>
               <Text>Descriptions</Text>
               <Group>
-                  <Textarea name="descriptionEn" placeholder="A brief synopsis in english" defaultValue={experienceItem?.description_en}/>
+                  <Textarea name="descriptionEn" placeholder="A brief synopsis in english" defaultValue={experienceItem?.description_en} required/>
                   <Textarea name="descriptionFr" placeholder="A brief synopsis in french" defaultValue={experienceItem?.description_fr ?? undefined}/>
               </Group>
               </div>
             <Group grow>
               <div>
                 <Text>Start Date</Text>
-                <NumberInput name="startDate" placeholder="Start Date" defaultValue={experienceItem?.startDate}/>
+                <NumberInput name="startDate" placeholder="Start Date" defaultValue={experienceItem?.startDate} required/>
               </div>
               <div>
                 <Text>End Date</Text>
@@ -443,16 +443,16 @@ export default function AboutDashboard({
           >
             <div>
               <Text>Diploma</Text>
-              <Input name="diploma" placeholder="Your diploma, please" defaultValue={educationItem?.diploma}/>
+              <Input name="diploma" placeholder="Your diploma, please" defaultValue={educationItem?.diploma} required/>
             </div>
             <div>
               <Text>School</Text>
-              <Input name="school" placeholder="You school, please" defaultValue={educationItem?.school}/>
+              <Input name="school" placeholder="You school, please" defaultValue={educationItem?.school} required/>
             </div>
             <Group grow>
               <div>
                 <Text>Start Year</Text>
-                <NumberInput name="startYear" placeholder="Start Year" defaultValue={educationItem?.startYear}/>
+                <NumberInput name="startYear" placeholder="Start Year" defaultValue={educationItem?.startYear} required/>
               </div>
               <div>
                 <Text>End Year</Text>
@@ -478,7 +478,7 @@ export default function AboutDashboard({
           >
             <div>
               <Text>English Hobby Name</Text>
-              <Input name="name_en" placeholder="Your hobby name, please" defaultValue={hobbyItem?.name_en ?? ''}/>
+              <Input name="name_en" placeholder="Your hobby name, please" defaultValue={hobbyItem?.name_en ?? ''} required/>
             </div>
             <div>
               <Text>French Hobby Name</Text>
@@ -505,7 +505,7 @@ export default function AboutDashboard({
         >
           <div>
             <Text>English Skill Name</Text>
-            <Input name="name_en" placeholder="Your skill name, please" defaultValue={skillItem?.name_en} />
+            <Input name="name_en" placeholder="Your skill name, please" defaultValue={skillItem?.name_en} required/>
           </div>
           <div>
             <Text>French Skill Name</Text>

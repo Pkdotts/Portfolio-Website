@@ -7,6 +7,7 @@ export interface ProjectRowProps{
     title: string;
     visible: boolean;
     coverUrl: string | null;
+    externalLink?: string | null;
     startDate: Date | null;
     endDate: Date | null;
     openEditModal: (e: any) => void,
@@ -39,6 +40,13 @@ export default function ProjectRow(project: ProjectRowProps){
                         <Text lineClamp={1}>
                             {project.startDate?.toDateString() } {project.endDate && "-" + project.endDate?.toDateString() }
                         </Text>
+                        {
+                            project.externalLink && 
+                            <a href={project.externalLink} target="_blank">
+                                {project.externalLink}
+                            </a>
+                        }
+                        
                     </div>
                         <Badge variant={project.visible ? "filled" : "outline"}>
                             {project.visible ? "Visible" : "Hidden"}

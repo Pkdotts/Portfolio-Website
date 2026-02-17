@@ -1,7 +1,7 @@
 import ContentPaper from "@/components/common/contentpaper";
 import NameTitle from "@/components/ui/nametitle/nametitle";
 import { Container, Text, Button, Group, Stack } from "@mantine/core";
-import About from "./about/page";
+import About from "../pages/skillspaper";
 import { PkSpriteFront } from "@/components/ui/sprites/PkSprites";
 import InnerPaper from "@/components/ui/cards/innerpaper";
 import { useTranslations } from "next-intl";
