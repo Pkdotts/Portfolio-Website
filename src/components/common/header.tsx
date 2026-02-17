@@ -22,9 +22,8 @@ type HeaderProps = {
 };
 
 export function Header({ user }: HeaderProps) {
-    const pathnames = routing.pathnames;
     const t = useTranslations('header');
-    const isMobile = useMediaQuery("(max-width: 958px)");
+    const isMobile = useMediaQuery("(max-width: 1035px)");
     
     const buttons = [
     ["/", t('aboutMe')],
@@ -38,61 +37,64 @@ export function Header({ user }: HeaderProps) {
         <header className="header-main">
             <Stack align="stretch" justify="center" h="100%" >
                 <Group justify="space-between" >
-                    <Link href="/">
+                    <Link href="/" className="underline">
                         <Title className="titleShadow" order={1}>Andy Le</Title>
                     </Link>
-                    {
-                        isMobile ? 
-                        <Menu width={200} position="bottom-start">
+                    <Group gap="30px">
+                        <LocaleSwitcher/>
+                        {
+                            isMobile ? 
                             
-                            <Menu.Target>
-                                <ActionIcon>
-                                    <IconMenu/>
-                                </ActionIcon>
-                            </Menu.Target>
-                            <Menu.Dropdown>
-                                <Menu.Item>
-                                    <LocaleSwitcher/>
-                                </Menu.Item>
-                                {buttons.map((b)=>(
-                                    <Link href={b[0]} key={b[0]}>
-                                        <Menu.Item >
-                                            {b[1]}
+                            <Menu width={200} position="bottom-start">
+                                
+                                <Menu.Target>
+                                    <ActionIcon variant="white" size="lg">
+                                        <IconMenu/>
+                                    </ActionIcon>
+                                </Menu.Target>
+                                <Menu.Dropdown>
+                                    <Menu.Item>
+                                        
+                                    </Menu.Item>
+                                    {buttons.map((b)=>(
+                                        <Link href={b[0]} key={b[0]} className="underline">
+                                            <Menu.Item >
+                                                {b[1]}
+                                            </Menu.Item>
+                                        </Link>
+                                    ))}
+                                    {
+                                        user && <>
+                                    <a href={dashboard[0]} className="underline"> 
+                                        <Menu.Item>
+                                            {dashboard[1]}
                                         </Menu.Item>
-                                    </Link>
+                                    </a>
+                                    
+                                    <Menu.Item>
+                                        <LogoutButton/>
+                                    </Menu.Item>
+                                    </>
+                                }
+                                </Menu.Dropdown>
+                            </Menu>
+                            :
+                            <>
+                                
+                                {buttons.map((b) => (
+                                    <Link href={b[0]} key={b[0]} className="underline">{b[1]}</Link>
                                 ))}
                                 {
-                                user && <>
-                                <a href={dashboard[0]}> 
-                                    <Menu.Item>
+                                    user && <>
+                                    <a href={dashboard[0]} className="underline"> 
                                         {dashboard[1]}
-                                    </Menu.Item>
-                                </a>
-                                
-                                <Menu.Item>
+                                    </a>
                                     <LogoutButton/>
-                                </Menu.Item>
-                                </>
-                            }
-                            </Menu.Dropdown>
-                            
-                        </Menu>
-                        :
-                        <Group gap="30px">
-                            <LocaleSwitcher/>
-                            {buttons.map((b) => (
-                                <Link href={b[0]} key={b[0]}>{b[1]}</Link>
-                            ))}
-                            {
-                                user && <>
-                                <a href={dashboard[0]}> 
-                                    {dashboard[1]}
-                                </a>
-                                <LogoutButton/>
-                                </>
-                            }
-                        </Group>
-                    }                    
+                                    </>
+                                }
+                            </>
+                        }       
+                    </Group>             
                 </Group>
             </Stack>
         </header>
