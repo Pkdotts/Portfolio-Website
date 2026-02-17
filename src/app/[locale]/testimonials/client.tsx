@@ -19,7 +19,7 @@ export default function Testimonials({testimonials}: {testimonials: Testimonial[
         if (state.success) {
             setWriting(false); 
         }
-    }, [state.success]);
+    }, [state]);
     
     return (
         <>
