@@ -2,7 +2,7 @@
 
 import { useState} from "react";
 
-import {  Stack,  Group, Paper, Table, TableThead, TableTr, TableTd, TableTh, Container, SegmentedControl, Grid, GridCol, Button, Tabs, TabsList, TabsTab, TabsPanel, Divider, Drawer } from "@mantine/core";
+import {  Stack,  Group, Paper, Table, TableThead, TableTr, TableTd, TableTh, Container, SegmentedControl, Grid, GridCol, Button, Tabs, TabsList, TabsTab, TabsPanel, Divider, Drawer, Title } from "@mantine/core";
 import { Art } from "@/generated/prisma/client";
 import { useDisclosure } from "@mantine/hooks";
 import { ModalActions } from "@/components/ui/dashboard/dashboardmodal";
@@ -39,6 +39,7 @@ export default function ArtDashboard({art}: {art: Art[]}) {
               </Button>
             </Group>
             <Divider/>
+            <Title>Coming soon!</Title>
             <ArtTable art={art}/>
           </Paper>
         </Container>

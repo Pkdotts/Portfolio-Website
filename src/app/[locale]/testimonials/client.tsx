@@ -37,7 +37,7 @@ export default function Testimonials({testimonials}: {testimonials: Testimonial[
                             testimonials.map((t) => (
                                 <InnerPaper key={t.testimonialId}>
                                     <Group justify="space-between">
-                                        <Title order={4}>{t.name}</Title> <Text c="var(--mantine-color-main-9)">{t.date.toDateString()}</Text>
+                                        <Title order={4}>{t.name}</Title><Text c="var(--mantine-color-main-10)">{t.date.toLocaleDateString()}</Text>
                                     </Group>
                                     <Text>"{t.message}"</Text>
                                 </InnerPaper>
