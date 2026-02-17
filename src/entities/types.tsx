@@ -4,3 +4,5 @@ export type SkillTypeWithSkills =
   Prisma.SkillTypeGetPayload<{
     include: { Skill: true };
 }>;
+
+export type FormState = { success: boolean };
