@@ -1,9 +1,15 @@
+import createMiddleware from 'next-intl/middleware';
+import {routing} from './i18n/routing';
 import { NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 
-export async function proxy(req: any) {
-  let res = NextResponse.next();
+const intlMiddleware = createMiddleware(routing);
 
+export default async function middleware(req: any) {
+  // First let next-intl handle rewrites
+  const response = intlMiddleware(req);
+
+  // Then run Supabase logic
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -14,7 +20,7 @@ export async function proxy(req: any) {
         },
         setAll(cookiesToSet) {
           cookiesToSet.forEach(({ name, value, options }) =>
-            res.cookies.set(name, value, options)
+            response.cookies.set(name, value, options)
           );
         },
       },
@@ -29,9 +35,9 @@ export async function proxy(req: any) {
     return NextResponse.redirect(new URL("/supersecretlogin", req.url));
   }
 
-  return res;
+  return response;
 }
 
 export const config = {
-  matcher: ["/supersecretdashboard/:path*"],
+  matcher: ['/((?!api|trpc|_next|_vercel|.*\\..*).*)'],
 };

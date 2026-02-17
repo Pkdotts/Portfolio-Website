@@ -171,10 +171,13 @@ export async function updateProject(formData: FormData) {
 }
 
 export async function deleteProject(projectId: number) {
-  const user = await createClient();
-  if (!user) {
-    throw new Error("Unauthorized");
-  }
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) throw new Error("Unauthorized");
   
   const project = await prisma.project.findUnique({ where: { projectId } });
   if (!project) return;

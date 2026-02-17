@@ -40,12 +40,14 @@ model Art {
 }
 
 model WorkExperience {
-  workId      Int    @id @unique @default(autoincrement())
-  company     String
-  position    String
-  description String
-  startDate   Int
-  endDate     Int?
+  workId         Int     @id @unique @default(autoincrement())
+  company        String
+  position_en    String
+  description_en String
+  startDate      Int
+  endDate        Int?
+  description_fr String?
+  position_fr    String?
 }
 
 model Education {

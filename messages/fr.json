@@ -1,0 +1,46 @@
+{
+    "header":{
+        "aboutMe": "À Propos",
+        "games": "Jeux",
+        "testimonials": "Témoignages",
+        "contactMe": "Contactez moi"
+    },
+    "about":{
+        "roles": "Développeur et Artiste",
+        "resume": "Résumé",
+        "welcomeParagraph": "Bienvenue dans mon incroyable portfolio numérique! Je m'appelle Andy, et je suis artiste, animateur, programmeur et développeur de jeux. Si tu es ici, c'est probablement parce que tu es un grand fan de moi. Eh bien, si tu veux mon autographe, tu peux télécharger mon CV. C'est assez proche, non?",
+        "skills": "Compétences",
+        "hobbies": "Passe-temps",
+        "education": "Éducation",
+        "experience": "Expérience"
+    },
+    "games":{
+        "title": "JEUX",
+        "released": "Sortis",
+        "upcoming": "À venir"
+    },
+    "testimonials":{
+        "title": "TÉMOIGNAGES",
+        "header": "Ce que les gens ont à dire de moi",
+        "noTestimonials": "Pas de témoignages ici... Ça veut dire que tu peux être le premier!",
+        "write": "Écrivez votre témoignage!",
+        "make": "Créer un témoignage",
+        "nameLabel": "Qui es-tu?",
+        "namePlaceholder": "Votre nom, stp",
+        "messageLabel": "Écrivez un message",
+        "messagePlaceholder": "Ce que vous pensez de moi",
+        "cancel": "Annuler",
+        "submit": "Soumettre"
+    },
+    "contact":{
+        "title": "CONTACT",
+        "header": "Contacte-moi!",
+        "nameLabel": "Qui es-tu?",
+        "namePlaceholder": "Votre nom, stp",
+        "emailLabel": "Email",
+        "emailPlaceholder": "Donne moi ton email",
+        "messageLabel": "Écrivez un message",
+        "messagePlaceholder": "Que veux tu de moi?!",
+        "submit": "Soumettre"
+    }
+}

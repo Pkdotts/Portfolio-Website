@@ -3,7 +3,7 @@ import ContentPaper from "@/components/common/contentpaper";
 import PageTitle from "@/components/common/pagetitle";
 import InnerPaper from "@/components/ui/cards/innerpaper";
 import {  Container, Title, Text, Stack, Input, Button, Group, Textarea, SimpleGrid } from "@mantine/core";
-import { createContactMessage } from "../api/controllers/contactMessageController";
+import { createContactMessage } from "../../api/controllers/contactMessageController";
 import { PkSpriteFront } from "@/components/ui/sprites/PkSprites";
 import { useTranslations } from "next-intl";
 

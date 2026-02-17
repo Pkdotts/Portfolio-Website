@@ -6,6 +6,7 @@ import prisma from "@/lib/prisma";
 import { SkillTypeWithSkills } from "@/entities/types";
 import { Education, Hobby, WorkExperience } from "@/generated/prisma/client";
 import { useTranslations } from "next-intl";
+import { pickLocalizedName } from "@/app/hooks/getLocalizedName";
 
 
 async function SkillsPaper({skillTypes}: {skillTypes: SkillTypeWithSkills[]}){
@@ -18,12 +19,12 @@ async function SkillsPaper({skillTypes}: {skillTypes: SkillTypeWithSkills[]}){
           <Title className="titleShadow">{t('skills')}</Title>
           <InnerPaper >
             {skillTypes.map((t) => (
-              <div key={t.name_en}>
+              <div key={pickLocalizedName(t.name_en, t.name_fr)}>
                 {(t.Skill.length > 0) && (
-                  <Accordion defaultValue={t.name_en}  >
+                  <Accordion defaultValue={pickLocalizedName(t.name_en, t.name_fr)}  >
                 
-                    <AccordionItem value={t.name_en}>
-                    <AccordionControl h={"xl"}><Title size="sm" c="var(--mantine-color-text-0)">{t.name_en}</Title></AccordionControl>
+                    <AccordionItem value={pickLocalizedName(t.name_en, t.name_fr)}>
+                    <AccordionControl h={"xl"}><Title size="sm" c="var(--mantine-color-text-0)">{pickLocalizedName(t.name_en, t.name_fr)}</Title></AccordionControl>
                     <AccordionPanel style={{padding: 0}}>
                       <ul style={{margin: 0}}>
                       {t.Skill.map((s) => (
@@ -59,11 +60,11 @@ async function ExperiencePaper({experience}: {experience: WorkExperience[]}){
             {experience.map((e) => (
               <InnerPaper key={e.workId}>
                 <Group justify="space-between">
-                  <Title order={4}>{e.position}</Title>
+                  <Title order={4}>{pickLocalizedName(e.position_en, e.position_fr)}</Title>
                   <Title order={6}>{e.company}</Title>
                 </Group>
                 <Text size="xs">{e.startDate}{e.endDate && "-" + e.endDate}</Text>
-                <Text size="sm">{e.description}</Text>
+                <Text size="sm">{pickLocalizedName(e.description_en, e.description_fr)}</Text>
               </InnerPaper>
             ))}
           </Stack>
@@ -111,7 +112,7 @@ async function HobbiesPaper({hobbies}: {hobbies: Hobby[]}){
                 <ul style={{margin: 0}}>
                 {hobbies.map((h) => (
                   <li key={h.hobbyId}>
-                    <Text>{h.name_en}</Text>
+                    <Text>{pickLocalizedName(h.name_en, h.name_fr)}</Text>
                     </li>
                 ))}
 

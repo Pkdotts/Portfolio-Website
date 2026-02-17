@@ -106,9 +106,11 @@ function ExperienceTable({
     <AboutTable>
         <TableThead>
           <TableTr>
-          <TableTh colSpan={1}>Position</TableTh>
+          <TableTh colSpan={1}>Position EN</TableTh>
+          <TableTh colSpan={1}>Position FR</TableTh>
           <TableTh colSpan={1}>Company</TableTh>
-          <TableTh colSpan={1}>Description</TableTh>
+          <TableTh colSpan={1}>Description EN</TableTh>
+          <TableTh colSpan={1}>Description FR</TableTh>
           <TableTh colSpan={1}>Start Date</TableTh>
           <TableTh colSpan={1}>End Date</TableTh>
           <TableTh/>
@@ -118,13 +120,19 @@ function ExperienceTable({
         {experience.map((e) => (
           <TableTr id={e.workId.toString()} key={e.workId}>
             <TableTd >
-              {e.position}
+              {e.position_en}
+            </TableTd>
+            <TableTd >
+              {e.position_fr}
             </TableTd>
             <TableTd >
               {e.company}
             </TableTd>
             <TableTd >
-              {e.description}
+              {e.description_en}
+            </TableTd>
+            <TableTd >
+              {e.description_fr}
             </TableTd>
             <TableTd >
               {e.startDate}
@@ -374,7 +382,7 @@ export default function AboutDashboard({
             action={modalAction}
             title="Experience"
             item={experienceItem}
-            itemName={experienceItem?.position + " - " + experienceItem?.company}
+            itemName={experienceItem?.position_en + " - " + experienceItem?.company}
             itemId={experienceItem?.workId}
             itemIdName="workId"
             createAction={createExperience}
@@ -383,16 +391,22 @@ export default function AboutDashboard({
           >
             <div>
               <Text>Position</Text>
-              <Input name="position" placeholder="What was your position?" defaultValue={experienceItem?.position}/>
+              <Group>
+                <Input name="positionEn" placeholder="Your position in english" defaultValue={experienceItem?.position_en}/>
+                <Input name="positionFr" placeholder="Your position in French" defaultValue={experienceItem?.position_fr ?? undefined}/>
+              </Group>
             </div>
             <div>
               <Text>Company</Text>
               <Input name="company" placeholder="The place you worked at" defaultValue={experienceItem?.company}/>
             </div>
             <div>
-              <Text>Description</Text>
-              <Textarea name="description" placeholder="A brief synopsis" defaultValue={experienceItem?.description}/>
-            </div>
+              <Text>Descriptions</Text>
+              <Group>
+                  <Textarea name="descriptionEn" placeholder="A brief synopsis in english" defaultValue={experienceItem?.description_en}/>
+                  <Textarea name="descriptionFr" placeholder="A brief synopsis in french" defaultValue={experienceItem?.description_fr ?? undefined}/>
+              </Group>
+              </div>
             <Group grow>
               <div>
                 <Text>Start Date</Text>

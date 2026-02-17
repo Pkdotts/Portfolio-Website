@@ -1,47 +1,11 @@
-import type { Metadata } from "next";
-import './globals.css';
-import { Header } from "@/components/common/header";
-import Footer from "@/components/common/footer";
-import { cssVarResolver, darkTheme, lightTheme } from "./theme";
-import '@mantine/core/styles.css';
-import '@mantine/dates/styles.css';
-import { Box, Flex, MantineProvider, mantineHtmlProps } from '@mantine/core';
-import { barlow, encodeSans, quicksand } from "./fonts";
-import { createClient } from "@/lib/supabase/server";
-import {NextIntlClientProvider} from 'next-intl';
+import {ReactNode} from 'react';
 
-
-export const metadata: Metadata = {
-  title: "Andy Bao Le",
-  description: "Andy Bao Le's Portfolio",
+type Props = {
+  children: ReactNode;
 };
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {    
-  const supabase = await createClient();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  return (
-    <html lang="en" {...mantineHtmlProps} className={`${barlow.variable} ${encodeSans.variable} ${quicksand.variable}`}>
-      <body >
-        <NextIntlClientProvider>
-          <MantineProvider theme={lightTheme} cssVariablesResolver={cssVarResolver} >
-            <Flex direction="column" mih="100vh" className="mainBody">
-              <Header user={user}/>
-              <Box style={{flexGrow: 1}}>
-                {children}
-              </Box>
-              {/* <GrainFilterOverlay/> */}
-              <Footer/>
-            </Flex>
-          </MantineProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
-  );
+// Since we have a `not-found.tsx` page on the root, a layout file
+// is required, even if it's just passing children through.
+export default function RootLayout({children}: Props) {
+  return children;
 }

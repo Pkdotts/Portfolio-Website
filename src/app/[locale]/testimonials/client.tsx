@@ -4,7 +4,7 @@ import PageTitle from "@/components/common/pagetitle";
 import InnerPaper from "@/components/ui/cards/innerpaper";
 import { Testimonial } from "@/generated/prisma/client";
 import {  Container, Title, Text, Stack, Input, Button, Group, Textarea, SimpleGrid } from "@mantine/core";
-import { createTestimonial } from "../api/controllers/testimonialsController";
+import { createTestimonial } from "../../api/controllers/testimonialsController";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 
