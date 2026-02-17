@@ -38,7 +38,7 @@ export function LocaleSwitcher() {
       <Button
           onClick={handleToggle}
           disabled={isPending}
-          variant="subtle"
+          variant="white"
           radius="xl"
           px="xs"
           aria-label="Switch language"

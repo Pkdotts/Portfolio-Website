@@ -29,6 +29,8 @@
         "namePlaceholder": "Your name, please",
         "messageLabel": "Write a message",
         "messagePlaceholder": "Your thoughts about me",
+        "thankYou": "Thank you!",
+        "testimonyReceived": "Your testimony has been sent for approval.",
         "cancel": "Cancel",
         "submit": "Submit"
     },
@@ -41,6 +43,8 @@
         "emailPlaceholder": "Give me your email",
         "messageLabel": "Write a message",
         "messagePlaceholder": "What do you want from me?!",
+        "thankYou": "Thank you!",
+        "contactReceived": "Your contact has been received.",
         "submit": "Submit"
     }
 }

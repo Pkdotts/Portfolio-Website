@@ -5,20 +5,28 @@ import InnerPaper from "@/components/ui/cards/innerpaper";
 import { Testimonial } from "@/generated/prisma/client";
 import {  Container, Title, Text, Stack, Input, Button, Group, Textarea, SimpleGrid } from "@mantine/core";
 import { createTestimonial } from "../../api/controllers/testimonialsController";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { useFormState, useFormStatus } from "react-dom";
+import { SubmitButton } from "@/components/ui/buttons/submit";
 
 export default function Testimonials({testimonials}: {testimonials: Testimonial[]}) {
     const t = useTranslations('testimonials');
     const [writing, setWriting] = useState<boolean>(false);
-
+    const [state, formAction] = useFormState(createTestimonial, { success: false });
+    
+    useEffect(() => {
+        if (state.success) {
+            setWriting(false); 
+        }
+    }, [state.success]);
+    
     return (
         <>
         <PageTitle>{t('title')}</PageTitle>
 
         <Container p="sm" size={"md"}>
             <Stack>
-                <Title></Title>
                 <ContentPaper >
                     <Stack>
                         <Title order={2}>{t('header')}</Title>
@@ -37,15 +45,28 @@ export default function Testimonials({testimonials}: {testimonials: Testimonial[
                     </Stack>
                 </ContentPaper>
                 <ContentPaper>
-                    <Stack>
+                    <Stack align="stretch">
+                        <Stack align="center">
 
-                    
-                    <Title order={2}>{t('write')}</Title>
-                        
+                            <Title order={2}>{t('write')}</Title>
+                        </Stack>
                         {writing ? 
                             <InnerPaper>
-                                <form name="form" action={createTestimonial}>
+                                <form 
+                                    name="form" 
+                                    action={formAction} 
+                                    onSubmit={(e) => { 
+                                        const form = e.currentTarget;
+                                        if (!form.checkValidity()) return;
+                                    }}>
                                     <Stack>
+                                        <input
+                                            type="text"
+                                            name="company"
+                                            style={{ display: "none" }}
+                                            tabIndex={-1}
+                                            autoComplete="off"
+                                        />
                                         <div>
                                             <Text>
                                                 {t('nameLabel')}
@@ -59,18 +80,27 @@ export default function Testimonials({testimonials}: {testimonials: Testimonial[
                                             <Textarea name="message" placeholder={t('messagePlaceholder')} resize="vertical" required/>
                                         </div>
                                         <Group justify="flex-end">
-                                            <Button onClick={() => {setWriting(false)}}>{t('cancel')}</Button>
-                                            <Button type="submit">{t('submit')}</Button>
+                                            <Button type="button" onClick={() => {setWriting(false)}}>{t('cancel')}</Button>
+                                            <SubmitButton>{t('submit')}</SubmitButton>
                                         </Group>
                                     </Stack>
                                 </form>
                             </InnerPaper>
-                        :
-                            <Button onClick={() => {setWriting(true)}}>
-                                {t('make')}
-                            </Button>
+                            : state.success ?
+                            <InnerPaper>
+                                <Stack p="xl" gap="0">
+
+                                    <Title>{t('thankYou')}</Title>
+                                    <Title order={2}>{t('testimonyReceived')}</Title>
+                                </Stack>
+                            </InnerPaper>
+                            :
+                            <Group justify="center">
+                                <Button size="lg" radius="xl" onClick={() => {setWriting(true)}}>
+                                    {t('make')}
+                                </Button>
+                            </Group>
                         }
-                        
                     </Stack>
                 </ContentPaper>
             </Stack>

@@ -29,6 +29,8 @@
         "namePlaceholder": "Votre nom, stp",
         "messageLabel": "Écrivez un message",
         "messagePlaceholder": "Ce que vous pensez de moi",
+        "thankYou": "Merci!",
+        "testimonyReceived": "Votre témoignage a été envoyé pour approbation.",
         "cancel": "Annuler",
         "submit": "Soumettre"
     },
@@ -41,6 +43,8 @@
         "emailPlaceholder": "Donne moi ton email",
         "messageLabel": "Écrivez un message",
         "messagePlaceholder": "Que veux tu de moi?!",
+        "thankYou": "Merci!",
+        "contactReceived": "Votre contact a été reçu.",
         "submit": "Soumettre"
     }
 }

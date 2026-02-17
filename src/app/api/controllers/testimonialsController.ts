@@ -2,7 +2,13 @@
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
-export async function createTestimonial(formData: FormData) {
+export async function createTestimonial(
+  prevState: { success: boolean } | undefined,
+  formData: FormData
+) {
+  const honeypot = formData.get("company");
+  if (honeypot) return; // protect from bots
+
   const name = formData.get("name") as string;
   const message = formData.get("message") as string;
 
@@ -15,6 +21,7 @@ export async function createTestimonial(formData: FormData) {
   });
 
   revalidatePath("/testimonials");
+  return { success: true };
 }
 
 export async function acceptTestimonial(testimonialId: number) {

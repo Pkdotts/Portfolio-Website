@@ -44,23 +44,24 @@ export function Header({ user }: HeaderProps) {
                     {
                         isMobile ? 
                         <Menu width={200} position="bottom-start">
+                            
                             <Menu.Target>
                                 <ActionIcon>
                                     <IconMenu/>
                                 </ActionIcon>
                             </Menu.Target>
                             <Menu.Dropdown>
-                            {buttons.map((b)=>(
-                                <Link href={b[0]} key={b[0]}>
-                                    <Menu.Item >
-                                        {b[1]}
-                                    </Menu.Item>
-                                </Link>
-                            ))}
-                            <Menu.Item>
-                                <LocaleSwitcher/>
-                            </Menu.Item>
-                            {
+                                <Menu.Item>
+                                    <LocaleSwitcher/>
+                                </Menu.Item>
+                                {buttons.map((b)=>(
+                                    <Link href={b[0]} key={b[0]}>
+                                        <Menu.Item >
+                                            {b[1]}
+                                        </Menu.Item>
+                                    </Link>
+                                ))}
+                                {
                                 user && <>
                                 <a href={dashboard[0]}> 
                                     <Menu.Item>
@@ -78,10 +79,10 @@ export function Header({ user }: HeaderProps) {
                         </Menu>
                         :
                         <Group gap="30px">
+                            <LocaleSwitcher/>
                             {buttons.map((b) => (
                                 <Link href={b[0]} key={b[0]}>{b[1]}</Link>
                             ))}
-                            <LocaleSwitcher/>
                             {
                                 user && <>
                                 <a href={dashboard[0]}> 
