@@ -73,9 +73,9 @@ export default function Slideshow({images}: SlideshowProps) {
 
                 
                 {images.map((src, i) => (
-                    <>
+                    <div key={i}>
                         <Transition
-                            key={i}
+                            key={src.slideshowUrl}
                             mounted={i === index}
                             transition={skewAnim}
                             duration={fadeTime}
@@ -87,7 +87,7 @@ export default function Slideshow({images}: SlideshowProps) {
                             
                         </Transition>
                         <Transition
-                            key={i}
+                            key={src.logoUrl}
                             mounted={i === index}
                             transition={skewAnim}
                             duration={fadeTime * 0.5}
@@ -97,7 +97,7 @@ export default function Slideshow({images}: SlideshowProps) {
                                 <Image src={src.logoUrl} style={{...transitionStyle, height: height, position: "absolute", zIndex: 1}} w="30vw" fit="contain" left="15vw" top="0"/>
                             )}
                         </Transition>
-                    </>
+                    </div>
                 ))}
                 
                 <div style={{height: "100%", width: "100%", backgroundImage: "linear-gradient(to right, var(--mantine-color-main-10) -15% , transparent, transparent, var(--mantine-color-main-10) 100% )", position: "absolute", zIndex: 1}}/>

@@ -17,12 +17,12 @@ export default function Footer() {
     <footer >
       <Stack align="center" gap="xs" >
         <Group justify="center">
-          {links.map((l)=>
-          <Tooltip label={l[0]}>
-            <ActionIcon variant="subtle" component="a" target="_blank" href={l[1]}>
-              {l[2]}
-            </ActionIcon>
-          </Tooltip>
+          {links.map((l, k)=>
+            <Tooltip label={l[0]} key={k}>
+              <ActionIcon variant="subtle" component="a" target="_blank" href={l[1]}>
+                {l[2]}
+              </ActionIcon>
+            </Tooltip>
           )}  
         </Group>
         <a style={{textDecoration: "none", color: "var(--mantine-color-accent-6)"}} href="mailto:andybaole1234@gmail.com">andybaole1234@gmail.com</a>
