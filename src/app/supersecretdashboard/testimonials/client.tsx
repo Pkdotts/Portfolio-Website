@@ -64,7 +64,7 @@ export default function TestimonialDashboard({
     return (
       <>
       
-        <Container w="100%" p="xs" size="xl">
+        <Container w="100%" p="xs" size="md">
           <Paper bdrs="md">
                 <DashBar/>
             <Divider/>

@@ -19,11 +19,7 @@ function ArtTable({art}: {art: Art[]}){
 }
 
 
-export default function ArtDashboard({
-    art,
-    }: {
-    art: Art[],
-    }) {
+export default function ArtDashboard({art}: {art: Art[]}) {
 
     const [opened, { open, close }] = useDisclosure(false);
 
@@ -34,7 +30,7 @@ export default function ArtDashboard({
     return (
       <>
       
-        <Container w="100%" p="xs" size="xl">
+        <Container w="100%" p="xs" size="md">
           <Paper bdrs="md">
                 <DashBar/>
             <Group p="xs">

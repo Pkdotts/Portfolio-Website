@@ -24,7 +24,7 @@ export async function acceptTestimonial(testimonialId: number) {
         data: { accepted: true }
     });
 
-  revalidatePath("/testimonials");
+  revalidatePath("/supersecretdashboard/testimonials");
 }
 
 export async function deleteTestimonial(testimonialId: number) {
@@ -35,5 +35,5 @@ export async function deleteTestimonial(testimonialId: number) {
         }
     })
 
-    revalidatePath("/testimonials");
+    revalidatePath("/supersecretdashboard/testimonials");
 } 

@@ -3,7 +3,7 @@ import ContentPaper from "@/components/common/contentpaper";
 import PageTitle from "@/components/common/pagetitle";
 import InnerPaper from "@/components/ui/cards/innerpaper";
 import { Testimonial } from "@/generated/prisma/client";
-import {  Container, Title, Text, Stack, Input, Button, Group, Textarea } from "@mantine/core";
+import {  Container, Title, Text, Stack, Input, Button, Group, Textarea, SimpleGrid } from "@mantine/core";
 import { createTestimonial } from "../api/controllers/testimonialsController";
 import { useState } from "react";
 
@@ -28,7 +28,7 @@ export default function Testimonials({testimonials}: {testimonials: Testimonial[
                                     <Group justify="space-between">
                                         <Title order={4}>{t.name}</Title> <Text c="var(--mantine-color-main-9)">{t.date.toDateString()}</Text>
                                     </Group>
-                                    <Text>{t.message}</Text>
+                                    <Text>"{t.message}"</Text>
                                 </InnerPaper>
                             ))
                         }

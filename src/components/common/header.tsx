@@ -35,6 +35,9 @@ export function Header({ user }: HeaderProps) {
                         <a href="/testimonials"> 
                             Testimonials 
                         </a>
+                        <a href="/contact"> 
+                            Contact me 
+                        </a>
                         {
                             user && <>
                             <a href="/supersecretdashboard/projects"> 

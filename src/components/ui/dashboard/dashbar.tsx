@@ -8,7 +8,7 @@ export default function DashBar(){
                 p="xs"
                 justify="space-between"
             >
-                <Title>The Secret Dashboard</Title>
+                <Title>The Super Secret Dashboard</Title>
                 <Group>
                     <Button variant="white" component="a" href="/supersecretdashboard/about" >
                         About
@@ -21,6 +21,9 @@ export default function DashBar(){
                     </Button>
                     <Button variant="white" component="a" href="/supersecretdashboard/testimonials" >
                         Testimonials
+                    </Button>
+                    <Button variant="white" component="a" href="/supersecretdashboard/contactmessages" >
+                        Contact Messages
                     </Button>
                 </Group>
             </Group>

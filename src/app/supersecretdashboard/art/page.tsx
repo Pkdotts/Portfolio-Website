@@ -1,9 +1,10 @@
-
-import { Group } from "@mantine/core";
+"use server"
+import ArtDashboard from "./client";
+import prisma from "@/lib/prisma";
 
 export default async function ArtDashboardPage() {
+  const art = prisma.art.findMany();
   return (
-    <Group >
-    </Group>
+    <ArtDashboard art={art}/>
   );
 }

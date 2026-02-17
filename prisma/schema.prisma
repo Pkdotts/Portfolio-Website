@@ -75,10 +75,12 @@ model Hobby {
 }
 
 model ContactMessage {
-  contactId Int     @id @unique @default(autoincrement())
+  contactId Int      @id @unique @default(autoincrement())
   name      String
   email     String
   message   String?
+  seen      Boolean  @default(false)
+  date      DateTime @default(now()) @db.Timestamp(6)
 }
 
 model Testimonial {

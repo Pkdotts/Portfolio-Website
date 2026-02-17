@@ -133,16 +133,16 @@ export default async function About() {
   return (
     <>
       <PageTitle>ABOUT ME</PageTitle>
-      <Container p="sm" size={"xl"}>
+      <Container p="sm" size={"md"}>
         <Stack gap="sm">
           <Grid>
-            <GridCol span={8}>
+            <GridCol span={{md: 8, sm: 6, xs: 12}}>
               <Stack >
                 <SkillsPaper skillTypes={skillTypes}/>
                 <EducationPaper education={education}/>
               </Stack>
             </GridCol>
-            <GridCol span={4}>
+            <GridCol span={{md: 4, sm: 6, xs: 12}}>
               <Stack >
                 <ExperiencePaper experience={experience}/>
                 <HobbiesPaper hobbies={hobbies}/>
