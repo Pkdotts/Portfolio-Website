@@ -15,7 +15,7 @@ export default function Home() {
           <Stack>
           <NameTitle/>
           <Group justify="center" >
-            <Button variant="filled" w="50%" size="lg" radius="xl">{t('resume')}</Button>
+            <Button component="a" target="_blank" href="https://tyygdwvbspeearfdnijp.supabase.co/storage/v1/object/public/Resume/Andy%20Bao%20Le%20-%20CV.pdf" download="Andy Bao Le CV" variant="filled" w="50%" size="lg" radius="xl">{t('resume')}</Button>
           </Group>
           </Stack>
         </Group>
