@@ -4,9 +4,10 @@ import { useState, useRef } from "react";
 import { Button, Group, Text, useMantineTheme, Stack, ActionIcon, Image, SimpleGrid, Container, Paper } from "@mantine/core";
 import { Dropzone, MIME_TYPES } from "@mantine/dropzone";
 import { IconCloudUpload, IconDownload, IconX } from "@tabler/icons-react";
-import { supabase } from "@/lib/supabase";
 import classes from './dropzonebutton.module.css';
 import { getFilePathFromUrl } from "@/app/hooks/getFilePathFromUrl";
+import { createClient } from "@/lib/supabase/client";
+
 
 interface Props {
   name: string;
@@ -33,6 +34,14 @@ export function DropzoneButton({
   );
 
   async function uploadFile(file: File) {
+    const supabase = await createClient();
+    
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+  
+    if (!user) throw new Error("Unauthorized");
+
     const fileName = `${sessionId}/${crypto.randomUUID()}-${file.name}`;
     const { error } = await supabase.storage.from(bucket).upload(fileName, file);
     if (error) {
@@ -53,6 +62,14 @@ export function DropzoneButton({
 
   async function removeFile(index: number, url: string) {
     try {
+      const supabase = await createClient();
+    
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+    
+      if (!user) throw new Error("Unauthorized");
+      
       const path = getFilePathFromUrl(url, bucket);
       console.log("Deleting path:", path);
 

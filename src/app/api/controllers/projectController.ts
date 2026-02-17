@@ -1,12 +1,21 @@
 "use server";
 import { getFilePathFromUrl } from "@/app/hooks/getFilePathFromUrl";
 import prisma from "@/lib/prisma";
-import { supabase } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/server";
+import { SupabaseClient } from "@supabase/supabase-js";
 import { revalidatePath } from "next/cache";
 
 const bucket = "Projects";
 
 async function deleteSupabaseFile(publicUrl: string) {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) throw new Error("Unauthorized");
+
   try {
     const url = new URL(publicUrl);
     const path = getFilePathFromUrl(url.toString(), bucket);
@@ -24,6 +33,16 @@ async function deleteSupabaseFile(publicUrl: string) {
 }
 
 export async function createProject(formData: FormData) {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    throw new Error("Unauthorized");
+  }
+
   const projectId = Number(formData.get("projectId") as string);
   const projectUrl = formData.get("projectUrl") as string;
   const title = formData.get("title") as string;
@@ -46,15 +65,15 @@ export async function createProject(formData: FormData) {
   const finalImageUrls: string[] = [];
 
   for (const url of imageUrls) {
-    const moved = await moveTempFileToProject(url, projectId);
+    const moved = await moveTempFileToProject(supabase, url, projectId);
     if (moved) finalImageUrls.push(moved);
   }
 
-  const finalLogoUrl = await moveTempFileToProject(logoUrl, projectId);
+  const finalLogoUrl = await moveTempFileToProject(supabase, logoUrl, projectId);
 
-  const finalCoverUrl = await moveTempFileToProject(coverUrl, projectId);
+  const finalCoverUrl = await moveTempFileToProject(supabase, coverUrl, projectId);
 
-  const finalSlideshowUrl = await moveTempFileToProject(slideshowUrl, projectId);
+  const finalSlideshowUrl = await moveTempFileToProject(supabase, slideshowUrl, projectId);
 
   await prisma.project.create({
     data: {
@@ -76,6 +95,14 @@ export async function createProject(formData: FormData) {
 }
 
 export async function updateProject(formData: FormData) {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) throw new Error("Unauthorized");
+  
   const projectId = Number(formData.get("projectId") as string);
   const projectUrl = formData.get("projectUrl") as string;
   const title = formData.get("title") as string;
@@ -113,13 +140,13 @@ export async function updateProject(formData: FormData) {
   }
 
 
-  const finalLogoUrl = await moveTempFileToProject(logoUrl, projectId);
-  const finalCoverUrl = await moveTempFileToProject(coverUrl, projectId);
-  const finalSlideshowUrl = await moveTempFileToProject(slideshowUrl, projectId);
+  const finalLogoUrl = await moveTempFileToProject(supabase, logoUrl, projectId);
+  const finalCoverUrl = await moveTempFileToProject(supabase, coverUrl, projectId);
+  const finalSlideshowUrl = await moveTempFileToProject(supabase, slideshowUrl, projectId);
 
   const finalImageUrls: string[] = [];
   for (const url of imageUrls) {
-    const moved = await moveTempFileToProject(url, projectId);
+    const moved = await moveTempFileToProject(supabase, url, projectId);
     if (moved) finalImageUrls.push(moved);
   }
 
@@ -144,6 +171,11 @@ export async function updateProject(formData: FormData) {
 }
 
 export async function deleteProject(projectId: number) {
+  const user = await createClient();
+  if (!user) {
+    throw new Error("Unauthorized");
+  }
+  
   const project = await prisma.project.findUnique({ where: { projectId } });
   if (!project) return;
 
@@ -160,6 +192,7 @@ export async function deleteProject(projectId: number) {
 }
 
 async function moveTempFileToProject(
+  supa: SupabaseClient,
   url: string | null,
   projectId: number
 ) {
@@ -172,7 +205,7 @@ async function moveTempFileToProject(
   const toPath = `${projectId}/${fileName}`;
 
   const { data: fileData, error: downloadError } =
-    await supabase.storage
+    await supa.storage
       .from("Projects-Temp")
       .download(fromPath);
 
@@ -182,7 +215,7 @@ async function moveTempFileToProject(
   }
 
   const { error: uploadError } =
-    await supabase.storage
+    await supa.storage
       .from("Projects")
       .upload(toPath, fileData);
 
@@ -191,11 +224,11 @@ async function moveTempFileToProject(
     return null;
   }
 
-  await supabase.storage
+  await supa.storage
     .from("Projects-Temp")
     .remove([fromPath]);
 
-  const { data } = supabase.storage
+  const { data } = supa.storage
     .from("Projects")
     .getPublicUrl(toPath);
 
