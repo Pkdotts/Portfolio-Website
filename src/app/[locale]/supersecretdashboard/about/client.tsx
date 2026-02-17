@@ -270,7 +270,7 @@ export default function AboutDashboard({
   }) {
     const [opened, { open, close }] = useDisclosure(false);
     const [activeTab, setActiveTab] = useState<string | null>('skills');
-
+    const [selectedSkillType, setSelectedSkillType] = useState<string | null>(null);
     const [selectedItem, setSelectedItem] = useState<SelectedItem>(null);
     const [modalAction, setModalAction] = useState<ModalActions>(ModalActions.create);
 
@@ -295,6 +295,7 @@ export default function AboutDashboard({
         : null;
 
     function openEditModal(item: SelectedItem) {
+      setSelectedSkillType(null);
       setSelectedItem(item);
       setModalAction(ModalActions.edit);
       open();
@@ -306,7 +307,13 @@ export default function AboutDashboard({
       open();
     }
 
+    function openCreateSkillModal(skill: string){
+      setSelectedSkillType(skill);
+      openCreateModal();
+    }
+
     function openDeleteModal(item: SelectedItem){
+      setSelectedSkillType(null);
       setSelectedItem(item)
       setModalAction(ModalActions.delete);
       open();
@@ -345,7 +352,7 @@ export default function AboutDashboard({
               <TabsPanel value="skills">
                 <SkillsTable 
                   skills={skillTypes}
-                  openCreateModal={openCreateModal}
+                  openCreateModal={openCreateSkillModal}
                   openEditModal={openEditModal}
                   openDeleteModal={openDeleteModal}
                 />
@@ -491,7 +498,7 @@ export default function AboutDashboard({
           itemId={skillItem?.skillId}
           itemIdName="skillId"
           createAction={(formData) =>
-            createSkill(formData, skillItem?.skillType ?? "Others")
+            createSkill(formData, selectedSkillType ?? skillItem?.skillType ?? "Others")
           }
           updateAction={updateSkill}
           deleteAction={deleteSkill}
