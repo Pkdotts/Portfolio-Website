@@ -9,10 +9,11 @@ import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { SubmitButton } from "@/components/ui/buttons/submit";
+import { FormState } from "@/entities/types";
 
 export default function ContactPage() {
     const t = useTranslations('contact');
-    const [state, formAction] = useFormState(createContactMessage, { success: false });
+    const [state, formAction] = useFormState<FormState, FormData>(createContactMessage, { success: false });
 
     return (
         <>

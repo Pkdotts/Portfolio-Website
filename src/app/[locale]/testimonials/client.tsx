@@ -9,17 +9,18 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useFormState, useFormStatus } from "react-dom";
 import { SubmitButton } from "@/components/ui/buttons/submit";
+import { FormState } from "@/entities/types";
 
 export default function Testimonials({testimonials}: {testimonials: Testimonial[]}) {
     const t = useTranslations('testimonials');
     const [writing, setWriting] = useState<boolean>(false);
-    const [state, formAction] = useFormState(createTestimonial, { success: false });
+    const [state, formAction] = useFormState<FormState, FormData>(createTestimonial, { success: false });
     
     useEffect(() => {
         if (state.success) {
             setWriting(false); 
         }
-    }, [state]);
+    }, [state.success]);
     
     return (
         <>
