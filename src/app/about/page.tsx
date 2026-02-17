@@ -104,11 +104,9 @@ async function HobbiesPaper({hobbies}: {hobbies: Hobby[]}){
             <Title className="titleShadow">Hobbies</Title>
               <InnerPaper>
                 <ul style={{margin: 0}}>
-
-                
                 {hobbies.map((h) => (
                   <li key={h.hobbyId}>
-                    <Title order={4}>{h.name_en}</Title>
+                    <Text>{h.name_en}</Text>
                     </li>
                 ))}
 
@@ -132,24 +130,22 @@ export default async function About() {
 
   return (
     <>
-      <PageTitle>ABOUT ME</PageTitle>
-      <Container p="sm" size={"md"}>
-        <Stack gap="sm">
-          <Grid>
-            <GridCol span={{md: 8, sm: 6, xs: 12}}>
-              <Stack >
-                <SkillsPaper skillTypes={skillTypes}/>
-                <EducationPaper education={education}/>
-              </Stack>
-            </GridCol>
-            <GridCol span={{md: 4, sm: 6, xs: 12}}>
-              <Stack >
-                <ExperiencePaper experience={experience}/>
-                <HobbiesPaper hobbies={hobbies}/>
-              </Stack>
-            </GridCol>
-          </Grid>
-        </Stack>
+      
+      <Container my="xl" size={"md"}>
+        <Grid gutter={"xl"}>
+          <GridCol span={{md: 8, sm: 6, xs: 12}}>
+            <Stack gap={"xl"}>
+              <SkillsPaper skillTypes={skillTypes}/>
+              <EducationPaper education={education}/>
+            </Stack>
+          </GridCol>
+          <GridCol span={{md: 4, sm: 6, xs: 12}}>
+            <Stack gap={"xl"}>
+              <HobbiesPaper hobbies={hobbies}/>
+              <ExperiencePaper experience={experience}/>
+            </Stack>
+          </GridCol>
+        </Grid>
       </Container>
     </>
   );
