@@ -5,17 +5,20 @@ import InnerPaper from "@/components/ui/cards/innerpaper";
 import {  Container, Title, Text, Stack, Input, Button, Group, Textarea, SimpleGrid } from "@mantine/core";
 import { createContactMessage } from "../api/controllers/contactMessageController";
 import { PkSpriteFront } from "@/components/ui/sprites/PkSprites";
+import { useTranslations } from "next-intl";
 
 export default function ContactPage() {
+  const t = useTranslations('contact');
+
     return (
         <>
-        <PageTitle>Contact</PageTitle>
+        <PageTitle>{t('title')}</PageTitle>
 
         <Container p="sm" size={"md"}>
             <Stack>
                 <ContentPaper>
                     <Stack>
-                        <Title order={2}>Get in contact!</Title> 
+                        <Title order={2}>{t('header')}</Title> 
                         <Group grow>
                             <InnerPaper>
                                 <form name="form" action={createContactMessage}>
@@ -25,26 +28,26 @@ export default function ContactPage() {
                                                 <div>
 
                                                 <Text>
-                                                    Who are you?
+                                                    {t('nameLabel')}
                                                 </Text>
-                                                <Input name="name" placeholder="Your name, please" required/>
+                                                <Input name="name" placeholder={t('namePlaceholder')} required/>
                                                 </div>
                                                 <div>
                                                 <Text>
-                                                    Email
+                                                    {t('emailLabel')}
                                                 </Text>
-                                                <Input name="email" placeholder="Give me your email" required/>
+                                                <Input name="email" placeholder={t('emailPlaceholder')} required/>
                                                 </div>
                                             </Group>
                                         </div>
                                         <div>
                                             <Text>
-                                                Write a message
+                                                {t('messageLabel')}
                                             </Text>
-                                            <Textarea name="message" placeholder="What do you want from me?!" resize="vertical" required/>
+                                            <Textarea name="message" placeholder={t('messagePlaceholder')} resize="vertical" required/>
                                         </div>
                                         <Group justify="flex-end">
-                                            <Button type="submit">Submit</Button>
+                                            <Button type="submit">{t('submit')}</Button>
                                         </Group>
                                     </Stack>
                                 </form>

@@ -1,6 +1,46 @@
 {
-    "footer": {
-        "email": "andybaole1234@gmail.com",
-        "phone": "438-955-0950"
+    "header":{
+        "aboutMe": "About Me",
+        "games": "Games",
+        "testimonials": "Testimonials",
+        "contactMe": "Contact Me"
+    },
+    "about":{
+        "roles": "Gamedev & Artist",
+        "resume": "Resume",
+        "welcomeParagraph": "Welcome to my amazing digital portfolio! My name is Andy, and I am an artist, animator, programmer and gamedev. If you're here, then that's probably because you're a big fan of me. Well if you want my autograph, then you can download my resume. That's close enough, right?",
+        "skills": "Skills",
+        "hobbies": "Hobbies",
+        "education": "Education",
+        "experience": "Experience"
+    },
+    "games":{
+        "title": "GAMES",
+        "released": "Released",
+        "upcoming": "Upcoming"
+    },
+    "testimonials":{
+        "title": "TESTIMONIALS",
+        "header": "What people have to say about me",
+        "noTestimonials": "No testimonials here... That means you can be the first!",
+        "write": "Write your testimonial!",
+        "make": "Make a testimonial",
+        "nameLabel": "Who are you?",
+        "namePlaceholder": "Your name, please",
+        "messageLabel": "Write a message",
+        "messagePlaceholder": "Your thoughts about me",
+        "cancel": "Cancel",
+        "submit": "Submit"
+    },
+    "contact":{
+        "title": "CONTACT",
+        "header": "Get in contact!",
+        "nameLabel": "Who are you?",
+        "namePlaceholder": "Your name, please",
+        "emailLabel": "Email",
+        "emailPlaceholder": "Give me your email",
+        "messageLabel": "Write a message",
+        "messagePlaceholder": "What do you want from me?!",
+        "submit": "Submit"
     }
 }

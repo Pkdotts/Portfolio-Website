@@ -4,9 +4,10 @@ import { Container, Title, Text, Button, Group, Stack } from "@mantine/core";
 import About from "./about/page";
 import { PkSpriteFront } from "@/components/ui/sprites/PkSprites";
 import InnerPaper from "@/components/ui/cards/innerpaper";
-import PageTitle from "@/components/common/pagetitle";
+import { useTranslations } from "next-intl";
 
 export default function Home() {
+  const t = useTranslations('about');
   return (
     <>
       <Container  size={"xl"} h="70vh" >
@@ -14,7 +15,7 @@ export default function Home() {
           <Stack>
           <NameTitle/>
           <Group justify="center" >
-            <Button variant="filled" w="50%" size="lg" radius="xl">Resume</Button>
+            <Button variant="filled" w="50%" size="lg" radius="xl">{t('resume')}</Button>
           </Group>
           </Stack>
         </Group>
@@ -26,8 +27,7 @@ export default function Home() {
           <Container size="sm">
             <Stack m="lg" gap="xl">
               <Text>
-                Welcome to my amazing digital portfolio! My name is Andy, and I am an artist, animator, programmer and gamedev. If you're here, then that's probably because you're a big fan of me.
-                Well if you want my autograph, then you can download my resume. That's close enough, right?
+                {t('welcomeParagraph')}
               </Text>
               {/* <Text>
                 I've had a passion for video games ever since I was a lil kid. My earliest memories of playing games were from playing Super Mario World on my SNES when I was 4

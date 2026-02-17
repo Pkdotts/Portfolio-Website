@@ -8,6 +8,7 @@ import '@mantine/dates/styles.css';
 import { Box, Flex, MantineProvider, mantineHtmlProps } from '@mantine/core';
 import { barlow, encodeSans, quicksand } from "./fonts";
 import { createClient } from "@/lib/supabase/server";
+import {NextIntlClientProvider} from 'next-intl';
 
 
 export const metadata: Metadata = {
@@ -28,16 +29,18 @@ export default async function RootLayout({
   return (
     <html lang="en" {...mantineHtmlProps} className={`${barlow.variable} ${encodeSans.variable} ${quicksand.variable}`}>
       <body >
-        <MantineProvider theme={lightTheme} cssVariablesResolver={cssVarResolver} >
-          <Flex direction="column" mih="100vh" className="mainBody">
-            <Header user={user}/>
-            <Box style={{flexGrow: 1}}>
-              {children}
-            </Box>
-            {/* <GrainFilterOverlay/> */}
-            <Footer/>
-          </Flex>
-        </MantineProvider>
+        <NextIntlClientProvider>
+          <MantineProvider theme={lightTheme} cssVariablesResolver={cssVarResolver} >
+            <Flex direction="column" mih="100vh" className="mainBody">
+              <Header user={user}/>
+              <Box style={{flexGrow: 1}}>
+                {children}
+              </Box>
+              {/* <GrainFilterOverlay/> */}
+              <Footer/>
+            </Flex>
+          </MantineProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

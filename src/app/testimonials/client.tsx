@@ -6,22 +6,24 @@ import { Testimonial } from "@/generated/prisma/client";
 import {  Container, Title, Text, Stack, Input, Button, Group, Textarea, SimpleGrid } from "@mantine/core";
 import { createTestimonial } from "../api/controllers/testimonialsController";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function Testimonials({testimonials}: {testimonials: Testimonial[]}) {
+    const t = useTranslations('testimonials');
     const [writing, setWriting] = useState<boolean>(false);
 
     return (
         <>
-        <PageTitle>TESTIMONIALS</PageTitle>
+        <PageTitle>{t('title')}</PageTitle>
 
         <Container p="sm" size={"md"}>
             <Stack>
                 <Title></Title>
                 <ContentPaper >
                     <Stack>
-                        <Title order={2}>What people have to say about me</Title>
+                        <Title order={2}>{t('header')}</Title>
                         {testimonials.length < 1 ? 
-                            <Text>No testimonials here... That means you can be the first!</Text>
+                            <Text>{t('noTestimonials')}</Text>
                             :
                             testimonials.map((t) => (
                                 <InnerPaper key={t.testimonialId}>
@@ -38,7 +40,7 @@ export default function Testimonials({testimonials}: {testimonials: Testimonial[
                     <Stack>
 
                     
-                    <Title order={2}>Write your testimonial!</Title>
+                    <Title order={2}>{t('write')}</Title>
                         
                         {writing ? 
                             <InnerPaper>
@@ -46,26 +48,26 @@ export default function Testimonials({testimonials}: {testimonials: Testimonial[
                                     <Stack>
                                         <div>
                                             <Text>
-                                                Who are you?
+                                                {t('nameLabel')}
                                             </Text>
-                                            <Input name="name" placeholder="Your name, please" required/>
+                                            <Input name="name" placeholder={t('namePlaceholder')} required/>
                                         </div>
                                         <div>
                                             <Text>
-                                                Write a message
+                                                {t('messageLabel')}
                                             </Text>
-                                            <Textarea name="message" placeholder="Your thoughts about me" resize="vertical" required/>
+                                            <Textarea name="message" placeholder={t('messagePlaceholder')} resize="vertical" required/>
                                         </div>
                                         <Group justify="flex-end">
-                                            <Button onClick={() => {setWriting(false)}}>Cancel</Button>
-                                            <Button type="submit">Submit</Button>
+                                            <Button onClick={() => {setWriting(false)}}>{t('cancel')}</Button>
+                                            <Button type="submit">{t('submit')}</Button>
                                         </Group>
                                     </Stack>
                                 </form>
                             </InnerPaper>
                         :
                             <Button onClick={() => {setWriting(true)}}>
-                                Make a testimonial
+                                {t('make')}
                             </Button>
                         }
                         

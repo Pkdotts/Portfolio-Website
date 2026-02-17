@@ -5,8 +5,10 @@ import classes from "./nametitle.module.css"
 
 import "../effects/styles/textoutline.css";
 import { useMediaQuery } from "@mantine/hooks";
+import { useTranslations } from "next-intl";
 
 export default function NameTitle(){
+    const t = useTranslations('about');
     const isMobile = useMediaQuery("(max-width: 768px)");
     return(
         <div className={classes.nametitleparent}>
@@ -31,7 +33,7 @@ export default function NameTitle(){
                 size={isMobile ? "25px" :"40px" }
                 fs="italic" 
                 className="textoutline-accent">
-                Gamedev & Artist
+                {t('roles')}
             </Text>
             </div>
 

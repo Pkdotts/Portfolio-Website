@@ -12,15 +12,17 @@ import "../ui/effects/styles/underlinebutton.css";
 import LogoutButton from "../ui/buttons/logout";
 import { useMediaQuery } from "@mantine/hooks";
 import { IconMenu } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 
 type HeaderProps = {
   user: any | null;
 };
 
 export function Header({ user }: HeaderProps) {
+    const t = useTranslations('header');
     const isMobile = useMediaQuery("(max-width: 958px)");
     
-    const buttons = [["/", "About Me"], ["/games", "Games"], ["/testimonials", "Testimonials"], ["/contact", "Contact me"]];
+    const buttons = [["/", t('aboutMe')], ["/games", t('games')], ["/testimonials", t('testimonials')], ["/contact", t('contactMe')]];
     const dashboard = ["/supersecretdashboard/projects", "Dashboard"];
 
     return (

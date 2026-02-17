@@ -4,13 +4,14 @@ import GameCard from "@/components/ui/cards/gamecard";
 import Slideshow, { Slide } from "@/components/ui/slideshow";
 import {  Container, Title, Text, BackgroundImage, Grid, GridCol, Stack } from "@mantine/core";
 import { Project } from "@/generated/prisma/client";
+import { useTranslations } from "next-intl";
 
 async function GameGrid({
-    projects,
-    }: {
-    projects: Project[],
-    }) {
-
+  projects,
+}: {
+  projects: Project[],
+}) {
+  const t = useTranslations('games');
   return(
     <>
     { 
@@ -21,7 +22,7 @@ async function GameGrid({
               <GameCard title={p.title} image={p.coverUrl}/>
             </GridCol>
           ))}
-        </Grid> : <Text>No games</Text>
+        </Grid> : <Text>{t('noGames')}</Text>
       }
       </>
   )
@@ -33,20 +34,20 @@ export default function GamesPage({
     }: {
     projects: Project[],
 }) {
-
+  const t = useTranslations('games');
   const slideshowImages: Slide[] = projects.map(p => [p.slideshowUrl, p.logoUrl]).filter((p): p is [string, string] => (p[0] != "" && p[1] != "")).filter((p) => (p[0] != null )).map((p) => ({slideshowUrl: p[0], logoUrl: p[1]}));
   
   console.log(slideshowImages);
 
   return (
     <div>
-      <PageTitle>GAMES</PageTitle>
+      <PageTitle>{t('title')}</PageTitle>
       <Slideshow images={slideshowImages}/>
       
       <Container p="sm" size="xl">
         <ContentPaper>
           <Stack gap="md">
-            <Title className="titleShadow">Released</Title>
+            <Title className="titleShadow">{t('released')}</Title>
             <GameGrid projects={projects}/>
           </Stack>
         </ContentPaper>

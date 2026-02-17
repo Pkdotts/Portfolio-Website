@@ -5,15 +5,17 @@ import {  Container, Title, Text, Stack, Group, Grid, GridCol, Accordion, Accord
 import prisma from "@/lib/prisma";
 import { SkillTypeWithSkills } from "@/entities/types";
 import { Education, Hobby, WorkExperience } from "@/generated/prisma/client";
+import { useTranslations } from "next-intl";
 
 
 async function SkillsPaper({skillTypes}: {skillTypes: SkillTypeWithSkills[]}){
+  const t = useTranslations('about');
   return (
     <>
       { 
         skillTypes &&
         <ContentPaper >
-          <Title className="titleShadow">Skills</Title>
+          <Title className="titleShadow">{t('skills')}</Title>
           <InnerPaper >
             {skillTypes.map((t) => (
               <div key={t.name_en}>
@@ -46,12 +48,13 @@ async function SkillsPaper({skillTypes}: {skillTypes: SkillTypeWithSkills[]}){
 }
 
 async function ExperiencePaper({experience}: {experience: WorkExperience[]}){
+  const t = useTranslations('about');
   return (
     <>
       { 
         experience &&
         <ContentPaper>
-          <Title className="titleShadow">Experience</Title>
+          <Title className="titleShadow">{t('experience')}</Title>
           <Stack>
             {experience.map((e) => (
               <InnerPaper key={e.workId}>
@@ -71,12 +74,13 @@ async function ExperiencePaper({experience}: {experience: WorkExperience[]}){
 }
 
 async function EducationPaper({education}: {education: Education[]}){
+  const t = useTranslations('about');
   return (
     <>
       { 
         education &&
         <ContentPaper>
-            <Title className="titleShadow">Education</Title>
+            <Title className="titleShadow">{t('education')}</Title>
             <Stack>
 
                {education.map((e) => (
@@ -96,12 +100,13 @@ async function EducationPaper({education}: {education: Education[]}){
 }
 
 async function HobbiesPaper({hobbies}: {hobbies: Hobby[]}){
+  const t = useTranslations('about');
   return (
     <>
       { 
         hobbies &&
         <ContentPaper>
-            <Title className="titleShadow">Hobbies</Title>
+            <Title className="titleShadow">{t('hobbies')}</Title>
               <InnerPaper>
                 <ul style={{margin: 0}}>
                 {hobbies.map((h) => (
@@ -121,6 +126,7 @@ async function HobbiesPaper({hobbies}: {hobbies: Hobby[]}){
 
 {/* Includes Skills, Work experience, Education, Resume, Contact Info and Hobbies */}
 export default async function About() {
+  
   const [skillTypes, experience, education, hobbies] = await Promise.all([
     prisma.skillType.findMany({ include: { Skill: true } }),
     prisma.workExperience.findMany(),
