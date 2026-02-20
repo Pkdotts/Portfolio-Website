@@ -128,8 +128,8 @@ export default async function About() {
   
   const [skillTypes, experience, education, hobbies] = await Promise.all([
     prisma.skillType.findMany({ include: { Skill: true } }),
-    prisma.workExperience.findMany(),
-    prisma.education.findMany(),
+    prisma.workExperience.findMany({orderBy:{endDate: "desc"}}),
+    prisma.education.findMany({orderBy:{endYear: "desc"}}),
     prisma.hobby.findMany(),
   ]);
 
