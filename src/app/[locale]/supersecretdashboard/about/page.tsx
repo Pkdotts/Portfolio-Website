@@ -4,11 +4,12 @@ import AboutDashboard from "./client";
 
 export default async function AboutDashboardPage() {
 
-  const skillTypes = await prisma.skillType.findMany({include: {Skill: true}});
-  
-  const experience = await prisma.workExperience.findMany();
-  const education = await prisma.education.findMany();
-  const hobbies = await prisma.hobby.findMany();
+  const [skillTypes, experience, education, hobbies] = await Promise.all([
+    prisma.skillType.findMany({ include: { Skill: true } }),
+    prisma.workExperience.findMany(),
+    prisma.education.findMany(),
+    prisma.hobby.findMany(),
+  ]);
 
   return (
     <AboutDashboard 

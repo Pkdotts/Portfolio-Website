@@ -10,6 +10,9 @@ export default function DashBar(){
             >
                 <Title>The Super Secret Dashboard</Title>
                 <Group>
+                    <Button variant="white" component="a" href="/supersecretdashboard/home" >
+                        Home
+                    </Button>
                     <Button variant="white" component="a" href="/supersecretdashboard/about" >
                         About
                     </Button>

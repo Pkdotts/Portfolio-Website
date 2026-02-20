@@ -109,3 +109,10 @@ model SkillType {
   name_fr String? @map("name-fr")
   Skill   Skill[]
 }
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model Translation {
+  en  String @default("")
+  fr  String
+  key String @id(map: "Biography_pkey")
+}

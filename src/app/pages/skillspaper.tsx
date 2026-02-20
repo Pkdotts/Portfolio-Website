@@ -1,7 +1,6 @@
 import ContentPaper from "@/components/common/contentpaper";
 import InnerPaper from "@/components/ui/cards/innerpaper";
-import PageTitle from "@/components/common/pagetitle";
-import {  Container, Title, Text, Stack, Group, Grid, GridCol, Accordion, AccordionItem, AccordionPanel, AccordionControl, SimpleGrid, Badge } from "@mantine/core";
+import {  Container, Title, Text, Stack, Group, Grid, GridCol, Badge } from "@mantine/core";
 import prisma from "@/lib/prisma";
 import { SkillTypeWithSkills } from "@/entities/types";
 import { Education, Hobby, WorkExperience } from "@/generated/prisma/client";

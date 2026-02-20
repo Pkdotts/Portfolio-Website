@@ -13,14 +13,16 @@ function ContactMessageTable({contacts}: {contacts: ContactMessage[]}){
     <Stack p="sm">
         {contacts.map((t) => (
             <InnerPaper key={t.contactId}>
+              <Stack gap="0">
                 <Group justify="space-between">
-                    <Title order={4}>{t.name}</Title> <Text c="var(--mantine-color-main-10)">{t.date.toLocaleDateString() + " " + t.date.toLocaleTimeString()}</Text>
+                  <Group>
+                    <Title order={4}>{t.name}</Title> -
+                    <Title order={6}>{t.email}</Title>
+                  </Group>
+                    
+                  <Text c="var(--mantine-color-main-10)">{t.date.toLocaleDateString() + " " + t.date.toLocaleTimeString()}</Text>
                 </Group>
-                <Title order={6}>{t.email}</Title>
-                <Container  p="lg">
-
                   <Text>{t.message}</Text>
-                </Container>
                 <Group justify="space-between">
                   {
                     t.seen ?
@@ -49,6 +51,7 @@ function ContactMessageTable({contacts}: {contacts: ContactMessage[]}){
                     </>
                   }
                 </Group>
+              </Stack>
             </InnerPaper>
         ))}
     </Stack>

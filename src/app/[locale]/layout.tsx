@@ -17,9 +17,6 @@ export const metadata: Metadata = {
   description: "Andy Le's Portfolio",
 };
 
-
-
- 
 type Props = {
   children: React.ReactNode;
   params: Promise<{locale: string}>;

@@ -14,14 +14,8 @@ import TableRowButtons from "@/components/ui/dashboard/tablerowbuttons";
 import { IconPlus } from "@tabler/icons-react";
 import { DashboardModal, ModalActions } from "@/components/ui/dashboard/dashboardmodal";
 import DashBar from "@/components/ui/dashboard/dashbar";
+import { DashboardTable } from "@/components/ui/dashboard/dashboardtable";
 
-function AboutTable({children}: Readonly<{children: React.ReactNode;}>){
-  return(
-    <Table highlightOnHover mah="80vh">
-      {children}
-    </Table>  
-  )
-}
 
 function SkillsTable({
   skills,
@@ -36,7 +30,7 @@ function SkillsTable({
 }){
 
   return(
-    <AboutTable>
+    <DashboardTable>
       <TableThead>
         <TableTr>
           <TableTh colSpan={1}>Type</TableTh>
@@ -89,7 +83,7 @@ function SkillsTable({
             
           </TableTbody>
       ))}
-    </AboutTable>
+    </DashboardTable>
   )
 }
 
@@ -103,7 +97,7 @@ function ExperienceTable({
   openDeleteModal: (item: SelectedItem) => void
 }){
   return(
-    <AboutTable>
+    <DashboardTable>
         <TableThead>
           <TableTr>
           <TableTh colSpan={1}>Position EN</TableTh>
@@ -149,7 +143,7 @@ function ExperienceTable({
           </TableTr>
         ))}
       </TableTbody>
-    </AboutTable>
+    </DashboardTable>
   )
 }
 
@@ -163,7 +157,7 @@ function EducationTable({
   openDeleteModal: (item: SelectedItem) => void
 }){
   return(
-    <AboutTable>
+    <DashboardTable>
         <TableThead>
           <TableTr>
           <TableTh colSpan={1}>Diploma</TableTh>
@@ -196,7 +190,7 @@ function EducationTable({
           </TableTr>
         ))}
         </TableTbody>
-    </AboutTable>
+    </DashboardTable>
   )
 }
 
@@ -211,7 +205,7 @@ function HobbiesTable({
 }
 ){
   return(
-    <AboutTable>
+    <DashboardTable>
         <TableThead>
           <TableTr>
           <TableTh colSpan={1}>Name EN</TableTh>
@@ -236,7 +230,7 @@ function HobbiesTable({
           </TableTr>
         ))}
       </TableTbody>
-    </AboutTable>
+    </DashboardTable>
   )
 }
 
