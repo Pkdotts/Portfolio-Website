@@ -2,10 +2,12 @@
 import { updateTranslation } from "@/app/api/controllers/translationsController";
 import DashBar from "@/components/ui/dashboard/dashbar";
 import { DashboardTable } from "@/components/ui/dashboard/dashboardtable";
+import { DropzoneButton, FileType } from "@/components/ui/dashboard/dropzonebutton";
+import FileUpload from "@/components/ui/dashboard/pdfUpload";
 import { Translation } from "@/generated/prisma/client";
-import { Button, Container, Divider, Flex, Group, Input, Paper, Stack, TableTbody, TableTd, TableTh, TableThead, TableTr, Text, Textarea } from "@mantine/core";
+import { Button, Container, Divider, FileButton, Flex, Group, Input, Paper, Stack, TableTbody, TableTd, TableTh, TableThead, TableTr, Text, Textarea } from "@mantine/core";
 import { useResizeObserver } from "@mantine/hooks";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 function TranslationTable({
   translations, 
@@ -43,7 +45,6 @@ function TranslationRow({
     
     [rect1, rect2]
     );
-    
 
     return(
         <TableTr id={t.key.toString()}>
@@ -60,15 +61,15 @@ function TranslationRow({
             <TableTd/>
         </TableTr>
     )
-
 }
-
 
 export default function HomeDashboard({
     translations,
     }: {
     translations: Translation[],
 }){
+    const resumeEnUrl = "https://tyygdwvbspeearfdnijp.supabase.co/storage/v1/object/public/Resume/Andy%20Bao%20Le%20-%20CV_EN.pdf";
+    const resumeFrUrl = "https://tyygdwvbspeearfdnijp.supabase.co/storage/v1/object/public/Resume/Andy%20Bao%20Le%20-%20CV_FR.pdf";
     return(
         <Container w="100%" p="xs" size="md">
             <Paper bdrs="md">
@@ -80,6 +81,34 @@ export default function HomeDashboard({
                         <Button type="submit">Update</Button>
                     </Group>
                 </form>
+                <Divider/>
+                <div>
+                    <Container>
+                        <Group grow style={{verticalAlign: "top"}}>
+                            <div>
+                                <Text>English</Text>
+                                <FileUpload 
+                                    allowedTypes={["application/pdf"]} 
+                                    fileName="Andy Bao Le - CV_EN.pdf"
+                                    bucket="Resume"
+                                    publicUrl={resumeEnUrl}
+                                />
+                                <Group justify="center" >
+                                    
+                                </Group>
+                            </div>
+                            <div>
+                                <Text>French</Text>
+                                <FileUpload 
+                                    allowedTypes={["application/pdf"]} 
+                                    fileName="Andy Bao Le - CV_FR.pdf"
+                                    bucket="Resume"
+                                    publicUrl={resumeFrUrl}
+                                />
+                            </div>
+                        </Group>
+                    </Container>
+                </div>
             </Paper>
         </Container>
     );

@@ -8,6 +8,10 @@ import classes from './dropzonebutton.module.css';
 import { getFilePathFromUrl } from "@/app/hooks/getFilePathFromUrl";
 import { createClient } from "@/lib/supabase/client";
 
+export enum FileType {
+  image,
+  pdf
+}
 
 interface Props {
   name: string;
@@ -16,6 +20,7 @@ interface Props {
   multiple?: boolean;
   imageColumns?: number;
   defaultValue?: string | string[] | null;
+  fileType?: FileType;
 }
 
 export function DropzoneButton({
@@ -25,6 +30,7 @@ export function DropzoneButton({
   multiple = false,
   imageColumns = 3,
   defaultValue,
+  fileType
 }: Props) {
   const theme = useMantineTheme();
   const openRef = useRef<() => void>(null);
@@ -91,9 +97,15 @@ export function DropzoneButton({
         {
           files.length > 0 ?
           
-          <Group justify="center">
+          <Group justify="center" grow>
             <SimpleGrid cols={files.length < imageColumns ? files.length : imageColumns} spacing="sm" mt="md">
-              {files.map((url, index) => (
+              
+              {fileType === FileType.pdf ? files.map((url, index) => (
+                <object data={url} type="application/pdf" key={index} width="100%" height="500px">
+                  <p>Unable to display PDF file. <a href={url}>Download</a> instead.</p>
+                </object>
+              )) :
+              files.map((url, index) => (
                 <div key={index} style={{ position: "relative" }}>
                   <Image src={url} alt="Uploaded" width="100%" radius="md" />
                   <ActionIcon

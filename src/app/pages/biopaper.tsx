@@ -3,7 +3,7 @@ import InnerPaper from "@/components/ui/cards/innerpaper";
 import { PkSpriteFront } from "@/components/ui/sprites/PkSprites";
 import { Translation } from "@/generated/prisma/client";
 import { Container, Stack, Text } from "@mantine/core";
-import { pickLocalizedName } from "../hooks/getLocalizedName";
+import { pickLocalizedName } from "../hooks/pickLocalizedName";
 import prisma from "@/lib/prisma";
 
 export default async function Bio(){

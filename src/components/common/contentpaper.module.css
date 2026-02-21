@@ -7,13 +7,13 @@
 .wrapper{
     position: relative;
     overflow: hidden;
-    --bg-color-1: var(--mantine-color-main-6);
-    --bg-color-2: var(--mantine-color-main-5);
+    --bg-color-1: var(--mantine-color-accent-5);
+    --bg-color-2: var(--mantine-color-accent-4);
     background-color: var(--bg-color-1);
     background-image: linear-gradient(var(--bg-color-1), var(--bg-color-2));
     /* background-image: linear-gradient(var(--mantine-color-accent-5), var(--mantine-color-accent-6)); */
     /* background-image: linear-gradient(var(--mantine-color-accent-6), var(--mantine-color-accent-8) 85%, var(--mantine-color-accent-7) 100%); */
-    box-shadow: 2px 3px 0px var(--mantine-color-accent-6);
+    box-shadow: 2px 3px 4px var(--mantine-color-accent-8);
     isolation: isolate;
     &:hover {
         .polkadot {
@@ -27,7 +27,7 @@
 
 .polkadot {
     --mask: linear-gradient(245deg, rgb(0 0 0), rgb(0 0 0 /0) 50%);
-    --dot-color: var(--mantine-color-main-8);
+    --dot-color: var(--mantine-color-accent-6);
     --stop1: 30%;
     --bgSize: 2rem;
     --offsetSize: 1rem; 

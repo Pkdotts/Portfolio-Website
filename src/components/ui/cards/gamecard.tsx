@@ -17,7 +17,7 @@ export default function GameCard({project}: {project: Project}){
                     </Paper>
                 </AspectRatio>
                 <Title className={styles.cardTitle} order={3} c="var(--mantine-color-text-0)">{project.title} </Title>
-                <Text>{project.description}</Text>
+                <Text c="var(--mantine-color-text)">{project.description}</Text>
             </Stack>
         </Anchor>
     )

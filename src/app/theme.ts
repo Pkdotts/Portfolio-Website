@@ -23,12 +23,7 @@ export const darkTheme = createTheme({
   other: {
     text: '#fafafa'
   },
-
-  components:{
-    TableTd: {
-      styles: { verticalAlign: "top" }
-    }
-  }
+  
 });
 
 export const lightTheme = createTheme({

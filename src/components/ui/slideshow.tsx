@@ -5,7 +5,6 @@ import { ActionIcon, Image, Group, Transition, MantineTransition, Container, Sta
 import { useEffect, useState } from "react";
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 
-
 export interface Slide {
     slideshowUrl: string, logoUrl: string
 }
@@ -31,19 +30,13 @@ export default function Slideshow({images}: SlideshowProps) {
         (id > images.length - 1) && (id = 0);
         setSkewAnim((n < 0) ? prevFade : nextFade)
         setIndex(id);
-        
     }
 
-
-
     useEffect(() => {
-        
-
         const interval = setInterval(
             () => addIndex(1), 
             fadeInterval
         );
-
         return () => clearInterval(interval);
     }, [index]);
 

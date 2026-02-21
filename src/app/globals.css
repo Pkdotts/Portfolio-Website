@@ -12,8 +12,9 @@
 .titleShadow{
   /* -webkit-text-stroke: 1px var(--mantine-color-primary-9); */
   position: relative;
-  color: var(--mantine-color-primary-6);
-  text-shadow: 2px 2px 0px var(--mantine-color-main-0);
+  color: var(--mantine-color-main-0);
+  /* text-shadow: 2px 2px 0px var(--mantine-color-accent-9); */
+  text-decoration: none;
   z-index: 1;
 }
 
@@ -37,8 +38,8 @@
 .header-main {
   height: 60;
   padding: 10;
-  background-color: var(--mantine-color-main-10);
-  border-bottom: 2px solid var(--mantine-color-accent-6);
+  background-color: var(--mantine-color-accent-5);
+  border-bottom: 2px solid var(--mantine-color-main-0);
 }
 
 footer {

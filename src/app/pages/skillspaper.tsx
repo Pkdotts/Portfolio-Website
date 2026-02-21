@@ -5,7 +5,7 @@ import prisma from "@/lib/prisma";
 import { SkillTypeWithSkills } from "@/entities/types";
 import { Education, Hobby, WorkExperience } from "@/generated/prisma/client";
 import { useTranslations } from "next-intl";
-import { pickLocalizedName } from "@/app/hooks/getLocalizedName";
+import { pickLocalizedName } from "@/app/hooks/pickLocalizedName";
 
 
 async function SkillsPaper({skillTypes}: {skillTypes: SkillTypeWithSkills[]}){

@@ -5,6 +5,7 @@ import Slideshow, { Slide } from "@/components/ui/slideshow";
 import {  Container, Title, Text, BackgroundImage, Grid, GridCol, Stack } from "@mantine/core";
 import { Project } from "@/generated/prisma/client";
 import { useTranslations } from "next-intl";
+import InnerPaper from "@/components/ui/cards/innerpaper";
 
 async function GameGrid({
   projects,
@@ -43,12 +44,11 @@ export default function GamesPage({
       <Slideshow images={slideshowImages}/>
       
       <Container p="sm" size="xl">
-        <ContentPaper>
-          <Stack gap="md">
-            <Title className="titleShadow">{t('released')}</Title>
-            <GameGrid projects={projects}/>
-          </Stack>
-        </ContentPaper>
+
+            <Stack gap="md">
+              <Title>{t('released')}</Title>
+              <GameGrid projects={projects}/>
+            </Stack>
       </Container>
     </div>
   );

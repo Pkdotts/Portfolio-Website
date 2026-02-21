@@ -37,8 +37,8 @@ export function Header({ user }: HeaderProps) {
         <header className="header-main">
             <Stack align="stretch" justify="center" h="100%" >
                 <Group justify="space-between" >
-                    <Link href="/" className="underline">
-                        <Title className="titleShadow" order={1}>Andy Le</Title>
+                    <Link href="/" style={{textDecoration: "none"}}>
+                        <Title className="titleShadow" order={1}>ANDY LE</Title>
                     </Link>
                     <Group gap="30px">
                         <LocaleSwitcher/>
