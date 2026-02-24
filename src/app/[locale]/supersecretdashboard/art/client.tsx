@@ -35,7 +35,7 @@ export default function ArtDashboard({art}: {art: Art[]}) {
                 <DashBar/>
             <Group p="xs">
               <Button size="xs" onClick={open}>
-                Insert 
+                Add 
               </Button>
             </Group>
             <Divider/>

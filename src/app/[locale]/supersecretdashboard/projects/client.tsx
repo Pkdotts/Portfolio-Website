@@ -83,7 +83,7 @@ export default function ProjectDashboard({
                 <DashBar/>
             <Group p="xs">
               <Button size="xs" onClick={openCreateModal}>
-                Insert 
+                Add 
               </Button>
             </Group>
             <Divider/>
