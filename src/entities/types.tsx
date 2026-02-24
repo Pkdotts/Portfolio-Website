@@ -5,4 +5,4 @@ export type SkillTypeWithSkills =
     include: { Skill: true };
 }>;
 
-export type FormState = { success: boolean };
+export type FormState = { success: boolean, error?: string | null};

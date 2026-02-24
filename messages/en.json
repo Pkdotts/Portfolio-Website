@@ -31,7 +31,12 @@
         "thankYou": "Thank you!",
         "testimonyReceived": "Your testimony has been sent for approval.",
         "cancel": "Cancel",
-        "submit": "Submit"
+        "submit": "Submit",
+        "error": {
+            "name": "Name required",
+            "message": "Message must have at least 10 letters",
+            "tooManyRequests": "Too many requests. Please try again later."
+        }
     },
     "contact":{
         "title": "CONTACT",
@@ -39,11 +44,19 @@
         "nameLabel": "Who are you?",
         "namePlaceholder": "Your name, please",
         "emailLabel": "Email",
-        "emailPlaceholder": "Give me your email",
+        "emailPlaceholder": "your@email.com",
         "messageLabel": "Write a message",
         "messagePlaceholder": "What do you want from me?!",
         "thankYou": "Thank you!",
         "contactReceived": "Your contact has been received.",
-        "submit": "Submit"
+        "submit": "Submit",
+        "error": {
+            "name": "Name required",
+            "email": "Invalid email",
+            "message": "Message must have at least 10 letters",
+            "tooManyRequests": "Too many requests. Please try again later."
+
+        }
     }
+    
 }

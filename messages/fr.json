@@ -31,7 +31,12 @@
         "thankYou": "Merci!",
         "testimonyReceived": "Votre témoignage a été envoyé pour approbation.",
         "cancel": "Annuler",
-        "submit": "Soumettre"
+        "submit": "Soumettre",
+        "error": {
+            "name": "Nom requis",
+            "message": "Le message doit avoir au moins 10 lettres",
+            "tooManyRequests": "Trop d'essais. Veuillez réessayer plus tard."
+        }
     },
     "contact":{
         "title": "CONTACT",
@@ -39,11 +44,18 @@
         "nameLabel": "Qui es-tu?",
         "namePlaceholder": "Votre nom, stp",
         "emailLabel": "Email",
-        "emailPlaceholder": "Donne moi ton email",
+        "emailPlaceholder": "ton@email.com",
         "messageLabel": "Écrivez un message",
         "messagePlaceholder": "Que veux tu de moi?!",
         "thankYou": "Merci!",
         "contactReceived": "Votre contact a été reçu.",
-        "submit": "Soumettre"
+        "submit": "Soumettre",
+        "error": {
+            "name": "Nom requis",
+            "email": "Email invalide",
+            "message": "Le message doit avoir au moins 10 lettres",
+            "tooManyRequests": "Trop d'essais. Veuillez réessayer plus tard."
+
+        }
     }
 }

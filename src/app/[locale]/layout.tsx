@@ -5,12 +5,14 @@ import Footer from "@/components/common/footer";
 import { cssVarResolver, darkTheme, lightTheme } from "../theme";
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
+import '@mantine/notifications/styles.css';
 import { Box, Flex, MantineProvider, mantineHtmlProps } from '@mantine/core';
 import { barlow, encodeSans, quicksand } from "../fonts";
 import { createClient } from "@/lib/supabase/server";
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
+import { Notifications } from "@mantine/notifications";
 
 export const metadata: Metadata = {
   title: "Andy Le",
@@ -38,6 +40,7 @@ export default async function LocaleLayout({children, params}: Props) {
       <body >
         <NextIntlClientProvider>
           <MantineProvider theme={lightTheme} cssVariablesResolver={cssVarResolver} >
+            <Notifications />
             <Flex direction="column" mih="100vh" className="mainBody">
               <Header user={user}/>
               <Box style={{flexGrow: 1}}>
