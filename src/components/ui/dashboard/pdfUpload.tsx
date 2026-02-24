@@ -1,6 +1,7 @@
 // components/FileUpload.tsx
 import { createClient } from '@/lib/supabase/client'
 import { Button, FileButton, Group, Paper, Text, Title } from '@mantine/core';
+import { IconExternalLink, IconUpload } from '@tabler/icons-react';
 import { useState, useRef } from 'react'
 
 const supabase = createClient();
@@ -110,19 +111,17 @@ export default function FileUpload({
             <p >
               {allowedTypes.join(', ')} (max. {maxSize}MB)
             </p>
-          <Group>
+            <Group grow>
         
-          <FileButton
-            // ref={fileInputRef}
-            onChange={handleFileSelect}
-            accept={allowedTypes.join(',')}
-            disabled={uploading}
-            
-            
-            >
-                {(props) => <Button size="lg" radius="xl" loading={uploading} loaderProps={{ type: 'dots' }} {...props}>Upload pdf</Button>}
-            </FileButton>
-            <Button component="a" target="_blank" href={publicUrl} download="Andy Bao Le CV" variant="outline" size="lg" radius="xl" >Open</Button>
+                <FileButton
+                    // ref={fileInputRef}
+                    onChange={handleFileSelect}
+                    accept={allowedTypes.join(',')}
+                    disabled={uploading}
+                >
+                    {(props) => <Button leftSection={<IconUpload/>} size="lg" radius="xl" loading={uploading} loaderProps={{ type: 'dots' }} {...props}>Upload</Button>}
+                </FileButton>
+                <Button leftSection={<IconExternalLink/>} component="a" target="_blank" href={publicUrl} download="Andy Bao Le CV" variant="outline" size="lg" radius="xl" >Open</Button>
             </Group>
             {error && (
                 <Text>
@@ -131,10 +130,6 @@ export default function FileUpload({
             )}
 
       </Paper>
-
-      
-
-      
     </div>
   )
 }

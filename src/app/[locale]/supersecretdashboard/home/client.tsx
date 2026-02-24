@@ -5,7 +5,7 @@ import { DashboardTable } from "@/components/ui/dashboard/dashboardtable";
 import { DropzoneButton, FileType } from "@/components/ui/dashboard/dropzonebutton";
 import FileUpload from "@/components/ui/dashboard/pdfUpload";
 import { Translation } from "@/generated/prisma/client";
-import { Button, Container, Divider, FileButton, Flex, Group, Input, Paper, Stack, TableTbody, TableTd, TableTh, TableThead, TableTr, Text, Textarea } from "@mantine/core";
+import { Button, Container, Divider, FileButton, Flex, Grid, GridCol, Group, Input, Paper, Stack, TableTbody, TableTd, TableTh, TableThead, TableTr, Text, Textarea } from "@mantine/core";
 import { useResizeObserver } from "@mantine/hooks";
 import { useMemo, useState } from "react";
 
@@ -82,33 +82,32 @@ export default function HomeDashboard({
                     </Group>
                 </form>
                 <Divider/>
-                <div>
-                    <Container>
-                        <Group grow style={{verticalAlign: "top"}}>
-                            <div>
+                <Container>
+                    <Grid>
+                        <GridCol span={{sm: 6, xs: 12}}>
+                            <Stack>
                                 <Text>English</Text>
                                 <FileUpload 
                                     allowedTypes={["application/pdf"]} 
                                     fileName="Andy Bao Le - CV_EN.pdf"
                                     bucket="Resume"
                                     publicUrl={resumeEnUrl}
-                                />
-                                <Group justify="center" >
-                                    
-                                </Group>
-                            </div>
-                            <div>
+                                    />
+                            </Stack>
+                        </GridCol>
+                        <GridCol span={{sm: 6, xs: 12}}>
+                            <Stack>
                                 <Text>French</Text>
                                 <FileUpload 
                                     allowedTypes={["application/pdf"]} 
                                     fileName="Andy Bao Le - CV_FR.pdf"
                                     bucket="Resume"
                                     publicUrl={resumeFrUrl}
-                                />
-                            </div>
-                        </Group>
-                    </Container>
-                </div>
+                                    />
+                            </Stack>
+                        </GridCol>
+                    </Grid>
+                </Container>
             </Paper>
         </Container>
     );
