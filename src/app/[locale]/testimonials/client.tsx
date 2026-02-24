@@ -114,7 +114,7 @@ export default function Testimonials({testimonials}: {testimonials: Testimonial[
                                             />
                                         </div>
                                         <Group justify="flex-end">
-                                            <Button type="button" onClick={() => {setWriting(false)}}>{t('cancel')}</Button>
+                                            <Button type="button" variant="outline" radius="xl" onClick={() => {setWriting(false)}}>{t('cancel')}</Button>
                                             <SubmitButton>{t('submit')}</SubmitButton>
                                         </Group>
                                     </Stack>
