@@ -6,8 +6,8 @@ export async function createExperience(formData: FormData) {
   const position_en = formData.get("positionEn") as string;
   const position_fr = formData.get("positionFr") as string;
   const company = formData.get("company") as string;
-  const description_en = formData.get("description_en") as string;
-  const description_fr = formData.get("description_fr") as string;
+  const description_en = formData.get("descriptionEn") as string;
+  const description_fr = formData.get("descriptionFr") as string;
   const startDate = Number(formData.get("startDate") as string);
   const endDate = Number(formData.get("endDate") as string);
 

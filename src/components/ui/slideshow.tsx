@@ -1,12 +1,12 @@
 
 'use client'
 
-import { ActionIcon, Image, Group, Transition, MantineTransition, Container, Stack, AspectRatio } from "@mantine/core";
+import { ActionIcon, Image, Group, Transition, MantineTransition, Container, Stack, AspectRatio, Anchor, Button } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 
 export interface Slide {
-    slideshowUrl: string, logoUrl: string
+    slideshowUrl: string, logoUrl: string, externalLink: string,
 }
 
 export interface SlideshowProps{
@@ -90,6 +90,7 @@ export default function Slideshow({images}: SlideshowProps) {
                                 <Image src={src.logoUrl} style={{...transitionStyle, height: height, position: "absolute", zIndex: 1}} w="30vw" fit="contain" left="15vw" top="0"/>
                             )}
                         </Transition>
+                            
                     </div>
                 ))}
                 

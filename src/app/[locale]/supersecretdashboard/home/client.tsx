@@ -53,10 +53,10 @@ function TranslationRow({
                 {t.key}
             </TableTd>
             <TableTd style={{ verticalAlign: "top" }}>
-                <Textarea ref={ref1} name="en" placeholder="English" defaultValue={t.en} variant="unstyled" required autosize />
+                <Textarea ref={ref1} name="en" placeholder="English" defaultValue={t.en} required autosize />
             </TableTd>
             <TableTd style={{ verticalAlign: "top" }}>
-                <Textarea ref={ref2} name="fr" placeholder="French" defaultValue={t.fr} variant="unstyled" autosize h="100%" w="100%"/>
+                <Textarea ref={ref2} name="fr" placeholder="French" defaultValue={t.fr} autosize h="100%" w="100%"/>
             </TableTd>
             <TableTd/>
         </TableTr>

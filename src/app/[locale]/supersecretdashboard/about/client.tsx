@@ -392,7 +392,7 @@ export default function AboutDashboard({
           >
             <div>
               <Text>Position</Text>
-              <Group>
+              <Group grow>
                 <Input name="positionEn" placeholder="Your position in english" defaultValue={experienceItem?.position_en} required/>
                 <Input name="positionFr" placeholder="Your position in French" defaultValue={experienceItem?.position_fr ?? undefined}/>
               </Group>
@@ -403,7 +403,7 @@ export default function AboutDashboard({
             </div>
             <div>
               <Text>Descriptions</Text>
-              <Group>
+              <Group grow>
                   <Textarea name="descriptionEn" placeholder="A brief synopsis in english" defaultValue={experienceItem?.description_en} required/>
                   <Textarea name="descriptionFr" placeholder="A brief synopsis in french" defaultValue={experienceItem?.description_fr ?? undefined}/>
               </Group>

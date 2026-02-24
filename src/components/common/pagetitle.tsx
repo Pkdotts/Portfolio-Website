@@ -4,8 +4,11 @@ import {
     Container,
     Title,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 
 export default function PageTitle({children}: Readonly<{children: React.ReactNode;}>) {
+    const isMobile = useMediaQuery("(max-width: 500px)");
+    const isTablet = useMediaQuery("(max-width: 800px)");
     return (
         <Container 
             size="100%" 
@@ -21,7 +24,7 @@ export default function PageTitle({children}: Readonly<{children: React.ReactNod
             >
                 <Container size="xl">
                     <Title 
-                        size={100} 
+                        size={isMobile ? 35 : isTablet ? 50 : 90} 
                         textWrap="nowrap" 
                         lineClamp={1} 
                         c="var(--mantine-color-main-4)" 

@@ -36,7 +36,10 @@ export default function GamesPage({
     projects: Project[],
 }) {
   const t = useTranslations('games');
-  const slideshowImages: Slide[] = projects.map(p => [p.slideshowUrl, p.logoUrl]).filter((p): p is [string, string] => (p[0] != "" && p[1] != "")).filter((p) => (p[0] != null )).map((p) => ({slideshowUrl: p[0], logoUrl: p[1]}));
+  const slideshowImages: Slide[] = projects.map(p => [p.slideshowUrl, p.logoUrl, p.externalLink])
+    .filter((p): p is [string, string, string] => (p[0] != "" && p[1] != ""))
+    .filter((p) => (p[0] != null ))
+    .map((p) => ({slideshowUrl: p[0], logoUrl: p[1], externalLink: p[2]}));
   
   return (
     <div>
@@ -44,11 +47,16 @@ export default function GamesPage({
       <Slideshow images={slideshowImages}/>
       
       <Container p="sm" size="xl">
+        <ContentPaper>
 
             <Stack gap="md">
               <Title>{t('released')}</Title>
-              <GameGrid projects={projects}/>
+              <InnerPaper>
+
+                <GameGrid projects={projects}/>
+              </InnerPaper>
             </Stack>
+        </ContentPaper>
       </Container>
     </div>
   );

@@ -14,7 +14,6 @@ import { useMediaQuery } from "@mantine/hooks";
 import { IconMenu } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { routing } from "@/i18n/routing";
 import { LocaleSwitcher } from "../ui/buttons/localeswitcher";
 
 type HeaderProps = {
@@ -26,10 +25,10 @@ export function Header({ user }: HeaderProps) {
     const isMobile = useMediaQuery("(max-width: 1035px)");
     
     const buttons = [
-    ["/", t('aboutMe')],
-    ["/games", t('games')],
-    ["/testimonials", t('testimonials')],
-    ["/contact", t('contactMe')],
+        ["/", t('aboutMe')],
+        ["/games", t('games')],
+        ["/testimonials", t('testimonials')],
+        ["/contact", t('contactMe')],
     ] as const;
     const dashboard = ["/supersecretdashboard/projects", "Dashboard"];
 
