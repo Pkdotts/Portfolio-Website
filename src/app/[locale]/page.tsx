@@ -4,6 +4,7 @@ import About from "../pages/skillspaper";
 import { useTranslations } from "next-intl";
 import Bio from "../pages/biopaper";
 import { pickLocalizedName } from "../hooks/pickLocalizedName";
+import { IconDownload } from "@tabler/icons-react";
 
 export default function Home() {
   const t = useTranslations('about');
@@ -16,7 +17,7 @@ export default function Home() {
           <Stack>
           <NameTitle/>
           <Group justify="center" >
-            <Button component="a" target="_blank" href={pickLocalizedName(resumeEnUrl, resumeFrUrl)} download="Andy Bao Le CV" variant="filled" w="50%" size="lg" radius="xl">{t('resume')}</Button>
+            <Button leftSection={<IconDownload/>} component="a" target="_blank" href={pickLocalizedName(resumeEnUrl, resumeFrUrl)} download="Andy Bao Le CV" variant="filled" w="50%" size="lg" radius="xl">{t('resume')}</Button>
           </Group>
           
           </Stack>
