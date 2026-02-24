@@ -1,26 +1,27 @@
-'use client';
 
+import prisma from "@/lib/prisma";
 import { ActionIcon, Group, Stack, Tooltip } from "@mantine/core";
-import { IconBrandBluesky, IconBrandGithub, IconBrandItch, IconBrandLinkedin, IconBrandTwitter, IconBrandYoutube } from "@tabler/icons-react";
+import * as Icons from "@tabler/icons-react";
+import { IconProps } from "@tabler/icons-react";
+import { FC } from "react";
+function GetIcon(iconName: string) {
+  const IconComponent =
+    Icons[iconName as keyof typeof Icons] as FC<IconProps> | undefined;
 
-export default function Footer() {
-  const links = [
-    ["Linkedin", "https://www.linkedin.com/in/andy-bao-le/", <IconBrandLinkedin/>],
-    ["Github", "https://github.com/Pkdotts", <IconBrandGithub/>],
-    ["Itch.io", "https://pkdotts.itch.io/", <IconBrandItch/>],
-    ["Twitter", "https://x.com/Pkdotts", <IconBrandTwitter/>],
-    ["Bluesky", "https://bsky.app/profile/pkdotts.bsky.social", <IconBrandBluesky/>],
-    ["Youtube", "https://www.youtube.com/@pkdotts", <IconBrandYoutube/>] 
-  ] as const
+  return IconComponent ? <IconComponent size={20} /> : null;
+}
+
+export default async function Footer() {
+  const links = await prisma.link.findMany({orderBy: {order: 'asc'}});
 
   return (
     <footer >
       <Stack align="center" gap="xs" >
         <Group justify="center">
           {links.map((l, k)=>
-            <Tooltip label={l[0]} key={k}>
-              <ActionIcon variant="subtle" component="a" target="_blank" href={l[1]}>
-                {l[2]}
+            <Tooltip label={l.name} key={l.linkId}>
+              <ActionIcon variant="subtle" component="a" target="_blank" href={l.link}>
+                {GetIcon(l.icon)}
               </ActionIcon>
             </Tooltip>
           )}  

@@ -67,11 +67,6 @@ model Resume {
   visible  Boolean @default(false)
 }
 
-model ContactInfo {
-  contactId Int    @id @unique @default(autoincrement())
-  name      String
-}
-
 model Hobby {
   hobbyId Int     @id @unique @default(autoincrement())
   name_en String  @map("name-en")
@@ -122,4 +117,13 @@ model Translation {
 model Visit {
   key   String @id
   count BigInt @default(0)
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model Link {
+  linkId Int    @id @unique(map: "ContactInfo_contactId_key") @default(autoincrement())
+  name   String
+  link   String @default("")
+  icon   String @default("")
+  order  BigInt @default(0)
 }

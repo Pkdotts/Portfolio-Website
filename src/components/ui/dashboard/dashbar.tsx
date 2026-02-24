@@ -13,6 +13,9 @@ export default function DashBar(){
                     <Button variant="white" component="a" href="/supersecretdashboard/home" >
                         Home
                     </Button>
+                    <Button variant="white" component="a" href="/supersecretdashboard/links" >
+                        Links
+                    </Button>
                     <Button variant="white" component="a" href="/supersecretdashboard/about" >
                         About
                     </Button>
