@@ -31,7 +31,7 @@ export default async function middleware(req: any) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user && req.nextUrl.pathname.startsWith("/supersecretdashboard")) {
+  if (!user && req.nextUrl.pathname.includes("/supersecretdashboard")) {
     return NextResponse.redirect(new URL("/supersecretlogin", req.url));
   }
 

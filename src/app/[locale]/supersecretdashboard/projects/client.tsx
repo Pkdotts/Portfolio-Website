@@ -120,10 +120,16 @@ export default function ProjectDashboard({
                     <Text>External Link</Text>
                     <Input name="externalLink" placeholder="A link to more info about the project" defaultValue={selectedProject?.externalLink ?? undefined}/>
                   </div>
-                  <div>
-                    <Text>Description</Text>
-                    <Textarea name="description" resize="vertical"  placeholder="Tell me about your project..." defaultValue={selectedProject?.description}/>
-                  </div>
+                  <Group grow style={{verticalAlign:"top"}}>
+                    <div>
+                      <Text>Description EN</Text>
+                      <Textarea name="descriptionEn" resize="vertical"  placeholder="Tell me about your project... (In English)" defaultValue={selectedProject?.descriptionEn}/>
+                    </div>
+                    <div>
+                      <Text>Description FR</Text>
+                      <Textarea name="descriptionFr" resize="vertical"  placeholder="Tell me about your project... (In French)" defaultValue={selectedProject?.descriptionFr}/>
+                    </div>
+                  </Group>
                   <Group grow>
                     <div>
                       <Text>Start Date</Text>

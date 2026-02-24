@@ -48,7 +48,8 @@ export async function createProject(formData: FormData) {
   const projectUrl = formData.get("projectUrl") as string;
   const externalLink = formData.get("externalLink") as string;
   const title = formData.get("title") as string;
-  const description = formData.get("description") as string;
+  const descriptionEn = formData.get("descriptionEn") as string;
+  const descriptionFr = formData.get("descriptionFr") as string;
   const visible = !!formData.get("visible");
 
   const startDateStr = formData.get("startDate") as string;
@@ -83,7 +84,8 @@ export async function createProject(formData: FormData) {
       projectUrl,
       externalLink,
       title,
-      description,
+      descriptionEn,
+      descriptionFr,
       logoUrl: finalLogoUrl,
       imageUrls: finalImageUrls,
       coverUrl: finalCoverUrl,
@@ -111,7 +113,8 @@ export async function updateProject(formData: FormData) {
   const externalLinkStr = (formData.get("externalLink") as string);
   const externalLink = (externalLinkStr === "" ? null : externalLinkStr);
   const title = formData.get("title") as string;
-  const description = formData.get("description") as string;
+  const descriptionEn = formData.get("descriptionEn") as string;
+  const descriptionFr = formData.get("descriptionFr") as string;
   const logoUrl = formData.get("logoUrl") as string;
   const coverUrl = formData.get("coverUrl") as string;
   const imageUrlsStr = formData.get("imageUrls") as string;
@@ -162,7 +165,8 @@ export async function updateProject(formData: FormData) {
       projectUrl,
       externalLink,
       title,
-      description,
+      descriptionEn,
+      descriptionFr,
       logoUrl: finalLogoUrl ?? logoUrl,
       coverUrl: finalCoverUrl ?? coverUrl,
       slideshowUrl: finalSlideshowUrl ?? slideshowUrl,

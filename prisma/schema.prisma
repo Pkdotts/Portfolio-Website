@@ -19,7 +19,7 @@ model Skill {
 model Project {
   projectUrl    String
   title         String
-  description   String          @default("")
+  descriptionEn String          @default("")
   imageUrls     String[]
   visible       Boolean         @default(false)
   coverUrl      String?
@@ -29,6 +29,7 @@ model Project {
   slideshowUrl  String?
   projectId     BigInt          @id @default(autoincrement())
   externalLink  String?
+  descriptionFr String          @default("")
   Project_Skill Project_Skill[]
 }
 
@@ -115,4 +116,10 @@ model Translation {
   en  String @default("")
   fr  String
   key String @id(map: "Biography_pkey")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model Visit {
+  key   String @id
+  count BigInt @default(0)
 }

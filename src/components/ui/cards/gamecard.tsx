@@ -1,6 +1,7 @@
 import { Paper, Title, Image, AspectRatio, Anchor, Stack, Text } from "@mantine/core";
 import styles from "./gamecard.module.css";
 import { Project } from "@/generated/prisma/client";
+import { pickLocalizedName } from "@/app/hooks/pickLocalizedName";
 
 
 export default function GameCard({project}: {project: Project}){
@@ -17,7 +18,7 @@ export default function GameCard({project}: {project: Project}){
                     </Paper>
                 </AspectRatio>
                 <Title className={styles.cardTitle} order={3} c="var(--mantine-color-text-0)">{project.title} </Title>
-                <Text c="var(--mantine-color-text)">{project.description}</Text>
+                <Text c="var(--mantine-color-text)">{pickLocalizedName(project.descriptionEn, project.descriptionFr)}</Text>
             </Stack>
         </Anchor>
     )
