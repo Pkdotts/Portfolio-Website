@@ -321,7 +321,7 @@ export default function AboutDashboard({
             <DashBar/>
             <Group p="xs" justify="flex-start">
                 <Button size="sm" onClick={openCreateModal} disabled={activeTab === "skills"} leftSection={<IconPlus/>}>
-                  Insert 
+                  Add 
                 </Button>
               </Group>
             <Divider/>
