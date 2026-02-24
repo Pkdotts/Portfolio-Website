@@ -15,7 +15,7 @@ async function SkillsPaper({skillTypes}: {skillTypes: SkillTypeWithSkills[]}){
       { 
         skillTypes &&
         <ContentPaper >
-          <Title className="titleShadow">{t('skills')}</Title>
+          <Title>{t('skills')}</Title>
           <InnerPaper >
             <Stack>
 
@@ -54,7 +54,7 @@ async function ExperiencePaper({experience}: {experience: WorkExperience[]}){
       { 
         experience &&
         <ContentPaper>
-          <Title className="titleShadow">{t('experience')}</Title>
+          <Title>{t('experience')}</Title>
           <Stack>
             {experience.map((e) => (
               <InnerPaper key={e.workId}>
@@ -80,7 +80,7 @@ async function EducationPaper({education}: {education: Education[]}){
       { 
         education &&
         <ContentPaper>
-            <Title className="titleShadow">{t('education')}</Title>
+            <Title>{t('education')}</Title>
             <Stack>
 
                {education.map((e) => (
@@ -106,7 +106,7 @@ async function HobbiesPaper({hobbies}: {hobbies: Hobby[]}){
       { 
         hobbies &&
         <ContentPaper>
-            <Title className="titleShadow">{t('hobbies')}</Title>
+            <Title>{t('hobbies')}</Title>
               <InnerPaper>
                 <ul style={{margin: 0}}>
                 {hobbies.map((h) => (
