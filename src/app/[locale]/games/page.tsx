@@ -4,7 +4,7 @@ import GamesPage from "./client";
 export default async function Games() {
   const projects = await prisma.project.findMany({
     where: { visible: true },
-    orderBy: [{ endDate: "desc" }, { startDate: "desc" }],
+    orderBy: [{ endDate: "desc" }],
   });
 
   return <GamesPage projects={projects} />;
