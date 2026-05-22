@@ -6,19 +6,21 @@ import { headers } from "next/headers";
 import { RateLimiterMemory } from "rate-limiter-flexible";
 
 const opts = {
-    points: 1, 
-    duration: 300, 
-  };
+  points: 1,
+  duration: 300,
+};
 
 const rateLimiter = new RateLimiterMemory(opts);
 
 export async function createTestimonial(
   prevState: FormState,
-  formData: FormData
+  formData: FormData,
 ): Promise<FormState> {
-
   const headersList = await headers();
-  const ip = headersList.get("x-forwarded-for") || headersList.get("x-real-ip") || "anonymous";
+  const ip =
+    headersList.get("x-forwarded-for") ||
+    headersList.get("x-real-ip") ||
+    "anonymous";
 
   try {
     await rateLimiter.consume(ip);
@@ -27,7 +29,7 @@ export async function createTestimonial(
   }
 
   const honeypot = formData.get("company");
-  if (honeypot) return {success: false}; // protect from bots
+  if (honeypot) return { success: false }; // protect from bots
 
   const name = formData.get("name") as string;
   const message = formData.get("message") as string;
@@ -36,7 +38,7 @@ export async function createTestimonial(
     data: {
       name,
       message,
-      accepted: false
+      accepted: false,
     },
   });
 
@@ -45,22 +47,29 @@ export async function createTestimonial(
 }
 
 export async function acceptTestimonial(testimonialId: number) {
+  await prisma.testimonial.update({
+    where: { testimonialId },
+    data: { accepted: true },
+  });
 
-    await prisma.testimonial.update({
-        where: { testimonialId },
-        data: { accepted: true }
-    });
+  revalidatePath("/supersecretdashboard/testimonials");
+}
+
+export async function unacceptTestimonial(testimonialId: number) {
+  await prisma.testimonial.update({
+    where: { testimonialId },
+    data: { accepted: false },
+  });
 
   revalidatePath("/supersecretdashboard/testimonials");
 }
 
 export async function deleteTestimonial(testimonialId: number) {
-    
-    await prisma.testimonial.delete({
-        where: {
-            testimonialId
-        }
-    })
+  await prisma.testimonial.delete({
+    where: {
+      testimonialId,
+    },
+  });
 
-    revalidatePath("/supersecretdashboard/testimonials");
-} 
+  revalidatePath("/supersecretdashboard/testimonials");
+}
