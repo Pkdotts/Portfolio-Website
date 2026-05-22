@@ -1,4 +1,3 @@
-import { Group } from "@mantine/core";
 import ContactDashboard from "./client";
 import prisma from "@/lib/prisma";
 

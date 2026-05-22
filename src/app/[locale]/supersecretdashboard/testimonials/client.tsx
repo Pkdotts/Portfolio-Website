@@ -1,10 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import Sidebar from "@/components/ui/dashboard/dashbar";
-
-import { useDisclosure } from "@mantine/hooks";
-import { ModalActions } from "@/components/ui/dashboard/dashboardmodal";
 import DashBar from "@/components/ui/dashboard/dashbar";
 import { Testimonial } from "@/generated/prisma/client";
 import {
@@ -12,14 +7,11 @@ import {
   Stack,
   Title,
   Text,
-  Drawer,
   Container,
   Paper,
   Divider,
-  Button,
   Badge,
   ActionIcon,
-  CheckIcon,
 } from "@mantine/core";
 import InnerPaper from "@/components/ui/cards/innerpaper";
 import {
@@ -27,7 +19,7 @@ import {
   deleteTestimonial,
   unacceptTestimonial,
 } from "@/app/api/controllers/testimonialsController";
-import { IconCheck, IconCross, IconTrash, IconX } from "@tabler/icons-react";
+import { IconCheck, IconTrash, IconX } from "@tabler/icons-react";
 
 function TestimonialTable({ testimonials }: { testimonials: Testimonial[] }) {
   return (

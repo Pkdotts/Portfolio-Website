@@ -1,16 +1,26 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Button, Group, Text, useMantineTheme, Stack, ActionIcon, Image, SimpleGrid, Container, Paper } from "@mantine/core";
+import {
+  Button,
+  Group,
+  Text,
+  useMantineTheme,
+  Stack,
+  ActionIcon,
+  Image,
+  SimpleGrid,
+  Paper,
+} from "@mantine/core";
 import { Dropzone, MIME_TYPES } from "@mantine/dropzone";
 import { IconCloudUpload, IconDownload, IconX } from "@tabler/icons-react";
-import classes from './dropzonebutton.module.css';
+import classes from "./dropzonebutton.module.css";
 import { getFilePathFromUrl } from "@/app/hooks/getFilePathFromUrl";
 import { createClient } from "@/lib/supabase/client";
 
 export enum FileType {
   image,
-  pdf
+  pdf,
 }
 
 interface Props {
@@ -30,26 +40,32 @@ export function DropzoneButton({
   multiple = false,
   imageColumns = 3,
   defaultValue,
-  fileType
+  fileType,
 }: Props) {
   const theme = useMantineTheme();
   const openRef = useRef<() => void>(null);
 
   const [files, setFiles] = useState<string[]>(
-    Array.isArray(defaultValue) ? defaultValue : defaultValue ? [defaultValue] : []
+    Array.isArray(defaultValue)
+      ? defaultValue
+      : defaultValue
+        ? [defaultValue]
+        : [],
   );
 
   async function uploadFile(file: File) {
     const supabase = await createClient();
-    
+
     const {
       data: { user },
     } = await supabase.auth.getUser();
-  
+
     if (!user) throw new Error("Unauthorized");
 
     const fileName = `${sessionId}/${crypto.randomUUID()}-${file.name}`;
-    const { error } = await supabase.storage.from(bucket).upload(fileName, file);
+    const { error } = await supabase.storage
+      .from(bucket)
+      .upload(fileName, file);
     if (error) {
       console.error("Upload error:", error);
       return null;
@@ -69,13 +85,13 @@ export function DropzoneButton({
   async function removeFile(index: number, url: string) {
     try {
       const supabase = await createClient();
-    
+
       const {
         data: { user },
       } = await supabase.auth.getUser();
-    
+
       if (!user) throw new Error("Unauthorized");
-      
+
       const path = getFilePathFromUrl(url, bucket);
       console.log("Deleting path:", path);
 
@@ -90,56 +106,84 @@ export function DropzoneButton({
     setFiles((prev) => prev.filter((_, i) => i !== index));
   }
 
-
   return (
     <Paper className={classes.wrapper} withBorder p="lg">
       <Stack>
-        {
-          files.length > 0 ?
-          
+        {files.length > 0 ? (
           <Group justify="center" grow>
-            <SimpleGrid cols={files.length < imageColumns ? files.length : imageColumns} spacing="sm" mt="md">
-              
-              {fileType === FileType.pdf ? files.map((url, index) => (
-                <object data={url} type="application/pdf" key={index} width="100%" height="500px">
-                  <p>Unable to display PDF file. <a href={url}>Download</a> instead.</p>
-                </object>
-              )) :
-              files.map((url, index) => (
-                <div key={index} style={{ position: "relative" }}>
-                  <Image src={url} alt="Uploaded" width="100%" radius="md" />
-                  <ActionIcon
-                    size="sm"
-                    radius="xl"
-                    style={{ position: "absolute", top: 4, right: 4 }}
-                    onClick={() => removeFile(index, url)}
-                  >
-                    <IconX size={14} />
-                  </ActionIcon>
-                </div>
-              ))}
-            </SimpleGrid> 
+            <SimpleGrid
+              cols={files.length < imageColumns ? files.length : imageColumns}
+              spacing="sm"
+              mt="md"
+            >
+              {fileType === FileType.pdf
+                ? files.map((url, index) => (
+                    <object
+                      data={url}
+                      type="application/pdf"
+                      key={index}
+                      width="100%"
+                      height="500px"
+                    >
+                      <p>
+                        Unable to display PDF file. <a href={url}>Download</a>{" "}
+                        instead.
+                      </p>
+                    </object>
+                  ))
+                : files.map((url, index) => (
+                    <div key={index} style={{ position: "relative" }}>
+                      <Image
+                        src={url}
+                        alt="Uploaded"
+                        width="100%"
+                        radius="md"
+                      />
+                      <ActionIcon
+                        size="sm"
+                        radius="xl"
+                        style={{ position: "absolute", top: 4, right: 4 }}
+                        onClick={() => removeFile(index, url)}
+                      >
+                        <IconX size={14} />
+                      </ActionIcon>
+                    </div>
+                  ))}
+            </SimpleGrid>
           </Group>
-            :
+        ) : (
           <Dropzone
             openRef={openRef}
             onDrop={handleDrop}
             className={classes.dropzone}
             radius="md"
-            accept={[MIME_TYPES.pdf, MIME_TYPES.png, MIME_TYPES.jpeg, MIME_TYPES.gif]}
+            accept={[
+              MIME_TYPES.pdf,
+              MIME_TYPES.png,
+              MIME_TYPES.jpeg,
+              MIME_TYPES.gif,
+            ]}
             maxSize={30 * 1024 ** 2}
             multiple={multiple}
           >
             <div style={{ pointerEvents: "none", width: "100%" }}>
               <Group justify="center">
                 <Dropzone.Accept>
-                  <IconDownload size={50} color={theme.colors.blue[6]} stroke={1.5} />
+                  <IconDownload
+                    size={50}
+                    color={theme.colors.blue[6]}
+                    stroke={1.5}
+                  />
                 </Dropzone.Accept>
                 <Dropzone.Reject>
                   <IconX size={50} color={theme.colors.red[6]} stroke={1.5} />
                 </Dropzone.Reject>
                 <Dropzone.Idle>
-                  <IconCloudUpload size={50} stroke={1.5} className={classes.icon} />
+                  <IconCloudUpload
+                    size={50}
+                    stroke={1.5}
+                    className={classes.icon}
+                  />
                 </Dropzone.Idle>
               </Group>
 
@@ -154,14 +198,19 @@ export function DropzoneButton({
               </Text>
             </div>
           </Dropzone>
-        }
+        )}
 
         <Group justify="center">
-          <Button className={classes.control} size="md" radius="xl" onClick={() => openRef.current?.()}>
+          <Button
+            className={classes.control}
+            size="md"
+            radius="xl"
+            onClick={() => openRef.current?.()}
+          >
             Select files
           </Button>
         </Group>
-        
+
         <input type="hidden" name={name} value={files.join(",")} />
       </Stack>
     </Paper>

@@ -1,15 +1,14 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Reveal({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement | null>(null);
-  
-  
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    
+
     const observer = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
@@ -19,7 +18,7 @@ export default function Reveal({ children }: { children: React.ReactNode }) {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     observer.observe(el);

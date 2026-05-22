@@ -1,5 +1,5 @@
 import NameTitle from "@/components/ui/nametitle/nametitle";
-import { Container, Text, Button, Group, Stack } from "@mantine/core";
+import { Container, Button, Group, Stack } from "@mantine/core";
 import About from "../pages/skillspaper";
 import { useTranslations } from "next-intl";
 import Bio from "../pages/biopaper";
