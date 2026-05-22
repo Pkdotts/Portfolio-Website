@@ -17,20 +17,22 @@ model Skill {
 }
 
 model Project {
-  projectUrl    String
-  title         String
-  descriptionEn String          @default("")
-  imageUrls     String[]
-  visible       Boolean         @default(false)
-  coverUrl      String?
-  logoUrl       String?
-  startDate     DateTime?       @db.Date
-  endDate       DateTime?       @db.Date
-  slideshowUrl  String?
-  projectId     BigInt          @id @default(autoincrement())
-  externalLink  String?
-  descriptionFr String          @default("")
-  Project_Skill Project_Skill[]
+  projectUrl        String          @unique
+  title             String
+  descriptionEn     String          @default("")
+  imageUrls         String[]
+  visible           Boolean         @default(false)
+  coverUrl          String?
+  logoUrl           String?
+  startDate         DateTime?       @db.Date
+  endDate           DateTime?       @db.Date
+  slideshowUrl      String?
+  projectId         BigInt          @id @default(autoincrement())
+  externalLink      String?
+  descriptionFr     String          @default("")
+  pageDescriptionEn String          @default("")
+  pageDescriptionFr String          @default("")
+  Project_Skill     Project_Skill[]
 }
 
 model Art {
@@ -109,7 +111,7 @@ model SkillType {
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
 model Translation {
   en  String @default("")
-  fr  String
+  fr  String @default("")
   key String @id(map: "Biography_pkey")
 }
 

@@ -50,10 +50,12 @@ export async function createProject(formData: FormData) {
   const title = formData.get("title") as string;
   const descriptionEn = formData.get("descriptionEn") as string;
   const descriptionFr = formData.get("descriptionFr") as string;
+  const pageDescriptionEn = formData.get("pageDescriptionEn") as string;
+  const pageDescriptionFr = formData.get("pageDescriptionFr") as string;
   const visible = !!formData.get("visible");
 
   const startDateStr = formData.get("startDate") as string;
-  const startDate = startDateStr ? parseLocalDate(startDateStr): null;
+  const startDate = startDateStr ? parseLocalDate(startDateStr) : null;
 
   const endDateStr = formData.get("endDate") as string;
   const endDate = endDateStr ? parseLocalDate(endDateStr) : null;
@@ -72,11 +74,23 @@ export async function createProject(formData: FormData) {
     if (moved) finalImageUrls.push(moved);
   }
 
-  const finalLogoUrl = await moveTempFileToProject(supabase, logoUrl, projectId);
+  const finalLogoUrl = await moveTempFileToProject(
+    supabase,
+    logoUrl,
+    projectId,
+  );
 
-  const finalCoverUrl = await moveTempFileToProject(supabase, coverUrl, projectId);
+  const finalCoverUrl = await moveTempFileToProject(
+    supabase,
+    coverUrl,
+    projectId,
+  );
 
-  const finalSlideshowUrl = await moveTempFileToProject(supabase, slideshowUrl, projectId);
+  const finalSlideshowUrl = await moveTempFileToProject(
+    supabase,
+    slideshowUrl,
+    projectId,
+  );
 
   await prisma.project.create({
     data: {
@@ -86,14 +100,16 @@ export async function createProject(formData: FormData) {
       title,
       descriptionEn,
       descriptionFr,
+      pageDescriptionEn,
+      pageDescriptionFr,
       logoUrl: finalLogoUrl,
       imageUrls: finalImageUrls,
       coverUrl: finalCoverUrl,
       slideshowUrl: finalSlideshowUrl,
       startDate,
       endDate,
-      visible
-    }
+      visible,
+    },
   });
 
   revalidatePath("/supersecretdashboard/projects");
@@ -107,14 +123,16 @@ export async function updateProject(formData: FormData) {
   } = await supabase.auth.getUser();
 
   if (!user) throw new Error("Unauthorized");
-  
+
   const projectId = Number(formData.get("projectId") as string);
   const projectUrl = formData.get("projectUrl") as string;
-  const externalLinkStr = (formData.get("externalLink") as string);
-  const externalLink = (externalLinkStr === "" ? null : externalLinkStr);
+  const externalLinkStr = formData.get("externalLink") as string;
+  const externalLink = externalLinkStr === "" ? null : externalLinkStr;
   const title = formData.get("title") as string;
   const descriptionEn = formData.get("descriptionEn") as string;
   const descriptionFr = formData.get("descriptionFr") as string;
+  const pageDescriptionEn = formData.get("pageDescriptionEn") as string;
+  const pageDescriptionFr = formData.get("pageDescriptionFr") as string;
   const logoUrl = formData.get("logoUrl") as string;
   const coverUrl = formData.get("coverUrl") as string;
   const imageUrlsStr = formData.get("imageUrls") as string;
@@ -147,10 +165,21 @@ export async function updateProject(formData: FormData) {
     }
   }
 
-
-  const finalLogoUrl = await moveTempFileToProject(supabase, logoUrl, projectId);
-  const finalCoverUrl = await moveTempFileToProject(supabase, coverUrl, projectId);
-  const finalSlideshowUrl = await moveTempFileToProject(supabase, slideshowUrl, projectId);
+  const finalLogoUrl = await moveTempFileToProject(
+    supabase,
+    logoUrl,
+    projectId,
+  );
+  const finalCoverUrl = await moveTempFileToProject(
+    supabase,
+    coverUrl,
+    projectId,
+  );
+  const finalSlideshowUrl = await moveTempFileToProject(
+    supabase,
+    slideshowUrl,
+    projectId,
+  );
 
   const finalImageUrls: string[] = [];
   for (const url of imageUrls) {
@@ -167,6 +196,8 @@ export async function updateProject(formData: FormData) {
       title,
       descriptionEn,
       descriptionFr,
+      pageDescriptionEn,
+      pageDescriptionFr,
       logoUrl: finalLogoUrl ?? logoUrl,
       coverUrl: finalCoverUrl ?? coverUrl,
       slideshowUrl: finalSlideshowUrl ?? slideshowUrl,
@@ -188,7 +219,7 @@ export async function deleteProject(projectId: number) {
   } = await supabase.auth.getUser();
 
   if (!user) throw new Error("Unauthorized");
-  
+
   const project = await prisma.project.findUnique({ where: { projectId } });
   if (!project) return;
 
@@ -207,7 +238,7 @@ export async function deleteProject(projectId: number) {
 async function moveTempFileToProject(
   supa: SupabaseClient,
   url: string | null,
-  projectId: number
+  projectId: number,
 ) {
   if (!url) return null;
 
@@ -217,36 +248,27 @@ async function moveTempFileToProject(
   const fileName = fromPath.split("/").pop();
   const toPath = `${projectId}/${fileName}`;
 
-  const { data: fileData, error: downloadError } =
-    await supa.storage
-      .from("Projects-Temp")
-      .download(fromPath);
+  const { data: fileData, error: downloadError } = await supa.storage
+    .from("Projects-Temp")
+    .download(fromPath);
 
   if (downloadError || !fileData) {
     console.error("Download failed:", downloadError);
     return null;
   }
 
-  const { error: uploadError } =
-    await supa.storage
-      .from("Projects")
-      .upload(toPath, fileData);
+  const { error: uploadError } = await supa.storage
+    .from("Projects")
+    .upload(toPath, fileData);
 
   if (uploadError) {
     console.error("Upload failed:", uploadError);
     return null;
   }
 
-  await supa.storage
-    .from("Projects-Temp")
-    .remove([fromPath]);
+  await supa.storage.from("Projects-Temp").remove([fromPath]);
 
-  const { data } = supa.storage
-    .from("Projects")
-    .getPublicUrl(toPath);
+  const { data } = supa.storage.from("Projects").getPublicUrl(toPath);
 
   return data.publicUrl;
 }
-
-
-
