@@ -1,4 +1,5 @@
 import { Button, MantineSize, Modal, Stack, Title } from "@mantine/core";
+import { SubmitButton } from "../buttons/submit";
 
 export interface ModalProps<T> {
   opened: boolean;
@@ -28,42 +29,52 @@ export function DashboardModal<T>({
   createAction,
   updateAction,
   deleteAction,
-  children
+  children,
 }: ModalProps<T>) {
-
-  const formAction = 
-  action === ModalActions.create ? createAction : 
-  action === ModalActions.edit ? updateAction : deleteAction;
+  const formAction =
+    action === ModalActions.create
+      ? createAction
+      : action === ModalActions.edit
+        ? updateAction
+        : deleteAction;
 
   return (
-    <Modal title={title} opened={opened} onClose={close} size={size} >
-      {(action === ModalActions.delete) ? 
-      <Stack>
-        Do you reaaaaally wanna delete this?
-        <Title size="xl">
-          {itemName}
-        </Title>
-        <Button type="submit" onClick={() => {
-          deleteAction(itemId);
-          close();
-        }}>
-            Delete
-        </Button> 
-      </Stack> :
-      <form name="form" action={formAction}>
+    <Modal title={title} opened={opened} onClose={close} size={size}>
+      {action === ModalActions.delete ? (
         <Stack>
-          {children}
-          <input type="hidden" name={itemIdName} value={itemId}/>
-          <Button type="submit" onClick={close}>
-            {action === ModalActions.create ? "Create" : action === ModalActions.edit ? "Update" : "Delete"}
+          Do you reaaaaally wanna delete this?
+          <Title size="xl">{itemName}</Title>
+          <Button
+            type="submit"
+            onClick={() => {
+              deleteAction(itemId);
+              close();
+            }}
+          >
+            Delete
           </Button>
         </Stack>
-      </form>
-      }
+      ) : (
+        <form name="form" action={formAction} onSubmit={close}>
+          <Stack>
+            {children}
+            <input type="hidden" name={itemIdName} value={itemId} />
+            <SubmitButton>
+              {action === ModalActions.create
+                ? "Create"
+                : action === ModalActions.edit
+                  ? "Update"
+                  : "Delete"}
+            </SubmitButton>
+          </Stack>
+        </form>
+      )}
     </Modal>
   );
 }
 
-export enum ModalActions{
-  "create", "edit", "delete"
+export enum ModalActions {
+  "create",
+  "edit",
+  "delete",
 }

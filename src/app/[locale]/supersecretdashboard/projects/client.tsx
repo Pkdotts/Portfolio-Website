@@ -125,7 +125,7 @@ export default function ProjectDashboard({
         size="67%"
         item={selectedProject}
         itemName={selectedProject?.title}
-        itemId={selectedProject?.projectId}
+        itemId={selectedProject ? selectedProject.projectId : projects.length}
         itemIdName="projectId"
         createAction={createProject}
         updateAction={updateProject}

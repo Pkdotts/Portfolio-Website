@@ -13,10 +13,10 @@ import { pickLocalizedName } from "@/app/hooks/pickLocalizedName";
 
 export default function GameCard({ project }: { project: Project }) {
   const ratio = 650 / 500;
-  const gamePath = `/games/[project]`;
+  // const gamePath = `/games/[project]`;
   return (
     <Anchor
-      href={"/games/" + project.projectUrl}
+      href={project.externalLink ?? undefined}
       target={project.externalLink ? "_blank" : undefined}
     >
       <Stack maw={300} className={styles.container}>
